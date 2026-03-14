@@ -1,0 +1,58 @@
+name: Deploy Lypsyos Landing Page to Azure
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: "24"
+  AZURE_WEBAPP_NAME: "lypsyos-landing-page"
+  DEPLOY_PACKAGE_PATH: ".azure-package"
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build frontend
+        run: npm run build
+
+      - name: Prune dev dependencies for runtime package
+        run: npm prune --omit=dev
+
+      - name: Prepare Azure deployment package
+        run: |
+          rm -rf ${{ env.DEPLOY_PACKAGE_PATH }}
+          mkdir -p ${{ env.DEPLOY_PACKAGE_PATH }}
+          cp -R dist ${{ env.DEPLOY_PACKAGE_PATH }}/dist
+          cp -R server ${{ env.DEPLOY_PACKAGE_PATH }}/server
+          cp package.json ${{ env.DEPLOY_PACKAGE_PATH }}/package.json
+          cp package-lock.json ${{ env.DEPLOY_PACKAGE_PATH }}/package-lock.json
+          cp -R node_modules ${{ env.DEPLOY_PACKAGE_PATH }}/node_modules
+
+      - name: Deploy to Azure App Service
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ${{ env.DEPLOY_PACKAGE_PATH }}

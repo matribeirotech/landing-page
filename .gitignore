@@ -1,0 +1,13 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+data/*.db
+data/*.db-shm
+data/*.db-wal
+.env.local
+Evolução do DBX-V2 e Próximos Passos na Automação de DXFNesting.mp4
