@@ -27,7 +27,7 @@ const Contact = lazy(async () => {
 function RouteFallback() {
   return (
     <div className="flex min-h-[40vh] items-center justify-center px-6 text-center text-sm text-neutral-600">
-      Carregando a experiencia Lypsyos...
+      Carregando a experiência Lypsyos...
     </div>
   )
 }
@@ -50,6 +50,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<RouteFallback />}>
             <About />
+          </Suspense>
+        ),
+      },
+      {
+        path: "produtos/dbx-v3",
+        element: (
+          <Suspense fallback={<RouteFallback />}>
+            <Products />
           </Suspense>
         ),
       },

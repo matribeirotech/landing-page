@@ -12,21 +12,21 @@ export function ProductShowcase() {
     void trackEvent({
       eventName: "product_showcase_cta_click",
       category: "conversion",
-      label: "showcase_dbx_v2",
+      label: "showcase_dbx_v3",
     }).catch((error) => {
-      console.error("Nao foi possivel rastrear CTA do produto", error)
+      console.error("Não foi possível rastrear o CTA do produto", error)
     })
   }
 
   function goToProductPage() {
     handleProductCta()
-    navigate("/produtos/dbx-v2")
+    navigate("/produtos/dbx-v3")
   }
 
   return (
     <section id="produto-principal" className="w-full py-24 md:py-32 bg-surface">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+        <div className="grid gap-12 items-center lg:grid-cols-2 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -35,34 +35,34 @@ export function ProductShowcase() {
             className="flex flex-col justify-center space-y-8"
           >
             <div className="space-y-4">
-              <div className="inline-block rounded-lg bg-accent/10 px-3 py-1 text-sm text-accent font-semibold">
-                Produto Principal
+              <div className="inline-block rounded-lg bg-accent/10 px-3 py-1 text-sm font-semibold text-accent">
+                Produto em destaque
               </div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">
-                Conheça o DBX-V2
+              <h2 className="text-3xl font-bold tracking-tight sm:text-5xl text-primary">
+                Conheça o DBX-V3
               </h2>
-              <p className="max-w-[600px] text-neutral-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                O DBX-V2 nasceu para acelerar a geracao de entregaveis tecnicos e reduzir o trabalho repetitivo
-                em rotinas de corte, nesting e preparacao de arquivos.
+              <p className="max-w-[620px] text-neutral-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                O DBX-V3 organiza o fluxo técnico desde a entrada das peças até a geração de documentos,
+                DXFs e relatórios de aproveitamento, com foco em padronização e velocidade.
               </p>
             </div>
             <ul className="grid gap-4">
               {[
-                "Geracao em lote de arquivos DXF e PDF.",
-                "Mais padronizacao na entrega para o time de operacao.",
-                "Fluxo tecnico mais rapido entre engenharia e corte.",
-                "Base pronta para evoluir com novas automacoes.",
-                "Implementacao orientada a processo, nao so a tela.",
-              ].map((item, index) => (
-                <li key={index} className="flex items-center gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-secondary" />
+                "Versão desktop já operacional para implantação assistida.",
+                "Importa dados por planilha, DXF e JSON.",
+                "Gera DXF, PDF técnico e relatórios com mais padronização.",
+                "Ajuda a reduzir retrabalho entre engenharia, preparo e produção.",
+                "Preparado para evoluir para uma experiência web SaaS.",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <CheckCircle2 className="h-6 w-6 shrink-0 text-secondary" />
                   <span className="text-neutral-700">{item}</span>
                 </li>
               ))}
             </ul>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button size="lg" className="bg-primary text-surface hover:bg-primary/90" onClick={goToProductPage}>
-                Saiba mais sobre o DBX-V2 <ArrowRight className="ml-2 h-4 w-4" />
+              <Button size="lg" variant="secondary" onClick={goToProductPage}>
+                Ver detalhes do DBX-V3 <ArrowRight className="h-5 w-5" />
               </Button>
             </div>
           </motion.div>
@@ -78,27 +78,28 @@ export function ProductShowcase() {
                 <div className="flex items-center justify-between gap-4">
                   <BrandMark className="text-surface" titleClassName="text-surface" />
                   <div className="rounded-full bg-surface/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-secondary">
-                    Fluxo tecnico
+                    Produto em evolução
                   </div>
                 </div>
               </div>
               <div className="space-y-4 p-6">
                 {[
-                  "Recebe entradas e reduz operacoes manuais repetitivas.",
-                  "Organiza a geracao tecnica para acelerar preparo e execucao.",
-                  "Abre caminho para novas etapas de automacao industrial.",
+                  "Recebe diferentes formatos de entrada para acelerar o início do trabalho.",
+                  "Organiza peças, códigos, furos, aproveitamento e exportações em um fluxo único.",
+                  "Entrega mais clareza para engenharia, programação e produção.",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3 rounded-2xl border border-neutral/20 bg-surface p-4">
-                    <div className="mt-1 rounded-full bg-accent/10 p-2 text-accent">
-                      <Sparkles className="h-4 w-4" />
+                    <div className="mt-1 rounded-full bg-accent/10 p-2.5 text-accent">
+                      <Sparkles className="h-5 w-5" />
                     </div>
                     <p className="text-sm text-neutral-700">{item}</p>
                   </div>
                 ))}
-                <div className="rounded-2xl bg-accent/8 px-5 py-4">
-                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">Aplicacao pratica</p>
+                <div className="rounded-2xl bg-accent/10 px-5 py-4">
+                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">Versão atual</p>
                   <p className="mt-2 text-sm text-neutral-700">
-                    Ideal para operacoes que precisam ganhar velocidade, padrao e confiabilidade na preparacao de arquivos para corte.
+                    Hoje o DBX-V3 já opera em desktop. A próxima camada em desenvolvimento é a versão web,
+                    pensada para ampliar acesso, escala e continuidade como SaaS.
                   </p>
                 </div>
               </div>

@@ -11,26 +11,26 @@ export function Footer() {
             <BrandMark compact className="text-surface" />
           </Link>
           <p className="text-sm text-neutral/80">
-            Software proprio, automacoes sob medida e apoio tecnico para evoluir a operacao industrial.
+            Software próprio, automações sob medida e apoio consultivo para evoluir a operação industrial com mais clareza e velocidade.
           </p>
         </div>
         <div className="flex flex-col gap-2">
-          <h4 className="text-lg font-semibold text-secondary">Links Rapidos</h4>
+          <h4 className="text-lg font-semibold text-secondary">Links rápidos</h4>
           <Link to="/" className="text-sm text-neutral/80 hover:text-secondary transition-colors">Início</Link>
           <Link to="/sobre" className="text-sm text-neutral/80 hover:text-secondary transition-colors">Sobre a Lypsyos</Link>
-          <Link to="/produtos/dbx-v2" className="text-sm text-neutral/80 hover:text-secondary transition-colors">DBX-V2</Link>
+          <Link to="/produtos/dbx-v3" className="text-sm text-neutral/80 hover:text-secondary transition-colors">DBX-V3</Link>
           <Link to="/contato" className="text-sm text-neutral/80 hover:text-secondary transition-colors">Contato</Link>
         </div>
         <div className="flex flex-col gap-2">
-          <h4 className="text-lg font-semibold text-secondary">Atuacao</h4>
-          <p className="text-sm text-neutral/80">Automacao de engenharia</p>
+          <h4 className="text-lg font-semibold text-secondary">Atuação</h4>
+          <p className="text-sm text-neutral/80">Automação para engenharia e preparação</p>
           <p className="text-sm text-neutral/80">Fluxos industriais sob medida</p>
-          <p className="text-sm text-neutral/80">Implementacao do DBX-V2</p>
+          <p className="text-sm text-neutral/80">Implantação do DBX-V3 e evolução SaaS</p>
         </div>
         <div className="flex flex-col gap-4">
           <h4 className="text-lg font-semibold text-secondary">Vamos conversar</h4>
           <p className="text-sm text-neutral/80">
-            Se voce quer eliminar retrabalho, acelerar a preparacao tecnica e conectar melhor seu fluxo, fale com a Lypsyos.
+            Se você quer reduzir retrabalho, acelerar a preparação técnica e organizar melhor o fluxo entre engenharia e produção, fale com a Lypsyos.
           </p>
           <a
             href="https://www.linkedin.com/in/lypsyos-tech-328b853a5/"
@@ -43,9 +43,9 @@ export function Footer() {
           </a>
           <Link
             to="/contato"
-            className="inline-flex items-center justify-center rounded-md bg-secondary px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-secondary/90"
+            className="inline-flex items-center justify-center rounded-xl bg-secondary px-4 py-3 text-sm font-semibold text-primary transition-colors hover:bg-secondary/90"
           >
-            Agendar conversa <ArrowRight className="ml-2 h-4 w-4" />
+            Agendar apresentação <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </div>
       </div>

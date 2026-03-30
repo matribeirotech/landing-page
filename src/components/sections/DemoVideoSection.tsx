@@ -7,7 +7,42 @@ import { trackEvent } from "@/services/analytics"
 const localVideoPath = encodeURI(
   "/videos/Evolução do DBX-V2 e Próximos Passos na Automação de DXFNesting.mp4",
 )
-const youtubeEmbedUrl = import.meta.env.VITE_DBX_VIDEO_YOUTUBE_EMBED_URL
+
+function normalizeYoutubeEmbedUrl(rawUrl?: string) {
+  if (!rawUrl) {
+    return ""
+  }
+
+  try {
+    const parsed = new URL(rawUrl)
+    const hostname = parsed.hostname.replace("www.", "")
+
+    if (hostname === "youtu.be") {
+      const videoId = parsed.pathname.replace("/", "")
+      return videoId ? `https://www.youtube.com/embed/${videoId}` : rawUrl
+    }
+
+    if (hostname.endsWith("youtube.com")) {
+      if (parsed.pathname.startsWith("/embed/")) {
+        return rawUrl
+      }
+
+      if (parsed.pathname.startsWith("/shorts/")) {
+        const videoId = parsed.pathname.split("/")[2]
+        return videoId ? `https://www.youtube.com/embed/${videoId}` : rawUrl
+      }
+
+      const videoId = parsed.searchParams.get("v")
+      return videoId ? `https://www.youtube.com/embed/${videoId}` : rawUrl
+    }
+
+    return rawUrl
+  } catch {
+    return rawUrl
+  }
+}
+
+const youtubeEmbedUrl = normalizeYoutubeEmbedUrl(import.meta.env.VITE_DBX_VIDEO_YOUTUBE_EMBED_URL)
 
 export function DemoVideoSection() {
   const navigate = useNavigate()
@@ -18,7 +53,7 @@ export function DemoVideoSection() {
       category: "engagement",
       label,
     }).catch((error) => {
-      console.error("Nao foi possivel rastrear a interacao com o video", error)
+      console.error("Não foi possível rastrear a interação com o vídeo", error)
     })
   }
 
@@ -35,50 +70,50 @@ export function DemoVideoSection() {
           >
             <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-2 text-sm font-medium text-accent">
               <Video className="h-4 w-4" />
-              Demonstracao em video
+              Demonstração em vídeo
             </div>
             <div className="space-y-4">
-              <h2 className="text-3xl font-bold tracking-tighter text-primary sm:text-5xl">
-                Evolucao do DBX-V2 e proximos passos da automacao
+              <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-5xl">
+                DBX-V3 em evolução e próximos passos da automação
               </h2>
               <p className="text-neutral-600 md:text-lg leading-relaxed">
-                Incluimos um bloco de video para apoiar demonstracoes tecnicas, apresentacoes comerciais
-                e futuras publicacoes no YouTube sem precisar refazer a landing.
+                Este bloco apoia demonstrações técnicas e comerciais, além de servir como vitrine para o
+                avanço do DBX-V3, da versão desktop atual até a futura experiência web.
               </p>
             </div>
             <ul className="space-y-3 text-neutral-700">
               <li className="flex items-start gap-3">
-                <PlayCircle className="mt-0.5 h-5 w-5 text-secondary" />
-                <span>Suporte imediato ao video local enviado para o projeto.</span>
+                <PlayCircle className="mt-0.5 h-6 w-6 text-secondary" />
+                <span>Suporte imediato ao vídeo local já enviado para o projeto.</span>
               </li>
               <li className="flex items-start gap-3">
-                <PlayCircle className="mt-0.5 h-5 w-5 text-secondary" />
-                <span>Preparado para alternar para embed do YouTube via variavel de ambiente.</span>
+                <PlayCircle className="mt-0.5 h-6 w-6 text-secondary" />
+                <span>Aceita link do YouTube e converte URL comum para formato de embed automaticamente.</span>
               </li>
               <li className="flex items-start gap-3">
-                <PlayCircle className="mt-0.5 h-5 w-5 text-secondary" />
-                <span>Ideal para demonstracao de funcionalidades, roadmap e provas tecnicas.</span>
+                <PlayCircle className="mt-0.5 h-6 w-6 text-secondary" />
+                <span>Ideal para apresentar funcionalidades, roadmap e ganhos esperados na operação.</span>
               </li>
             </ul>
             <div className="flex flex-col gap-3 min-[400px]:flex-row">
               <Button
-                className="bg-primary text-surface hover:bg-primary/90"
+                variant="secondary"
                 onClick={() => {
-                  handleVideoEvent("quero_conversa_tecnica")
+                  handleVideoEvent("quero_conhecer_dbx_v3")
                   navigate("/contato")
                 }}
               >
-                Quero uma conversa tecnica
+                Quero conhecer o DBX-V3
               </Button>
               <Button
                 variant="outline"
                 className="border-primary text-primary hover:bg-primary/10"
                 onClick={() => {
-                  handleVideoEvent("abrir_produto_dbx_v2")
-                  navigate("/produtos/dbx-v2")
+                  handleVideoEvent("abrir_produto_dbx_v3")
+                  navigate("/produtos/dbx-v3")
                 }}
               >
-                Ver detalhes do DBX-V2
+                Ver a página do DBX-V3
               </Button>
             </div>
           </motion.div>
@@ -93,7 +128,7 @@ export function DemoVideoSection() {
             <div className="overflow-hidden rounded-[20px] bg-black">
               {youtubeEmbedUrl ? (
                 <iframe
-                  title="Evolucao do DBX-V2 e proximos passos"
+                  title="DBX-V3 em evolução e próximos passos"
                   src={youtubeEmbedUrl}
                   className="aspect-video w-full"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -107,7 +142,7 @@ export function DemoVideoSection() {
                   onPlay={() => handleVideoEvent("play_video_local")}
                 >
                   <source src={localVideoPath} type="video/mp4" />
-                  Seu navegador nao suporta a reproducao de video.
+                  Seu navegador não suporta a reprodução de vídeo.
                 </video>
               )}
             </div>

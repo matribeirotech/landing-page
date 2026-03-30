@@ -6,8 +6,8 @@ import { useDocumentMetadata } from "@/utils/useDocumentMetadata"
 
 export function About() {
   useDocumentMetadata(
-    "Sobre a Lypsyos | Automacao industrial aplicada",
-    "Conheca a proposta da Lypsyos para software proprio, automacao industrial e projetos sob medida.",
+    "Sobre a Lypsyos | Automação industrial aplicada",
+    "Conheça a proposta da Lypsyos para software próprio, automação industrial e projetos sob medida.",
   )
 
   return (
@@ -24,12 +24,13 @@ export function About() {
               Sobre a <span className="text-secondary">Lypsyos</span>
             </h1>
             <p className="max-w-[900px] text-neutral-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mx-auto">
-              A Lypsyos atua no encontro entre software, automacao e realidade industrial para transformar processos engessados em operacoes mais fluidas.
+              A Lypsyos atua no encontro entre software, automação e realidade industrial para transformar
+              processos engessados em operações mais fluidas, claras e confiáveis.
             </p>
           </motion.div>
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center mb-24">
+        <div className="grid gap-12 items-center mb-24 lg:grid-cols-2 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -38,14 +39,16 @@ export function About() {
             className="space-y-6"
           >
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
-              Nossa Missão
+              Nossa missão
             </h2>
             <p className="text-neutral-700 md:text-lg leading-relaxed">
-              A Lypsyos nasceu para reduzir atritos entre engenharia, preparacao tecnica e operacao industrial.
-              Nosso trabalho e transformar atividades repetitivas, demoradas ou pouco padronizadas em fluxos mais rapidos e confiaveis.
+              A Lypsyos nasceu para reduzir atritos entre engenharia, preparação técnica e operação
+              industrial. Nosso trabalho é transformar atividades repetitivas, demoradas ou pouco
+              padronizadas em fluxos mais rápidos e confiáveis.
             </p>
             <p className="text-neutral-700 md:text-lg leading-relaxed">
-              Isso pode acontecer por meio de uma ferramenta propria, como o DBX-V2, ou por projetos sob medida desenhados para a realidade de cada industria.
+              Isso pode acontecer por meio de uma ferramenta própria, como o DBX-V3, ou por projetos sob
+              medida desenhados para a realidade de cada indústria.
             </p>
           </motion.div>
           <motion.div
@@ -60,13 +63,15 @@ export function About() {
               <div className="rounded-2xl border border-neutral/20 bg-background px-5 py-4">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">Como pensamos</p>
                 <p className="mt-2 text-sm text-neutral-700">
-                  Primeiro entendemos o processo e o gargalo. Depois definimos a melhor combinacao entre software, automacao e implantacao.
+                  Primeiro entendemos o processo e o gargalo. Depois definimos a melhor combinação entre
+                  software, automação e implantação.
                 </p>
               </div>
               <div className="rounded-2xl border border-neutral/20 bg-background px-5 py-4">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">Como entregamos</p>
                 <p className="mt-2 text-sm text-neutral-700">
-                  Evoluimos a operacao por etapas, com clareza tecnica, menor risco e foco no que gera ganho real para a equipe.
+                  Evoluímos a operação por etapas, com clareza técnica, menor risco e foco no que gera
+                  ganho real para a equipe.
                 </p>
               </div>
             </div>
@@ -77,22 +82,22 @@ export function About() {
           {[
             {
               title: "Tecnologia aplicada",
-              description: "Criamos solucoes que nascem de problemas reais de operacao, e nao de modismos de software.",
+              description: "Criamos soluções que nascem de problemas reais de operação, e não de modismos de software.",
               icon: Lightbulb,
             },
             {
               title: "Leitura de processo",
-              description: "Entendemos a rotina industrial para propor automacoes viaveis, aderentes e sustentaveis.",
+              description: "Entendemos a rotina industrial para propor automações viáveis, aderentes e sustentáveis.",
               icon: Settings2,
             },
             {
-              title: "Visao de fabrica",
-              description: "Nosso objetivo e melhorar o fluxo como um todo, da engenharia ao resultado no chao de fabrica.",
+              title: "Visão de fábrica",
+              description: "Nosso objetivo é melhorar o fluxo como um todo, da engenharia ao resultado no chão de fábrica.",
               icon: Factory,
             },
           ].map((value, index) => (
             <motion.div
-              key={index}
+              key={value.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}

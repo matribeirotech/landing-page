@@ -8,8 +8,8 @@ import { useDocumentMetadata } from "@/utils/useDocumentMetadata"
 
 export function Home() {
   useDocumentMetadata(
-    "Lypsyos | Software e automacao para a industria",
-    "Landing page da Lypsyos com DBX-V2, automacoes industriais sob medida e contato tecnico-comercial.",
+    "Lypsyos | Software e automação para a indústria",
+    "Landing page da Lypsyos com DBX-V3, automações industriais sob medida e contato técnico-comercial.",
   )
 
   return (

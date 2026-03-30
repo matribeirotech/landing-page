@@ -12,16 +12,16 @@ export function BrandMark({
   titleClassName,
 }: BrandMarkProps) {
   return (
-    <div className={cn("flex items-center gap-3", className)}>
+    <div className={cn("flex items-center gap-3.5", className)}>
       <img
         src="/lyps-v2-tm2-svg.png"
         alt="Lypsyos"
-        className={cn("w-12 shrink-0 object-contain", compact ? "h-12" : "h-14")}
+        className={cn("shrink-0 object-contain", compact ? "h-11 w-11" : "h-14 w-14")}
       />
       <div className={cn("min-w-0", compact && "sr-only")}>
-        <p className={cn("text-xl font-bold tracking-tight", titleClassName)}>Lypsyos</p>
-        <p className="text-xs uppercase tracking-[0.24em] text-current/70">
-          Automacao para a industria
+        <p className={cn("text-xl font-bold tracking-tight md:text-2xl", titleClassName)}>Lypsyos</p>
+        <p className="text-[11px] uppercase tracking-[0.26em] text-current/70 md:text-xs">
+          Automação para a indústria
         </p>
       </div>
     </div>

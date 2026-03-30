@@ -4,35 +4,35 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
 
 const solutions = [
   {
-    title: "Engenharia e preparacao",
+    title: "Engenharia e preparação",
     description:
-      "Automatizamos etapas repetitivas da engenharia, da preparacao de arquivos a padronizacoes que reduzem retrabalho.",
+      "Automatizamos etapas repetitivas da engenharia, desde a preparação de arquivos até rotinas que reduzem retrabalho e variabilidade.",
     items: [
-      "Geracao tecnica em lote",
-      "Padronizacao de entregaveis",
-      "Menos dependencia de operacao manual",
+      "Geração técnica em lote",
+      "Padronização de entregáveis",
+      "Menos dependência de operação manual",
     ],
     icon: Cog,
   },
   {
-    title: "Operacao industrial",
+    title: "Operação industrial",
     description:
-      "Desenhamos solucoes para acelerar o fluxo entre planejamento, maquina, operadores e acompanhamento da producao.",
+      "Desenhamos soluções para acelerar o fluxo entre planejamento, máquina, operadores e acompanhamento da produção.",
     items: [
-      "Fluxos conectados ao chao de fabrica",
-      "Apoio a corte, nesting e preparo",
+      "Fluxos conectados ao chão de fábrica",
+      "Apoio a corte, aproveitamento e preparo",
       "Mais previsibilidade operacional",
     ],
     icon: Factory,
   },
   {
-    title: "Automacao sob medida",
+    title: "Automação sob medida",
     description:
-      "Quando o desafio nao cabe em uma ferramenta pronta, a Lypsyos projeta automacoes especificas para a realidade da sua industria.",
+      "Quando o desafio não cabe em uma ferramenta pronta, a Lypsyos projeta automações específicas para a realidade da sua indústria.",
     items: [
       "Mapeamento do processo atual",
-      "Solucoes com integracao progressiva",
-      "Roadmap tecnico orientado a resultado",
+      "Soluções com integração progressiva",
+      "Roadmap orientado a resultado",
     ],
     icon: Workflow,
   },
@@ -47,12 +47,12 @@ export function SolutionsSection() {
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-accent">
               Onde atuamos
             </p>
-            <h2 className="text-3xl font-bold tracking-tighter text-primary sm:text-5xl">
-              A Lypsyos nao se limita ao DBX-V2
+            <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-5xl">
+              A Lypsyos vai além do DBX-V3
             </h2>
             <p className="mx-auto max-w-[920px] text-neutral-600 md:text-xl/relaxed">
-              Nosso foco e desenvolver ferramentas e automacoes que resolvam gargalos reais da industria,
-              conectando engenharia, operacao e melhoria continua.
+              O DBX-V3 é uma frente importante da Lypsyos, mas o nosso trabalho vai além dele:
+              desenvolvemos soluções que conectam engenharia, operação e melhoria contínua.
             </p>
           </div>
         </div>
@@ -68,14 +68,14 @@ export function SolutionsSection() {
             >
               <Card className="h-full border-neutral/20 bg-surface shadow-sm">
                 <CardHeader>
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                    <solution.icon className="h-6 w-6" />
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+                    <solution.icon className="h-7 w-7" />
                   </div>
                   <CardTitle className="text-2xl text-primary">{solution.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-5">
-                  <p className="text-neutral-600">{solution.description}</p>
-                  <ul className="space-y-3 text-sm text-neutral-700">
+                  <p className="leading-7 text-neutral-600">{solution.description}</p>
+                  <ul className="space-y-3 text-sm text-neutral-700 md:text-base">
                     {solution.items.map((item) => (
                       <li key={item} className="flex items-start gap-3">
                         <span className="mt-1 h-2.5 w-2.5 rounded-full bg-secondary" />

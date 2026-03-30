@@ -12,14 +12,14 @@ describe("Home", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /transforme gargalos industriais em fluxos mais rapidos, padronizados e escalaveis/i,
+        name: /reduza retrabalho industrial e avance para fluxos mais claros, rápidos e escaláveis/i,
       }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("heading", { name: /a lypsyos nao se limita ao dbx-v2/i }),
+      screen.getByRole("heading", { name: /a lypsyos vai além do dbx-v3/i }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("heading", { name: /evolucao do dbx-v2 e proximos passos da automacao/i }),
+      screen.getByRole("heading", { name: /dbx-v3 em evolução e próximos passos da automação/i }),
     ).toBeInTheDocument()
     expect(
       screen.queryByRole("heading", { name: /o que dizem nossos clientes/i }),

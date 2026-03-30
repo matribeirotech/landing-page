@@ -13,15 +13,18 @@ type FormData = {
   email: string
   company: string
   message: string
-  website: string
 }
 
 export function ContactFormSection() {
   const location = useLocation()
   const [submitMessage, setSubmitMessage] = useState<string | null>(null)
   const [submitState, setSubmitState] = useState<"success" | "error" | null>(null)
-  const [formStartedAt] = useState(() => Date.now())
-  const { register, reset, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>()
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>()
 
   const onSubmit = async (data: FormData) => {
     setSubmitMessage(null)
@@ -31,7 +34,6 @@ export function ContactFormSection() {
       await submitContactForm({
         ...data,
         sourcePath: location.pathname,
-        formStartedAt,
       })
 
       await trackEvent({
@@ -47,20 +49,23 @@ export function ContactFormSection() {
       setSubmitState("success")
       setSubmitMessage("Mensagem enviada com sucesso. Nossa equipe retornará em breve.")
     } catch (error) {
-      console.error("Nao foi possivel enviar o formulario", error)
+      console.error("Não foi possível enviar o formulário", error)
       setSubmitState("error")
-      setSubmitMessage("Nao foi possivel enviar agora. Tente novamente em instantes.")
+      setSubmitMessage(error instanceof Error ? error.message : "Não foi possível enviar agora. Tente novamente em instantes.")
     }
   }
 
   return (
     <section className="w-full py-24 md:py-32 bg-surface">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
+        <div className="mb-16 flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">Vamos mapear o seu proximo ganho operacional</h2>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl text-primary">
+              Vamos identificar o próximo ganho do seu processo
+            </h2>
             <p className="max-w-[900px] text-neutral-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Fale com a Lypsyos para avaliar o DBX-V2, discutir um fluxo industrial especifico ou estruturar uma automacao sob medida.
+              Fale com a Lypsyos para avaliar o DBX-V3, discutir um fluxo industrial específico ou
+              estruturar uma automação sob medida.
             </p>
           </div>
         </div>
@@ -75,7 +80,8 @@ export function ContactFormSection() {
               <CardHeader>
                 <CardTitle className="text-2xl text-primary">Fale com a Lypsyos</CardTitle>
                 <CardDescription className="text-neutral-600">
-                  Compartilhe seu contexto, desafio ou objetivo operacional. Retornaremos com um direcionamento tecnico-comercial.
+                  Compartilhe seu contexto, desafio ou objetivo operacional. Retornaremos com um
+                  direcionamento técnico-comercial claro e prático.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -99,7 +105,10 @@ export function ContactFormSection() {
                         id="email"
                         type="email"
                         placeholder="seu@email.com"
-                        {...register("email", { required: "E-mail é obrigatório", pattern: { value: /^\S+@\S+$/i, message: "E-mail inválido" } })}
+                        {...register("email", {
+                          required: "E-mail é obrigatório",
+                          pattern: { value: /^\S+@\S+$/i, message: "E-mail inválido" },
+                        })}
                         aria-invalid={Boolean(errors.email)}
                         aria-describedby={errors.email ? "email-error" : undefined}
                         className={errors.email ? "border-red-500" : ""}
@@ -110,8 +119,8 @@ export function ContactFormSection() {
                   <div className="space-y-2">
                     <label htmlFor="company" className="text-sm font-medium leading-none text-primary">Empresa</label>
                     <Input
-                        id="company"
-                        placeholder="Nome da empresa"
+                      id="company"
+                      placeholder="Nome da empresa"
                       {...register("company", { required: "Empresa é obrigatória" })}
                       aria-invalid={Boolean(errors.company)}
                       aria-describedby={errors.company ? "company-error" : undefined}
@@ -120,22 +129,11 @@ export function ContactFormSection() {
                     {errors.company && <p id="company-error" className="text-sm text-red-500">{errors.company.message}</p>}
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="website" className="sr-only">Website</label>
-                    <Input
-                      id="website"
-                      tabIndex={-1}
-                      autoComplete="off"
-                      aria-hidden="true"
-                      className="hidden"
-                      {...register("website")}
-                    />
-                  </div>
-                  <div className="space-y-2">
                     <label htmlFor="message" className="text-sm font-medium leading-none text-primary">Mensagem</label>
                     <textarea
                       id="message"
                       rows={4}
-                      placeholder="Descreva seu processo, gargalo atual ou o tipo de automacao que voce busca."
+                      placeholder="Descreva seu processo, o gargalo atual ou o tipo de automação que você busca."
                       {...register("message", { required: "Mensagem é obrigatória" })}
                       aria-invalid={Boolean(errors.message)}
                       aria-describedby={errors.message ? "message-error" : undefined}
@@ -143,8 +141,8 @@ export function ContactFormSection() {
                     />
                     {errors.message && <p id="message-error" className="text-sm text-red-500">{errors.message.message}</p>}
                   </div>
-                  <Button type="submit" disabled={isSubmitting} className="w-full bg-secondary text-primary hover:bg-secondary/90 font-semibold">
-                    {isSubmitting ? "Enviando..." : <><Send className="mr-2 h-4 w-4" /> Enviar Mensagem</>}
+                  <Button type="submit" disabled={isSubmitting} className="w-full">
+                    {isSubmitting ? "Enviando..." : <><Send className="h-4 w-4" /> Solicitar contato</>}
                   </Button>
                   {submitMessage && (
                     <p

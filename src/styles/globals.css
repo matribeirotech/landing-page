@@ -24,6 +24,9 @@ body {
     radial-gradient(circle at top right, rgb(43 219 218 / 0.12), transparent 30%),
     linear-gradient(180deg, #f8fafc 0%, #eef5f8 100%);
   color: var(--color-primary);
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -37,4 +40,9 @@ h6 {
 
 #root {
   min-height: 100vh;
+}
+
+::selection {
+  background: rgb(43 219 218 / 0.25);
+  color: var(--color-primary);
 }

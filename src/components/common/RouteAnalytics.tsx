@@ -20,7 +20,7 @@ export function RouteAnalytics() {
       title: document.title,
       referrer: document.referrer || undefined,
     }).catch((error) => {
-      console.error("Nao foi possivel registrar pageview", error)
+      console.error("Não foi possível registrar pageview", error)
     })
   }, [location])
 

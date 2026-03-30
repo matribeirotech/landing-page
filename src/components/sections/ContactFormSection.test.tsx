@@ -26,7 +26,7 @@ describe("ContactFormSection", () => {
       </MemoryRouter>,
     )
 
-    await user.click(screen.getByRole("button", { name: /enviar mensagem/i }))
+    await user.click(screen.getByRole("button", { name: /solicitar contato/i }))
 
     expect(await screen.findByText(/nome é obrigatório/i)).toBeInTheDocument()
     expect(screen.getByText(/e-mail é obrigatório/i)).toBeInTheDocument()
@@ -48,8 +48,8 @@ describe("ContactFormSection", () => {
     await user.type(screen.getByLabelText(/nome/i), "Matheus")
     await user.type(screen.getByLabelText(/e-mail/i), "matheus@lypsyos.com.br")
     await user.type(screen.getByLabelText(/empresa/i), "Lypsyos")
-    await user.type(screen.getByLabelText(/mensagem/i), "Quero avaliar o DBX-V2 para um fluxo industrial.")
-    await user.click(screen.getByRole("button", { name: /enviar mensagem/i }))
+    await user.type(screen.getByLabelText(/mensagem/i), "Quero avaliar o DBX-V3 para um fluxo industrial.")
+    await user.click(screen.getByRole("button", { name: /solicitar contato/i }))
 
     expect(await screen.findByText(/mensagem enviada com sucesso/i)).toBeInTheDocument()
     expect(analyticsService.submitContactForm).toHaveBeenCalledTimes(1)

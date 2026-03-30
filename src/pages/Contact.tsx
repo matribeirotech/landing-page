@@ -7,7 +7,7 @@ import { useDocumentMetadata } from "@/utils/useDocumentMetadata"
 export function Contact() {
   useDocumentMetadata(
     "Contato | Lypsyos",
-    "Entre em contato com a Lypsyos para demonstracao do DBX-V2 ou automacoes industriais sob medida.",
+    "Entre em contato com a Lypsyos para demonstração do DBX-V3 ou automações industriais sob medida.",
   )
 
   return (
@@ -24,7 +24,8 @@ export function Contact() {
               Fale com a <span className="text-secondary">Lypsyos</span>
             </h1>
             <p className="max-w-[900px] text-neutral-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mx-auto">
-              Vamos entender o seu processo, avaliar o encaixe do DBX-V2 e discutir oportunidades reais de automacao na sua operacao.
+              Vamos entender o seu processo, avaliar o encaixe do DBX-V3 e discutir oportunidades reais
+              de automação na sua operação.
             </p>
           </motion.div>
         </div>
@@ -32,23 +33,23 @@ export function Contact() {
         <div className="grid gap-8 md:grid-cols-3 mb-16">
           {[
             {
-              title: "Diagnostico do processo",
-              description: "Mapeamos o fluxo atual para identificar onde a automacao gera mais ganho real.",
+              title: "Diagnóstico do processo",
+              description: "Mapeamos o fluxo atual para identificar onde a automação pode gerar mais ganho real.",
               icon: Workflow,
             },
             {
-              title: "Demonstracao do DBX-V2",
-              description: "Apresentamos o produto com foco em aderencia operacional e aplicacao pratica.",
+              title: "Demonstração do DBX-V3",
+              description: "Apresentamos o produto com foco em aderência operacional e aplicação prática.",
               icon: Presentation,
             },
             {
-              title: "Automacao sob medida",
-              description: "Quando necessario, desenhamos uma solucao especifica para o seu contexto industrial.",
+              title: "Automação sob medida",
+              description: "Quando necessário, desenhamos uma solução específica para o seu contexto industrial.",
               icon: Cog,
             },
           ].map((info, index) => (
             <motion.div
-              key={index}
+              key={info.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -56,8 +57,8 @@ export function Contact() {
             >
               <Card className="h-full border-neutral/20 bg-surface shadow-sm text-center">
                 <CardContent className="pt-6">
-                  <div className="mb-4 flex h-12 w-12 mx-auto items-center justify-center rounded-full bg-accent/10 text-accent">
-                    <info.icon className="h-6 w-6" />
+                  <div className="mb-4 flex h-14 w-14 mx-auto items-center justify-center rounded-full bg-accent/10 text-accent">
+                    <info.icon className="h-7 w-7" />
                   </div>
                   <h3 className="text-lg font-semibold text-primary mb-2">{info.title}</h3>
                   <p className="text-neutral-600 whitespace-pre-line">{info.description}</p>

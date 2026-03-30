@@ -19,8 +19,6 @@ type ContactPayload = {
   company: string
   message: string
   sourcePath: string
-  website?: string
-  formStartedAt: number
 }
 
 const SESSION_STORAGE_KEY = "lypsyos.session.id"
@@ -46,11 +44,15 @@ async function postJson(path: string, payload: Record<string, unknown>) {
     body: JSON.stringify(payload),
   })
 
+  const responsePayload = await response.json().catch(() => ({}))
+
   if (!response.ok) {
-    throw new Error(`Falha na requisicao ${path}`)
+    const errorMessage =
+      typeof responsePayload?.error === "string" ? responsePayload.error : `Falha na requisicao ${path}`
+    throw new Error(errorMessage)
   }
 
-  return response.json()
+  return responsePayload
 }
 
 export async function trackPageView({ path, title, referrer }: TrackPageViewPayload) {
