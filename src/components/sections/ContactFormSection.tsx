@@ -56,15 +56,15 @@ export function ContactFormSection() {
   }
 
   return (
-    <section className="w-full py-24 md:py-32 bg-surface">
+    <section className="w-full bg-surface py-16 md:py-20">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="mb-16 flex flex-col items-center justify-center space-y-4 text-center">
+        <div className="mb-10 flex flex-col items-center justify-center space-y-3 text-center">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl text-primary">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">
               Vamos identificar o próximo ganho do seu processo
             </h2>
-            <p className="max-w-[900px] text-neutral-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Fale com a Lypsyos para avaliar o DBX-V3, discutir um fluxo industrial específico ou
+            <p className="max-w-[860px] text-neutral-600 md:text-lg/relaxed">
+              Fale com a Lypsyos para avaliar o DBX-V4, discutir um fluxo industrial específico ou
               estruturar uma automação sob medida.
             </p>
           </div>

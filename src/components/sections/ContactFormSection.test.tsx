@@ -48,7 +48,7 @@ describe("ContactFormSection", () => {
     await user.type(screen.getByLabelText(/nome/i), "Matheus")
     await user.type(screen.getByLabelText(/e-mail/i), "matheus@lypsyos.com.br")
     await user.type(screen.getByLabelText(/empresa/i), "Lypsyos")
-    await user.type(screen.getByLabelText(/mensagem/i), "Quero avaliar o DBX-V3 para um fluxo industrial.")
+    await user.type(screen.getByLabelText(/mensagem/i), "Quero avaliar o DBX-V4 para um fluxo industrial com peças dobradas.")
     await user.click(screen.getByRole("button", { name: /solicitar contato/i }))
 
     expect(await screen.findByText(/mensagem enviada com sucesso/i)).toBeInTheDocument()

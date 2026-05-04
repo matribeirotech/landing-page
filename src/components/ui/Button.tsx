@@ -21,10 +21,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             "border border-primary/20 bg-surface text-primary hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/5": variant === "outline",
             "text-primary hover:bg-primary/6 hover:text-primary": variant === "ghost",
             "text-primary underline-offset-4 hover:underline": variant === "link",
-            "h-11 px-5 py-2.5": size === "default",
+            "h-10 px-[1.125rem] py-2 text-[14px]": size === "default",
             "h-10 rounded-lg px-4 text-sm": size === "sm",
-            "h-12 rounded-xl px-7 text-base": size === "lg",
-            "h-11 w-11": size === "icon",
+            "h-11 rounded-xl px-6 text-[15px]": size === "lg",
+            "h-10 w-10": size === "icon",
           },
           className
         )}

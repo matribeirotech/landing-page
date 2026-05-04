@@ -12,6 +12,6 @@ describe("Navbar", () => {
 
     expect(screen.getByAltText("Lypsyos")).toBeInTheDocument()
     expect(screen.getByRole("button", { name: /solicitar uma demonstração/i })).toBeInTheDocument()
-    expect(screen.getByRole("link", { name: /dbx-v3/i })).toBeInTheDocument()
+    expect(screen.getByRole("link", { name: /dbx-v4/i })).toBeInTheDocument()
   })
 })

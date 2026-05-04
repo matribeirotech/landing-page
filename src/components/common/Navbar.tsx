@@ -38,35 +38,35 @@ export function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-neutral/20 bg-surface/80 backdrop-blur-md">
-      <div className="container mx-auto flex h-[4.5rem] items-center justify-between px-4 md:px-6">
+    <nav className="sticky top-0 z-50 w-full border-b border-secondary/10 bg-[#05101f]/88 backdrop-blur-xl">
+      <div className="container mx-auto flex h-[4.25rem] items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center gap-2">
-          <BrandMark compact className="text-primary" />
+          <BrandMark inverse compact showSubtitle={false} className="text-surface" />
         </Link>
         <div className="hidden md:flex md:items-center md:gap-7">
-          <Link to="/" className="text-[15px] font-semibold text-primary transition-colors hover:text-accent" onClick={() => handleNavigation("inicio")}>Início</Link>
-          <Link to="/sobre" className="text-[15px] font-semibold text-primary transition-colors hover:text-accent" onClick={() => handleNavigation("sobre")}>Sobre</Link>
-          <Link to="/produtos/dbx-v3" className="text-[15px] font-semibold text-primary transition-colors hover:text-accent" onClick={() => handleNavigation("produto_dbx_v3")}>DBX-V3</Link>
-          <Link to="/contato" className="text-[15px] font-semibold text-primary transition-colors hover:text-accent" onClick={() => handleNavigation("contato")}>Contato</Link>
+          <Link to="/" className="text-[15px] font-semibold text-surface/90 transition-colors hover:text-secondary" onClick={() => handleNavigation("inicio")}>Início</Link>
+          <Link to="/sobre" className="text-[15px] font-semibold text-surface/90 transition-colors hover:text-secondary" onClick={() => handleNavigation("sobre")}>Sobre</Link>
+          <Link to="/produtos/dbx-v4" className="text-[15px] font-semibold text-surface/90 transition-colors hover:text-secondary" onClick={() => handleNavigation("produto_dbx_v4")}>DBX-V4</Link>
+          <Link to="/contato" className="text-[15px] font-semibold text-surface/90 transition-colors hover:text-secondary" onClick={() => handleNavigation("contato")}>Contato</Link>
           <Button size="default" onClick={() => goToContact("desktop_navbar")}>Solicitar uma demonstração</Button>
         </div>
         <button
           type="button"
-          className="rounded-lg border border-primary/10 p-2 md:hidden"
+          className="rounded-lg border border-surface/10 p-2 md:hidden"
           aria-expanded={isOpen}
           aria-controls="mobile-navigation"
           aria-label={isOpen ? "Fechar menu principal" : "Abrir menu principal"}
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? <X className="h-6 w-6 text-primary" /> : <Menu className="h-6 w-6 text-primary" />}
+          {isOpen ? <X className="h-6 w-6 text-surface" /> : <Menu className="h-6 w-6 text-surface" />}
         </button>
       </div>
       {isOpen && (
         <div id="mobile-navigation" className="container mx-auto flex flex-col gap-3 px-4 pb-5 md:hidden">
-          <Link to="/" className="rounded-xl border border-transparent px-3 py-2 text-[15px] font-semibold text-primary transition-colors hover:border-primary/10 hover:bg-primary/5" onClick={() => { handleNavigation("inicio_mobile"); setIsOpen(false) }}>Início</Link>
-          <Link to="/sobre" className="rounded-xl border border-transparent px-3 py-2 text-[15px] font-semibold text-primary transition-colors hover:border-primary/10 hover:bg-primary/5" onClick={() => { handleNavigation("sobre_mobile"); setIsOpen(false) }}>Sobre</Link>
-          <Link to="/produtos/dbx-v3" className="rounded-xl border border-transparent px-3 py-2 text-[15px] font-semibold text-primary transition-colors hover:border-primary/10 hover:bg-primary/5" onClick={() => { handleNavigation("produto_dbx_v3_mobile"); setIsOpen(false) }}>DBX-V3</Link>
-          <Link to="/contato" className="rounded-xl border border-transparent px-3 py-2 text-[15px] font-semibold text-primary transition-colors hover:border-primary/10 hover:bg-primary/5" onClick={() => { handleNavigation("contato_mobile"); setIsOpen(false) }}>Contato</Link>
+          <Link to="/" className="rounded-xl border border-transparent px-3 py-2 text-[15px] font-semibold text-surface/90 transition-colors hover:border-surface/10 hover:bg-surface/5" onClick={() => { handleNavigation("inicio_mobile"); setIsOpen(false) }}>Início</Link>
+          <Link to="/sobre" className="rounded-xl border border-transparent px-3 py-2 text-[15px] font-semibold text-surface/90 transition-colors hover:border-surface/10 hover:bg-surface/5" onClick={() => { handleNavigation("sobre_mobile"); setIsOpen(false) }}>Sobre</Link>
+          <Link to="/produtos/dbx-v4" className="rounded-xl border border-transparent px-3 py-2 text-[15px] font-semibold text-surface/90 transition-colors hover:border-surface/10 hover:bg-surface/5" onClick={() => { handleNavigation("produto_dbx_v4_mobile"); setIsOpen(false) }}>DBX-V4</Link>
+          <Link to="/contato" className="rounded-xl border border-transparent px-3 py-2 text-[15px] font-semibold text-surface/90 transition-colors hover:border-surface/10 hover:bg-surface/5" onClick={() => { handleNavigation("contato_mobile"); setIsOpen(false) }}>Contato</Link>
           <Button className="mt-2 w-full" onClick={() => { goToContact("mobile_navbar"); setIsOpen(false) }}>Solicitar uma demonstração</Button>
         </div>
       )}

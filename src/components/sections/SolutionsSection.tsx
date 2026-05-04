@@ -40,24 +40,24 @@ const solutions = [
 
 export function SolutionsSection() {
   return (
-    <section className="w-full bg-background py-24 md:py-32">
+    <section className="w-full bg-background py-16 md:py-20">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="mb-16 flex flex-col items-center justify-center space-y-4 text-center">
+        <div className="mb-10 flex flex-col items-center justify-center space-y-3 text-center">
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-accent">
               Onde atuamos
             </p>
-            <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-5xl">
-              A Lypsyos vai além do DBX-V3
+            <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
+              A Lypsyos vai além do DBX-V4
             </h2>
-            <p className="mx-auto max-w-[920px] text-neutral-600 md:text-xl/relaxed">
-              O DBX-V3 é uma frente importante da Lypsyos, mas o nosso trabalho vai além dele:
+            <p className="mx-auto max-w-[860px] text-neutral-600 md:text-lg/relaxed">
+              O DBX-V4 é uma frente importante da Lypsyos, mas o nosso trabalho vai além dele:
               desenvolvemos soluções que conectam engenharia, operação e melhoria contínua.
             </p>
           </div>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-5 lg:grid-cols-3">
           {solutions.map((solution, index) => (
             <motion.div
               key={solution.title}
@@ -68,13 +68,13 @@ export function SolutionsSection() {
             >
               <Card className="h-full border-neutral/20 bg-surface shadow-sm">
                 <CardHeader>
-                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent">
-                    <solution.icon className="h-7 w-7" />
+                  <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+                    <solution.icon className="h-6 w-6" />
                   </div>
-                  <CardTitle className="text-2xl text-primary">{solution.title}</CardTitle>
+                  <CardTitle className="text-xl text-primary">{solution.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-5">
-                  <p className="leading-7 text-neutral-600">{solution.description}</p>
+                  <p className="text-[15px] leading-7 text-neutral-600">{solution.description}</p>
                   <ul className="space-y-3 text-sm text-neutral-700 md:text-base">
                     {solution.items.map((item) => (
                       <li key={item} className="flex items-start gap-3">

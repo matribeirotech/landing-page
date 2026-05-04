@@ -27,20 +27,21 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section className="w-full py-24 md:py-32 bg-background">
+    <section className="w-full bg-background py-16 md:py-20">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="mb-16 flex flex-col items-center justify-center space-y-4 text-center">
+        <div className="mb-10 flex flex-col items-center justify-center space-y-3 text-center">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl text-primary">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">
               Como a Lypsyos gera ganho visível
             </h2>
-            <p className="max-w-[900px] text-neutral-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[860px] text-neutral-600 md:text-lg/relaxed">
               Combinamos leitura de processo, software próprio e automação aplicada para reduzir
-              retrabalho, dar mais ritmo ao fluxo e aumentar a previsibilidade operacional.
+              retrabalho, dar mais ritmo ao fluxo e aumentar a previsibilidade operacional, tanto em
+              rotinas técnicas quanto em produtos digitais como o DBX-V4.
             </p>
           </div>
         </div>
-        <div className="mx-auto grid max-w-5xl items-center gap-6 lg:grid-cols-2 lg:gap-12">
+        <div className="mx-auto grid max-w-5xl items-center gap-5 lg:grid-cols-2 lg:gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -51,13 +52,13 @@ export function FeaturesSection() {
             >
               <Card className="h-full border-neutral/20 bg-surface shadow-sm transition-shadow hover:shadow-md">
                 <CardHeader>
-                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent">
-                    <feature.icon className="h-7 w-7" />
+                  <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+                    <feature.icon className="h-6 w-6" />
                   </div>
-                  <CardTitle className="text-2xl text-primary">{feature.title}</CardTitle>
+                  <CardTitle className="text-xl text-primary">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-base leading-7 text-neutral-600">
+                  <CardDescription className="text-[15px] leading-7 text-neutral-600">
                     {feature.description}
                   </CardDescription>
                 </CardContent>

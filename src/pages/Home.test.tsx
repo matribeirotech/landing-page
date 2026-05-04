@@ -3,7 +3,7 @@ import { MemoryRouter } from "react-router-dom"
 import { Home } from "./Home"
 
 describe("Home", () => {
-  it("renders the updated Lypsyos conversion copy and removes testimonials", () => {
+  it("renders the Lypsyos-first hero copy and removes testimonials", () => {
     render(
       <MemoryRouter>
         <Home />
@@ -12,14 +12,14 @@ describe("Home", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /reduza retrabalho industrial e avance para fluxos mais claros, rápidos e escaláveis/i,
+        name: /transformamos gargalos operacionais em fluxos mais claros, econômicos e escaláveis/i,
       }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("heading", { name: /a lypsyos vai além do dbx-v3/i }),
+      screen.getByRole("heading", { name: /a lypsyos vai além do dbx-v4/i }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("heading", { name: /dbx-v3 em evolução e próximos passos da automação/i }),
+      screen.getByRole("heading", { name: /dbx-v4 em operação, aproveitamento e próximos passos da plataforma/i }),
     ).toBeInTheDocument()
     expect(
       screen.queryByRole("heading", { name: /o que dizem nossos clientes/i }),

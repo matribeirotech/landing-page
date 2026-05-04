@@ -54,6 +54,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "produtos/dbx-v4",
+        element: (
+          <Suspense fallback={<RouteFallback />}>
+            <Products />
+          </Suspense>
+        ),
+      },
+      {
         path: "produtos/dbx-v3",
         element: (
           <Suspense fallback={<RouteFallback />}>
