@@ -202,7 +202,16 @@ export function Products() {
                 <div className="absolute inset-0 opacity-50" style={{ backgroundImage: "radial-gradient(circle at 50% 62%, rgba(43,219,218,0.32), transparent 22%), radial-gradient(circle at 82% 22%, rgba(43,219,218,0.18), transparent 16%), radial-gradient(circle at 18% 34%, rgba(43,219,218,0.16), transparent 14%)" }} />
                 <div className="absolute left-8 top-[5.5rem] h-px w-36 bg-gradient-to-r from-secondary/0 via-secondary/60 to-secondary/0" />
                 <div className="absolute right-16 top-[6.5rem] h-px w-44 bg-gradient-to-r from-secondary/0 via-secondary/60 to-secondary/0" />
-                <div className="absolute right-7 top-14 h-14 w-14 rounded-2xl border border-secondary/18" />
+                <div className="absolute right-7 top-14 flex h-14 w-14 items-center justify-center rounded-2xl border border-secondary/18">
+                  <button
+                    type="button"
+                    onClick={() => goToContact("abrir_detalhes_hero_dbx_v4")}
+                    className="flex h-full w-full items-center justify-center rounded-full border border-secondary/30 bg-secondary/12 text-secondary shadow-[0_0_24px_rgba(43,219,218,0.18)] transition-transform hover:scale-105"
+                    aria-label="Solicitar demonstração do DBX-V4"
+                  >
+                    <Play className="ml-1 h-6 w-6" />
+                  </button>
+                </div>
                 <div className="absolute left-1/2 top-[57%] h-[230px] w-[230px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-secondary/30 shadow-[0_0_65px_rgba(43,219,218,0.18)]" />
                 <div className="absolute left-1/2 top-[57%] h-[330px] w-[330px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-secondary/10" />
                 <div className="absolute bottom-12 left-1/2 h-20 w-[82%] -translate-x-1/2 rounded-[999px] border border-secondary/14" />
@@ -211,14 +220,6 @@ export function Products() {
                 <div className="relative flex h-full flex-col">
                   <div className="flex items-start justify-between gap-4">
                     <DbxProductMark version="V4" subtitle="Desktop operacional e recursos integrados" className="text-surface" />
-                    <button
-                      type="button"
-                      onClick={() => goToContact("abrir_detalhes_hero_dbx_v4")}
-                      className="flex h-14 w-14 items-center justify-center rounded-full border border-secondary/30 bg-secondary/12 text-secondary shadow-[0_0_24px_rgba(43,219,218,0.18)] transition-transform hover:scale-105"
-                      aria-label="Solicitar demonstração do DBX-V4"
-                    >
-                      <Play className="ml-1 h-6 w-6" />
-                    </button>
                   </div>
 
                   <div className="relative flex flex-1 items-center justify-center py-3">

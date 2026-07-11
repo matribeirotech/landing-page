@@ -14,6 +14,11 @@ const About = lazy(async () => {
   return { default: module.About }
 })
 
+const Projects = lazy(async () => {
+  const module = await import("./pages/Projects")
+  return { default: module.Projects }
+})
+
 const Products = lazy(async () => {
   const module = await import("./pages/Products")
   return { default: module.Products }
@@ -22,6 +27,21 @@ const Products = lazy(async () => {
 const Contact = lazy(async () => {
   const module = await import("./pages/Contact")
   return { default: module.Contact }
+})
+
+const AdminLayout = lazy(async () => {
+  const module = await import("./layouts/AdminLayout")
+  return { default: module.AdminLayout }
+})
+
+const AdminLogin = lazy(async () => {
+  const module = await import("./pages/admin/AdminLogin")
+  return { default: module.AdminLogin }
+})
+
+const AdminDashboard = lazy(async () => {
+  const module = await import("./pages/admin/AdminDashboard")
+  return { default: module.AdminDashboard }
 })
 
 function RouteFallback() {
@@ -50,6 +70,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<RouteFallback />}>
             <About />
+          </Suspense>
+        ),
+      },
+      {
+        path: "projetos",
+        element: (
+          <Suspense fallback={<RouteFallback />}>
+            <Projects />
           </Suspense>
         ),
       },
@@ -84,6 +112,24 @@ const router = createBrowserRouter([
             <Contact />
           </Suspense>
         ),
+      },
+    ],
+  },
+  {
+    path: "/admin",
+    element: (
+      <Suspense fallback={<RouteFallback />}>
+        <AdminLayout />
+      </Suspense>
+    ),
+    children: [
+      {
+        index: true,
+        element: <AdminDashboard />,
+      },
+      {
+        path: "login",
+        element: <AdminLogin />,
       },
     ],
   },
