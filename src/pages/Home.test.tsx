@@ -16,10 +16,10 @@ describe("Home", () => {
       }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("heading", { name: /a lypsyos vai além do dbx-v4/i }),
+      screen.getByRole("heading", { name: /software próprio para orçamento, engenharia e produção/i }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("heading", { name: /dbx-v4 em operação, aproveitamento e próximos passos da plataforma/i }),
+      screen.getByRole("heading", { name: /por que indústrias do aço trabalham com a lypsyos/i }),
     ).toBeInTheDocument()
     expect(
       screen.queryByRole("heading", { name: /o que dizem nossos clientes/i }),

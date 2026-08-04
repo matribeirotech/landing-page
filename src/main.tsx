@@ -14,14 +14,14 @@ const About = lazy(async () => {
   return { default: module.About }
 })
 
-const Projects = lazy(async () => {
-  const module = await import("./pages/Projects")
-  return { default: module.Projects }
-})
-
 const Products = lazy(async () => {
   const module = await import("./pages/Products")
   return { default: module.Products }
+})
+
+const ProductDetail = lazy(async () => {
+  const module = await import("./pages/ProductDetail")
+  return { default: module.ProductDetail }
 })
 
 const Contact = lazy(async () => {
@@ -74,15 +74,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "projetos",
-        element: (
-          <Suspense fallback={<RouteFallback />}>
-            <Projects />
-          </Suspense>
-        ),
-      },
-      {
-        path: "produtos/dbx-v4",
+        path: "produtos",
         element: (
           <Suspense fallback={<RouteFallback />}>
             <Products />
@@ -90,18 +82,10 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "produtos/dbx-v3",
+        path: "produtos/:slug",
         element: (
           <Suspense fallback={<RouteFallback />}>
-            <Products />
-          </Suspense>
-        ),
-      },
-      {
-        path: "produtos/dbx-v2",
-        element: (
-          <Suspense fallback={<RouteFallback />}>
-            <Products />
+            <ProductDetail />
           </Suspense>
         ),
       },

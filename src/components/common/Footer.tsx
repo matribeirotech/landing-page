@@ -20,14 +20,14 @@ export function Footer() {
           <h4 className="text-lg font-semibold text-secondary">Links rápidos</h4>
           <Link to="/" className="text-sm text-surface/72 hover:text-secondary transition-colors">Início</Link>
           <Link to="/sobre" className="text-sm text-surface/72 hover:text-secondary transition-colors">Sobre a Lypsyos</Link>
-          <Link to="/produtos/dbx-v4" className="text-sm text-surface/72 hover:text-secondary transition-colors">DBX-V4</Link>
+          <Link to="/produtos" className="text-sm text-surface/72 hover:text-secondary transition-colors">Produtos</Link>
           <Link to="/contato" className="text-sm text-surface/72 hover:text-secondary transition-colors">Contato</Link>
         </div>
         <div className="flex flex-col gap-2">
           <h4 className="text-lg font-semibold text-secondary">Atuação</h4>
-          <p className="text-sm text-surface/72">Automação para engenharia e preparação</p>
-          <p className="text-sm text-surface/72">Fluxos industriais sob medida</p>
-          <p className="text-sm text-surface/72">Implantação do DBX-V4 e evolução SaaS</p>
+          <p className="text-sm text-surface/72">Orçamento de corte e produção</p>
+          <p className="text-sm text-surface/72">Engenharia e preparação técnica</p>
+          <p className="text-sm text-surface/72">Automação industrial sob medida</p>
         </div>
         <div className="flex flex-col gap-4">
           <h4 className="text-lg font-semibold text-secondary">Vamos conversar</h4>

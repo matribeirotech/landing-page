@@ -64,8 +64,8 @@ export function ContactFormSection() {
               Vamos identificar o próximo ganho do seu processo
             </h2>
             <p className="max-w-[860px] text-neutral-600 md:text-lg/relaxed">
-              Fale com a Lypsyos para avaliar o DBX-V4, discutir um fluxo industrial específico ou
-              estruturar uma automação sob medida.
+              Fale com a Lypsyos para avaliar o encaixe dos nossos produtos, discutir um fluxo industrial
+              específico ou estruturar uma automação sob medida.
             </p>
           </div>
         </div>

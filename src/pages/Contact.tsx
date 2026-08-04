@@ -7,7 +7,7 @@ import { useDocumentMetadata } from "@/utils/useDocumentMetadata"
 export function Contact() {
   useDocumentMetadata(
     "Contato | Lypsyos",
-    "Entre em contato com a Lypsyos para demonstração do DBX-V4 ou automações industriais sob medida.",
+    "Entre em contato com a Lypsyos para demonstração dos nossos produtos ou automações industriais sob medida.",
   )
 
   return (
@@ -24,8 +24,8 @@ export function Contact() {
               Fale com a <span className="text-secondary">Lypsyos</span>
             </h1>
             <p className="mx-auto max-w-[860px] text-neutral-600 md:text-lg/relaxed">
-              Vamos entender o seu processo, avaliar o encaixe do DBX-V4 e discutir oportunidades reais
-              de automação na sua operação.
+              Vamos entender o seu processo, avaliar o encaixe dos nossos produtos e discutir oportunidades
+              reais de automação na sua operação.
             </p>
           </motion.div>
         </div>
@@ -38,8 +38,8 @@ export function Contact() {
               icon: Workflow,
             },
             {
-              title: "Demonstração do DBX-V4",
-              description: "Apresentamos o produto com foco em aderência operacional, peças planas e peças dobradas.",
+              title: "Demonstração dos produtos",
+              description: "Apresentamos o GeoQuote, o Editor de Perfis ou o DBX-V4 com foco em aderência ao seu processo.",
               icon: Presentation,
             },
             {

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/Button"
-import { ArrowRight, Bot, CheckCircle2, Factory, Play, ShieldCheck, Waypoints, Workflow } from "lucide-react"
+import { ArrowRight, Bot, CheckCircle2, Factory, Play, ShieldCheck, Workflow } from "lucide-react"
 import { motion } from "motion/react"
 import { trackEvent } from "@/services/analytics"
 
@@ -54,17 +54,15 @@ export function HeroSection() {
 
   return (
     <section className="relative w-full overflow-hidden bg-[#020814] py-16 text-surface md:py-20 lg:py-20">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(43,219,218,0.16),transparent_26%),radial-gradient(circle_at_78%_38%,rgba(43,219,218,0.22),transparent_24%),linear-gradient(180deg,#030815_0%,#071427_55%,#07111d_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,#030815_0%,#071427_55%,#07111d_100%)]" />
       <div
-        className="absolute inset-0 opacity-60"
+        className="absolute inset-0 opacity-45"
         style={{
           backgroundImage:
             "linear-gradient(rgba(28,140,140,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(28,140,140,0.12) 1px, transparent 1px)",
           backgroundSize: "120px 120px",
         }}
       />
-      <div className="absolute left-[-8%] top-[14%] h-[420px] w-[420px] rounded-full bg-secondary/10 blur-3xl" />
-      <div className="absolute right-[-12%] top-[20%] h-[520px] w-[520px] rounded-full bg-secondary/15 blur-3xl" />
 
       <div className="container relative z-10 mx-auto px-4 md:px-6">
         <div className="grid items-center gap-10 lg:grid-cols-[0.94fr_1.06fr] lg:gap-10">
@@ -98,10 +96,10 @@ export function HeroSection() {
                 size="lg"
                 variant="outline"
                 className="border-surface/18 bg-surface/5 text-surface hover:bg-surface/10 hover:text-surface"
-                onClick={() => goTo("/produtos/dbx-v4", "hero_dbx_entry")}
+                onClick={() => goTo("/produtos", "hero_products_entry")}
               >
                 <Play className="h-5 w-5" />
-                Conhecer o DBX-V4
+                Ver produtos
               </Button>
             </div>
 
@@ -164,44 +162,6 @@ export function HeroSection() {
                   ))}
                 </div>
 
-                <div className="rounded-[24px] border border-secondary/18 bg-[linear-gradient(180deg,rgba(8,24,43,0.88),rgba(4,13,24,0.96))] px-4 py-4 shadow-[0_12px_24px_rgba(0,0,0,0.22)]">
-                  <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                    <div className="space-y-2">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-secondary">
-                        Solução própria em destaque
-                      </p>
-                      <p className="text-base font-semibold text-surface">
-                        O DBX-V4 é a nossa frente de software para documentação técnica, DXF, aproveitamento e peças dobradas.
-                      </p>
-                      <p className="text-sm leading-6 text-surface/72">
-                        Se fizer sentido para o seu processo, você pode conhecer a solução em detalhes na página do produto.
-                      </p>
-                    </div>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="border-surface/18 bg-surface/5 text-surface hover:bg-surface/10 hover:text-surface"
-                      onClick={() => goTo("/produtos/dbx-v4", "hero_dbx_solution_panel")}
-                    >
-                      Ver solução DBX-V4
-                    </Button>
-                  </div>
-                </div>
-
-                <div className="grid gap-3 text-xs text-surface/70 md:grid-cols-3">
-                  <div className="rounded-2xl border border-surface/8 bg-surface/[0.03] px-3 py-3 text-center">
-                    <p className="font-semibold uppercase tracking-[0.2em] text-secondary">Ponta a ponta</p>
-                    <p className="mt-2 leading-5">Mais leitura do processo do início da engenharia até a operação.</p>
-                  </div>
-                  <div className="rounded-2xl border border-surface/8 bg-surface/[0.03] px-3 py-3 text-center">
-                    <p className="font-semibold uppercase tracking-[0.2em] text-secondary">Menos perda</p>
-                    <p className="mt-2 leading-5">Menos retrabalho, menos variação e mais clareza na execução.</p>
-                  </div>
-                  <div className="rounded-2xl border border-surface/8 bg-surface/[0.03] px-3 py-3 text-center">
-                    <p className="font-semibold uppercase tracking-[0.2em] text-secondary">Mais escala</p>
-                    <p className="mt-2 leading-5">Base mais sólida para crescer com processo e tecnologia juntos.</p>
-                  </div>
-                </div>
               </div>
             </div>
           </motion.div>

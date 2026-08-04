@@ -47,8 +47,8 @@ export function About() {
               padronizadas em fluxos mais rápidos e confiáveis.
             </p>
             <p className="text-neutral-700 md:text-base leading-7">
-              Isso pode acontecer por meio de uma ferramenta própria, como o DBX-V4, ou por projetos sob
-              medida desenhados para a realidade de cada indústria.
+              Isso pode acontecer por meio de produtos próprios, como o GeoQuote, o Editor de Perfis e o
+              DBX-V4, ou por projetos sob medida desenhados para a realidade de cada indústria.
             </p>
           </motion.div>
           <motion.div
