@@ -70,7 +70,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col justify-center space-y-6"
+            className="min-w-0 flex flex-col justify-center space-y-6"
           >
             <div className="space-y-4">
               <div className="inline-flex rounded-full border border-secondary/30 bg-secondary/10 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.26em] text-secondary shadow-[0_0_18px_rgba(43,219,218,0.12)]">
@@ -87,7 +87,7 @@ export function HeroSection() {
               </p>
             </div>
 
-            <div className="flex flex-col gap-3 min-[400px]:flex-row">
+            <div className="flex flex-col gap-3 sm:flex-row">
               <Button size="lg" onClick={() => goTo("/contato", "hero_demo_lypsyos")}>
                 Solicitar uma demonstração
                 <ArrowRight className="h-5 w-5" />
@@ -124,7 +124,7 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mx-auto flex w-full max-w-[700px] items-center justify-center lg:max-w-none"
+            className="mx-auto flex w-full min-w-0 max-w-[700px] items-center justify-center lg:max-w-none"
           >
             <div className="relative w-full overflow-hidden rounded-[34px] border border-secondary/18 bg-[linear-gradient(180deg,rgba(8,24,43,0.82),rgba(3,12,24,0.95))] p-5 shadow-[0_26px_70px_rgba(0,0,0,0.45)]">
               <div

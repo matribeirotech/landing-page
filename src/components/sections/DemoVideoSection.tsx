@@ -77,7 +77,7 @@ export function DemoVideoSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.55 }}
             viewport={{ once: true }}
-            className="space-y-5"
+            className="min-w-0 space-y-5"
           >
             <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-2 text-sm font-medium text-accent">
               <Video className="h-4 w-4" />
@@ -107,7 +107,7 @@ export function DemoVideoSection() {
                 <span>Conecta a narrativa comercial com o uso real da aplicação dentro da engenharia.</span>
               </li>
             </ul>
-            <div className="flex flex-col gap-3 min-[400px]:flex-row">
+            <div className="flex flex-col gap-3 sm:flex-row">
               <Button
                 variant="secondary"
                 onClick={() => {

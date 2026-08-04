@@ -65,7 +65,7 @@ export function ProductDetail() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="space-y-6"
+              className="min-w-0 space-y-6"
             >
               <div className="space-y-4">
                 <div className="flex flex-wrap items-center gap-2.5">
@@ -103,7 +103,7 @@ export function ProductDetail() {
                 ))}
               </ul>
 
-              <div className="flex flex-col gap-3 min-[400px]:flex-row">
+              <div className="flex flex-col gap-3 sm:flex-row">
                 <Button size="lg" onClick={() => goToContact(`${primaryCtaLabel}_${product.slug}`)}>
                   {primaryCtaLabel}
                   <ArrowRight className="h-5 w-5" />
@@ -118,7 +118,7 @@ export function ProductDetail() {
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="mx-auto w-full max-w-[560px] lg:max-w-none"
+              className="mx-auto w-full min-w-0 max-w-[560px] lg:max-w-none"
             >
               <div className="relative w-full overflow-hidden rounded-[32px] border border-secondary/18 bg-[linear-gradient(180deg,rgba(8,24,43,0.85),rgba(3,12,24,0.96))] p-6 shadow-[0_26px_70px_rgba(0,0,0,0.4)] md:p-8">
                 <div className="flex items-center gap-4">
@@ -182,7 +182,7 @@ export function ProductDetail() {
             <p className="mx-auto mt-3 max-w-[620px] text-sm leading-7 text-surface/78 md:text-base">
               Conte um pouco do seu processo atual e avaliamos juntos onde o {product.name} pode gerar mais ganho.
             </p>
-            <div className="mt-6 flex flex-col items-center justify-center gap-3 min-[400px]:flex-row">
+            <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button size="lg" onClick={() => goToContact(`cta_final_${product.slug}`)}>
                 {primaryCtaLabel}
                 <ArrowRight className="h-5 w-5" />
