@@ -61,7 +61,7 @@ O backend original usava Express (`server/index.ts`) e SQLite (`data/analytics.d
 
 ### 4. Formulário de Contato
 *   O design do formulário está em `src/components/sections/ContactFormSection.tsx`.
-*   O template do e-mail que é enviado (para você e para o cliente) fica em `api/_lib/contact-mailer.ts` (envio via API da Resend), chamado por `api/contact.ts`.
+*   O template do e-mail que é enviado (para você e para o cliente), via API da Resend, fica em `api/contact.ts`. Cada função em `api/` é autocontida (sem imports relativos entre arquivos) para evitar problemas de resolução de módulos ESM no build da Vercel — se for compartilhar lógica entre funções, prefira duplicar um trecho pequeno a reintroduzir um `_lib/`.
 
 ### 5. Configurações de Deploy (Vercel)
 *   As variáveis de ambiente deverão ser configuradas no painel de hospedagem (Supabase URL/Key, `RESEND_API_KEY`, etc).
