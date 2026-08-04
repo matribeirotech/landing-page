@@ -40,9 +40,8 @@ Pré-requisito: Node.js
 ## Supabase
 
 - O backend usa SQLite por padrao
-- Se `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` estiverem definidos, o servidor passa a gravar em Supabase
-- A área de membros usa `Supabase Auth` com `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`
-- O bootstrap opcional de um membro inicial usa `LYPSYOS_DBX_BOOTSTRAP_MEMBER_EMAIL`, `LYPSYOS_DBX_BOOTSTRAP_MEMBER_PASSWORD` e `LYPSYOS_DBX_BOOTSTRAP_MEMBER_NAME`
+- Se `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` estiverem definidos, o servidor passa a gravar em Supabase (acessos, eventos e leads de contato)
+- Nao ha login/autenticacao na landing page — foi descontinuado
 - O schema inicial esta em `supabase/schema.sql`
 
 ## Azure App Service

@@ -1,5 +1,5 @@
-import { getAnalyticsStore } from "../_lib/storage"
-import { hashIp } from "../_lib/supabase"
+import { getAnalyticsStore } from "../_lib/storage.js"
+import { hashIp } from "../_lib/supabase.js"
 
 export default async function handler(request: Request) {
   if (request.method !== "POST") {
@@ -10,7 +10,14 @@ export default async function handler(request: Request) {
   }
 
   try {
-    const body = await request.json().catch(() => ({}))
+    const body = (await request.json().catch(() => ({}))) as {
+      sessionId?: string
+      path?: string
+      title?: string
+      referrer?: string
+      language?: string
+      screen?: { width?: number; height?: number }
+    }
     const { sessionId, path, title, referrer, language, screen } = body
 
     if (!sessionId || !path) {

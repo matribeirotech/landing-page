@@ -1,4 +1,4 @@
-import { getAnalyticsStore } from "../../_lib/storage"
+import { getAnalyticsStore } from "../_lib/storage.js"
 
 export default async function handler(request: Request) {
   if (request.method !== "GET") {

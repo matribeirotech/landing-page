@@ -1,6 +1,6 @@
-import { getAnalyticsStore } from "./_lib/storage"
-import { sendContactEmails } from "./_lib/contact-mailer"
-import { hashIp } from "./_lib/supabase"
+import { getAnalyticsStore } from "./_lib/storage.js"
+import { sendContactEmails } from "./_lib/contact-mailer.js"
+import { hashIp } from "./_lib/supabase.js"
 
 export default async function handler(request: Request) {
   if (request.method !== "POST") {
@@ -11,7 +11,7 @@ export default async function handler(request: Request) {
   }
 
   try {
-    const body = await request.json().catch(() => ({}))
+    const body = (await request.json().catch(() => ({}))) as Record<string, unknown>
     const { sessionId, name, email, company, message, sourcePath } = body
 
     if (!sessionId || !name || !email || !company || !message || !sourcePath) {
@@ -21,6 +21,7 @@ export default async function handler(request: Request) {
       })
     }
 
+    const sanitizedSessionId = String(sessionId).trim()
     const sanitizedName = String(name).trim()
     const sanitizedEmail = String(email).trim().toLowerCase()
     const sanitizedCompany = String(company).trim()
@@ -49,7 +50,7 @@ export default async function handler(request: Request) {
     const store = getAnalyticsStore()
     
     await store.insertContact({
-      sessionId,
+      sessionId: sanitizedSessionId,
       name: sanitizedName,
       email: sanitizedEmail,
       company: sanitizedCompany,
@@ -60,7 +61,7 @@ export default async function handler(request: Request) {
     })
 
     await store.insertEvent({
-      sessionId,
+      sessionId: sanitizedSessionId,
       eventName: "contact_form_submitted",
       path: sanitizedSourcePath,
       category: "conversion",
@@ -71,7 +72,7 @@ export default async function handler(request: Request) {
     })
 
     const emailDelivery = await sendContactEmails({
-      sessionId: String(sessionId),
+      sessionId: sanitizedSessionId,
       name: sanitizedName,
       email: sanitizedEmail,
       company: sanitizedCompany,

@@ -29,21 +29,6 @@ const Contact = lazy(async () => {
   return { default: module.Contact }
 })
 
-const AdminLayout = lazy(async () => {
-  const module = await import("./layouts/AdminLayout")
-  return { default: module.AdminLayout }
-})
-
-const AdminLogin = lazy(async () => {
-  const module = await import("./pages/admin/AdminLogin")
-  return { default: module.AdminLogin }
-})
-
-const AdminDashboard = lazy(async () => {
-  const module = await import("./pages/admin/AdminDashboard")
-  return { default: module.AdminDashboard }
-})
-
 function RouteFallback() {
   return (
     <div className="flex min-h-[40vh] items-center justify-center px-6 text-center text-sm text-neutral-600">
@@ -96,24 +81,6 @@ const router = createBrowserRouter([
             <Contact />
           </Suspense>
         ),
-      },
-    ],
-  },
-  {
-    path: "/admin",
-    element: (
-      <Suspense fallback={<RouteFallback />}>
-        <AdminLayout />
-      </Suspense>
-    ),
-    children: [
-      {
-        index: true,
-        element: <AdminDashboard />,
-      },
-      {
-        path: "login",
-        element: <AdminLogin />,
       },
     ],
   },

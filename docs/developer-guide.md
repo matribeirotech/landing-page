@@ -13,19 +13,19 @@ O frontend é construído com React, Tailwind CSS e roteamento via `react-router
 *   **Páginas (`src/pages/`)**:
     *   `Home.tsx`: Página inicial principal.
     *   `About.tsx`: Página "Sobre" a Lypsyos.
-    *   `Products.tsx`: Página detalhada do produto DBX-V4 (rota `/produtos/dbx-v4`).
+    *   `Products.tsx`: Listagem de produtos (rota `/produtos`), dirigida por `src/content/products.ts`.
+    *   `ProductDetail.tsx`: Página de detalhe de um produto (rota `/produtos/:slug`).
     *   `Contact.tsx`: Página de contato.
-    *   *(Nova)* `Portfolio.tsx` (a ser criada): Lista de projetos com links para o GitHub.
-    *   *(Nova)* `Admin.tsx` (a ser criada): Dashboard de métricas e controle.
 
 *   **Componentes (`src/components/`)**:
     *   `common/`: Componentes globais como `Navbar.tsx` (cabeçalho) e `Footer.tsx` (rodapé).
-    *   `sections/`: Blocos grandes das páginas. Ex: `HeroSection.tsx` (topo da home), `ContactFormSection.tsx` (formulário), `DemoVideoSection.tsx` (vídeo).
+    *   `sections/`: Blocos grandes das páginas. Ex: `HeroSection.tsx` (topo da home), `ProductsOverviewSection.tsx` e `WhyLypsyosSection.tsx` (home), `ContactFormSection.tsx` (formulário), `DemoVideoSection.tsx` (vídeo, só na página do DBX-V4).
     *   `ui/`: Componentes base reutilizáveis (botões, cards, inputs) baseados em uma variação do shadcn/ui.
 
 *   **Serviços Frontend (`src/services/`)**:
-    *   `analytics.ts`: Funções para enviar pageviews e eventos para o backend.
-    *   `memberAccess.ts` / `supabase.ts`: Autenticação e acesso ao Supabase.
+    *   `analytics.ts`: Funções para enviar pageviews, eventos e o formulário de contato para o backend.
+
+*   Não há login/autenticação na landing page nem painel admin — foram descontinuados por não fazerem parte do fluxo atual (só orçamento/contato).
 
 *   **Estilos (`src/styles/globals.css`)**:
     *   Contém as variáveis CSS principais e as cores do tema (Primary, Secondary, Accent, etc.). Para mudar o tema global, altere aqui.
@@ -36,7 +36,7 @@ O backend original usava Express (`server/index.ts`) e SQLite (`data/analytics.d
 
 *   `api/track/pageview.ts`, `api/track/event.ts`: Rotas de métricas de acesso.
 *   `api/contact.ts`: Envio de e-mails (usa a API da Resend) e salva leads.
-*   `api/analytics/summary.ts`: Retorna dados para o painel admin.
+*   `api/analytics/summary.ts`, `api/analytics/accesses.ts`: Retornam dados agregados/brutos, protegidos por `LYPSYOS_ANALYTICS_TOKEN` (consulta via token, sem UI própria).
 
 *Se você quiser mudar como os e-mails são enviados ou as métricas salvas, mexerá nestes arquivos na pasta `api/` (que substituirá a antiga pasta `server/`).*
 
@@ -46,13 +46,14 @@ O backend original usava Express (`server/index.ts`) e SQLite (`data/analytics.d
 
 ### 1. Textos e Imagens da Home
 *   **Hero**: Edite `src/components/sections/HeroSection.tsx`.
-*   **Funcionalidades**: Edite `src/components/sections/FeaturesSection.tsx`.
-*   **Soluções**: Edite `src/components/sections/SolutionsSection.tsx`.
-*   **Vídeo**: O URL do vídeo é configurado pelas variáveis de ambiente `.env` (`VITE_DBX_DEMO_VIDEO_URL`). O componente é `src/components/sections/DemoVideoSection.tsx`.
+*   **Produtos em destaque**: Edite `src/components/sections/ProductsOverviewSection.tsx` (lista vem de `src/content/products.ts`).
+*   **Diferenciais**: Edite `src/components/sections/WhyLypsyosSection.tsx`.
+*   **Vídeo**: O URL do vídeo é configurado pelas variáveis de ambiente `.env` (`VITE_DBX_DEMO_VIDEO_URL`). O componente é `src/components/sections/DemoVideoSection.tsx`, usado só na página do DBX-V4.
 
-### 2. A página do DBX-V4
-*   O conteúdo principal está em `src/pages/Products.tsx`.
-*   O carrossel de imagens está configurado em `src/content/dbxVisuals.ts`. Para mudar as imagens, coloque novas em `public/DBX/` e atualize o `dbxVisuals.ts`.
+### 2. Produtos
+*   A lista de produtos (GeoQuote, Editor de Perfis, DBX-V4, etc.) fica em `src/content/products.ts` — adicionar um produto novo é editar esse arquivo.
+*   `src/pages/Products.tsx` renderiza a listagem (`/produtos`); `src/pages/ProductDetail.tsx` renderiza o detalhe (`/produtos/:slug`).
+*   O carrossel de imagens do DBX-V4 está configurado em `src/content/dbxVisuals.ts`. Para mudar as imagens, coloque novas em `public/DBX/` e atualize o `dbxVisuals.ts`.
 
 ### 3. Cores e Tipografia
 *   Vá para `src/styles/globals.css` na seção `@theme`.
@@ -60,7 +61,7 @@ O backend original usava Express (`server/index.ts`) e SQLite (`data/analytics.d
 
 ### 4. Formulário de Contato
 *   O design do formulário está em `src/components/sections/ContactFormSection.tsx`.
-*   O template do e-mail que é enviado (para você e para o cliente) ficará na função serverless `api/contact.ts` (ou antigo `server/contact-mailer.ts`).
+*   O template do e-mail que é enviado (para você e para o cliente) fica em `api/_lib/contact-mailer.ts` (envio via API da Resend), chamado por `api/contact.ts`.
 
 ### 5. Configurações de Deploy (Vercel)
 *   As variáveis de ambiente deverão ser configuradas no painel de hospedagem (Supabase URL/Key, `RESEND_API_KEY`, etc).
@@ -70,5 +71,3 @@ O backend original usava Express (`server/index.ts`) e SQLite (`data/analytics.d
 
 ## 🚀 Próximas Atualizações Planejadas
 1.  **Centralização de ícones/botões**: Ajustes finos de CSS (ex: botão play do DBX).
-2.  **Página de Portfólio**: Uma nova rota para listar projetos e linkar com o GitHub/detalhes.
-3.  **Painel Admin**: Sistema de login para visualizar métricas capturadas pelos eventos (`analytics.ts`).

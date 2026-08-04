@@ -4,8 +4,6 @@ interface ImportMetaEnv {
   readonly VITE_ANALYTICS_API_URL?: string
   readonly VITE_DBX_DEMO_VIDEO_URL?: string
   readonly VITE_DBX_VIDEO_YOUTUBE_EMBED_URL?: string
-  readonly VITE_SUPABASE_URL: string
-  readonly VITE_SUPABASE_ANON_KEY: string
 }
 
 interface ImportMeta {

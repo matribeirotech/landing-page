@@ -16,7 +16,6 @@ export interface Product {
     visualSlides?: typeof dbxVisualSlides
     showDemoVideo?: boolean
     showTechnicalDocs?: boolean
-    showMemberAccess?: boolean
   }
 }
 
@@ -75,7 +74,6 @@ export const products: Product[] = [
       visualSlides: dbxVisualSlides,
       showDemoVideo: true,
       showTechnicalDocs: true,
-      showMemberAccess: true,
     },
   },
 ]

@@ -4,7 +4,6 @@ import { ArrowRight, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { DbxImageCarousel } from "@/components/common/DbxImageCarousel"
 import { DemoVideoSection } from "@/components/sections/DemoVideoSection"
-import { DbxMemberAccessSection } from "@/components/sections/DbxMemberAccessSection"
 import { DbxTechnicalDocsSection } from "@/components/sections/DbxTechnicalDocsSection"
 import { getProductBySlug, productStatusLabel } from "@/content/products"
 import { trackEvent } from "@/services/analytics"
@@ -170,7 +169,6 @@ export function ProductDetail() {
 
       {product.detail?.showDemoVideo ? <DemoVideoSection /> : null}
       {product.detail?.showTechnicalDocs ? <DbxTechnicalDocsSection /> : null}
-      {product.detail?.showMemberAccess ? <DbxMemberAccessSection /> : null}
 
       <section className="mt-16 md:mt-20">
         <div className="container mx-auto px-4 md:px-6">
