@@ -20,14 +20,7 @@ function hashIp(ipAddress: string | undefined): string | null {
   return crypto.createHash("sha256").update(`${ipAddress}:${salt}`).digest("hex")
 }
 
-export default async function handler(request: Request) {
-  if (request.method !== "POST") {
-    return new Response(JSON.stringify({ error: "Method Not Allowed" }), {
-      status: 405,
-      headers: { "Content-Type": "application/json" },
-    })
-  }
-
+export async function POST(request: Request) {
   try {
     const body = (await request.json().catch(() => ({}))) as {
       sessionId?: string

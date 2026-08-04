@@ -13,14 +13,7 @@ function getSupabaseClient() {
   })
 }
 
-export default async function handler(request: Request) {
-  if (request.method !== "GET") {
-    return new Response(JSON.stringify({ error: "Method Not Allowed" }), {
-      status: 405,
-      headers: { "Content-Type": "application/json" },
-    })
-  }
-
+export async function GET(request: Request) {
   const token = process.env.LYPSYOS_ANALYTICS_TOKEN
   const headerToken = request.headers.get("x-analytics-token")
 
