@@ -35,7 +35,7 @@ O frontend é construído com React, Tailwind CSS e roteamento via `react-router
 O backend original usava Express (`server/index.ts`) e SQLite (`data/analytics.db`). Para deploy na Vercel (que não tem disco persistente), a arquitetura muda para **Serverless Functions** conectadas ao **Supabase**.
 
 *   `api/track/pageview.ts`, `api/track/event.ts`: Rotas de métricas de acesso.
-*   `api/contact.ts`: Envio de e-mails (usa nodemailer) e salva leads.
+*   `api/contact.ts`: Envio de e-mails (usa a API da Resend) e salva leads.
 *   `api/analytics/summary.ts`: Retorna dados para o painel admin.
 
 *Se você quiser mudar como os e-mails são enviados ou as métricas salvas, mexerá nestes arquivos na pasta `api/` (que substituirá a antiga pasta `server/`).*
@@ -63,7 +63,7 @@ O backend original usava Express (`server/index.ts`) e SQLite (`data/analytics.d
 *   O template do e-mail que é enviado (para você e para o cliente) ficará na função serverless `api/contact.ts` (ou antigo `server/contact-mailer.ts`).
 
 ### 5. Configurações de Deploy (Vercel)
-*   As variáveis de ambiente deverão ser configuradas no painel da Vercel (Supabase URL/Key, SMTP credentials, etc).
+*   As variáveis de ambiente deverão ser configuradas no painel de hospedagem (Supabase URL/Key, `RESEND_API_KEY`, etc).
 *   Não haverá mais dependência de VPS. A Vercel builda o front (`npm run build`) e expõe a pasta `api/` como funções serverless.
 
 ---

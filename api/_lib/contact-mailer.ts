@@ -1,5 +1,3 @@
-import * as nodemailer from "nodemailer"
-
 export type ContactSubmissionPayload = {
   sessionId: string
   name: string
@@ -8,6 +6,8 @@ export type ContactSubmissionPayload = {
   message: string
   sourcePath: string
 }
+
+const RESEND_API_URL = "https://api.resend.com/emails"
 
 function escapeHtml(value: string) {
   return value
@@ -18,37 +18,34 @@ function escapeHtml(value: string) {
     .replaceAll("'", "&#39;")
 }
 
-function parseSmtpSecure(rawValue: string | boolean | undefined) {
-  if (typeof rawValue === "boolean") return rawValue
-  return String(rawValue || "").trim().toLowerCase() === "true"
+async function sendResendEmail(apiKey: string, payload: Record<string, unknown>) {
+  const response = await fetch(RESEND_API_URL, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  })
+
+  if (!response.ok) {
+    const errorBody = await response.text().catch(() => "")
+    throw new Error(`Resend respondeu ${response.status}: ${errorBody}`)
+  }
 }
 
 export async function sendContactEmails(payload: ContactSubmissionPayload) {
-  const smtpHost = process.env.LYPSYOS_SMTP_HOST
-  const smtpPort = process.env.LYPSYOS_SMTP_PORT
-  const smtpSecure = process.env.LYPSYOS_SMTP_SECURE
-  const smtpUser = process.env.LYPSYOS_SMTP_USER
-  const smtpPass = process.env.LYPSYOS_SMTP_PASS
+  const resendApiKey = process.env.RESEND_API_KEY
   const contactToEmail = process.env.LYPSYOS_CONTACT_TO_EMAIL
   const contactFromEmail = process.env.LYPSYOS_CONTACT_FROM_EMAIL
   const contactReplyToEmail = process.env.LYPSYOS_CONTACT_REPLY_TO_EMAIL
   const autoReplyEnabled = process.env.LYPSYOS_CONTACT_AUTO_REPLY !== "false"
   const frontendUrl = process.env.LYPSYOS_FRONTEND_URL || "https://lypsyos.com"
 
-  if (!smtpHost || !smtpUser || !smtpPass || !contactToEmail || !contactFromEmail) {
-    console.warn("[contact-mailer] SMTP não configurado. O lead foi salvo, mas nenhum e-mail foi enviado.")
+  if (!resendApiKey || !contactToEmail || !contactFromEmail) {
+    console.warn("[contact-mailer] Resend não configurado. O lead foi salvo, mas nenhum e-mail foi enviado.")
     return "disabled"
   }
-
-  const transport = nodemailer.createTransport({
-    host: smtpHost,
-    port: Number(smtpPort || 587),
-    secure: parseSmtpSecure(smtpSecure),
-    auth: {
-      user: smtpUser,
-      pass: smtpPass,
-    },
-  })
 
   const safeName = escapeHtml(payload.name)
   const safeEmail = escapeHtml(payload.email)
@@ -56,10 +53,10 @@ export async function sendContactEmails(payload: ContactSubmissionPayload) {
   const safeMessage = escapeHtml(payload.message)
   const safeSourcePath = escapeHtml(payload.sourcePath)
 
-  await transport.sendMail({
+  await sendResendEmail(resendApiKey, {
     from: contactFromEmail,
-    to: contactToEmail,
-    replyTo: payload.email,
+    to: [contactToEmail],
+    reply_to: payload.email,
     subject: `Novo contato da landing | ${payload.company} | ${payload.name}`,
     text: [
       "Novo contato recebido na landing da Lypsyos.",
@@ -88,10 +85,10 @@ export async function sendContactEmails(payload: ContactSubmissionPayload) {
   })
 
   if (autoReplyEnabled) {
-    await transport.sendMail({
+    await sendResendEmail(resendApiKey, {
       from: contactFromEmail,
-      to: payload.email,
-      replyTo: contactReplyToEmail || contactToEmail,
+      to: [payload.email],
+      reply_to: contactReplyToEmail || contactToEmail,
       subject: "Recebemos sua mensagem | Lypsyos",
       text: [
         `Olá, ${payload.name}.`,
