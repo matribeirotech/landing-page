@@ -121,14 +121,26 @@ export function ProductDetail() {
             >
               <div className="relative w-full overflow-hidden rounded-[32px] border border-secondary/18 bg-[linear-gradient(180deg,rgba(8,24,43,0.85),rgba(3,12,24,0.96))] p-6 shadow-[0_26px_70px_rgba(0,0,0,0.4)] md:p-8">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-secondary/25 bg-secondary/10 text-secondary">
-                    <Icon className="h-8 w-8" />
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-secondary/25 bg-secondary/10 text-secondary">
+                    {product.logo ? (
+                      <img src={product.logo} alt={`Logo ${product.name}`} className="h-full w-full object-cover" />
+                    ) : (
+                      <Icon className="h-8 w-8" />
+                    )}
                   </div>
                   <div>
                     <p className="text-xl font-extrabold text-surface">{product.name}</p>
                     <p className="text-xs uppercase tracking-[0.24em] text-surface/60">{product.category}</p>
                   </div>
                 </div>
+                {isAvailable ? (
+                  <div className="mt-5 flex items-start gap-3 rounded-2xl border border-secondary/25 bg-secondary/10 px-4 py-3.5">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-secondary" />
+                    <p className="text-sm leading-6 text-surface/86">
+                      O {product.name} já está em funcionamento. Fale com a gente para conhecer a ferramenta de perto.
+                    </p>
+                  </div>
+                ) : null}
                 <div className="mt-6 grid gap-3">
                   {product.highlights.slice(0, 3).map((item) => (
                     <div

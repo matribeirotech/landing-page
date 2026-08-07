@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom"
 import { Navbar } from "@/components/common/Navbar"
 import { Footer } from "@/components/common/Footer"
 import { RouteAnalytics } from "@/components/common/RouteAnalytics"
+import { WhatsAppButton } from "@/components/common/WhatsAppButton"
 
 export function MainLayout() {
   return (
@@ -12,6 +13,7 @@ export function MainLayout() {
         <Outlet />
       </div>
       <Footer />
+      <WhatsAppButton />
     </div>
   )
 }

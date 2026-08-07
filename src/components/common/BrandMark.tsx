@@ -19,17 +19,24 @@ export function BrandMark({
 }: BrandMarkProps) {
   const textTone = inverse ? "text-surface" : "text-primary"
   const subtitleTone = inverse ? "text-surface/65" : "text-primary/60"
-  const iconSizeClassName = compact ? "h-10 w-10 md:h-11 md:w-11" : "h-12 w-12 md:h-14 md:w-14"
+  const iconSizeClassName = compact ? "h-9 w-9 md:h-10 md:w-10" : "h-11 w-11 md:h-12 md:w-12"
   const titleSizeClassName = compact ? "text-lg md:text-xl" : "text-lg md:text-xl"
   const subtitleSizeClassName = compact ? "text-[10px] md:text-[11px]" : "text-[11px] md:text-xs"
 
   return (
     <div className={cn("flex items-center gap-3.5", className)}>
-      <img
-        src="/logo-oficial.png"
-        alt="Lypsyos"
-        className={cn("shrink-0 object-contain", iconSizeClassName, logoClassName)}
-      />
+      <div
+        className={cn(
+          "flex shrink-0 items-center justify-center",
+          inverse && "rounded-xl bg-surface p-1.5 shadow-[0_6px_16px_rgba(0,0,0,0.35)] ring-1 ring-white/10",
+        )}
+      >
+        <img
+          src="/logo-oficial.png"
+          alt="Lypsyos"
+          className={cn("object-contain", iconSizeClassName, logoClassName)}
+        />
+      </div>
       <div className="min-w-0">
         <p className={cn("font-sans font-extrabold uppercase tracking-[0.14em]", textTone, titleSizeClassName, titleClassName)}>
           Lypsyos

@@ -11,6 +11,7 @@ export interface Product {
   category: string
   status: ProductStatus
   icon: LucideIcon
+  logo?: string
   highlights: string[]
   detail?: {
     visualSlides?: typeof dbxVisualSlides
@@ -30,10 +31,11 @@ export const products: Product[] = [
     name: "GeoQuote",
     tagline: "Orçamento de corte sem planilha",
     description:
-      "Ferramenta web para gerar e registrar orçamentos de corte. Substitui a planilha que vai e volta entre o comercial e a produção por um fluxo único: entra a peça, sai o preço, fica o registro.",
+      "Ferramenta web para gerar e registrar orçamentos de corte. Substitui a planilha que vai e volta entre o comercial e a produção por um fluxo único: entra a peça, sai o preço, fica o registro. Já está em funcionamento na operação da Lypsyos.",
     category: "Orçamento",
-    status: "em-desenvolvimento",
+    status: "disponivel",
     icon: Calculator,
+    logo: "/logo-geoquote.svg",
     highlights: [
       "Fluxo único entre comercial e produção, sem planilha indo e voltando.",
       "Entrada da peça já direciona o cálculo do preço de corte.",

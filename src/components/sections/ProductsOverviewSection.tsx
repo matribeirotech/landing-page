@@ -49,8 +49,12 @@ export function ProductsOverviewSection() {
               <Card className="flex h-full flex-col border-neutral/20 bg-background shadow-sm">
                 <CardHeader>
                   <div className="mb-3 flex items-center justify-between gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent">
-                      <product.icon className="h-6 w-6" />
+                    <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl bg-accent/10 text-accent">
+                      {product.logo ? (
+                        <img src={product.logo} alt={`Logo ${product.name}`} className="h-full w-full object-cover" />
+                      ) : (
+                        <product.icon className="h-6 w-6" />
+                      )}
                     </div>
                     <span
                       className={

@@ -35,7 +35,7 @@ export function Footer() {
             Se você quer reduzir retrabalho, acelerar a preparação técnica e organizar melhor o fluxo entre engenharia e produção, fale com a Lypsyos.
           </p>
           <a
-            href="https://www.linkedin.com/in/lypsyos-tech-328b853a5/"
+            href="https://www.linkedin.com/company/lypsyos"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 text-sm text-surface/72 transition-colors hover:text-secondary"
