@@ -1,8 +1,5 @@
 import { trackEvent } from "@/services/analytics"
-
-const WHATSAPP_NUMBER = "5517996261525"
-const WHATSAPP_MESSAGE = "Olá! Vim do site da Lypsyos e gostaria de saber mais."
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
+import { WHATSAPP_URL } from "@/content/site"
 
 export function WhatsAppButton() {
   function handleClick() {

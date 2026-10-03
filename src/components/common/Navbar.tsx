@@ -1,75 +1,117 @@
-import { Link, useNavigate } from "react-router-dom"
-import { Button } from "@/components/ui/Button"
+import { useEffect, useState } from "react"
+import { Link, useLocation } from "react-router-dom"
 import { Menu, X } from "lucide-react"
-import { useState } from "react"
-import { trackEvent } from "@/services/analytics"
+import { buttonVariants } from "@/components/ui/Button"
 import { BrandMark } from "@/components/common/BrandMark"
+import { homeSections } from "@/content/site"
+import { trackEvent } from "@/services/analytics"
+
+const navItems = [
+  { label: "Início", to: "/", id: "inicio" },
+  { label: "Soluções", to: `/#${homeSections.solutions}`, id: "solucoes" },
+  { label: "Para quem é", to: `/#${homeSections.audience}`, id: "para_quem_e" },
+  { label: "Sobre", to: "/sobre", id: "sobre" },
+  { label: "Contato", to: "/contato", id: "contato" },
+]
+
+function handleNavigation(label: string) {
+  void trackEvent({
+    eventName: "navigation_click",
+    category: "navigation",
+    label,
+  }).catch((error) => {
+    console.error("Não foi possível rastrear clique de navegação", error)
+  })
+}
+
+function handleDemoClick(origin: string) {
+  void trackEvent({
+    eventName: "demo_cta_click",
+    category: "conversion",
+    label: origin,
+    metadata: {
+      placement: "navbar",
+    },
+  }).catch((error) => {
+    console.error("Não foi possível rastrear CTA de demonstração", error)
+  })
+}
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const navigate = useNavigate()
+  const location = useLocation()
 
-  function handleNavigation(label: string) {
-    void trackEvent({
-      eventName: "navigation_click",
-      category: "navigation",
-      label,
-    }).catch((error) => {
-      console.error("Não foi possível rastrear clique de navegação", error)
-    })
-  }
-
-  function handleDemoClick(origin: string) {
-    void trackEvent({
-      eventName: "demo_cta_click",
-      category: "conversion",
-      label: origin,
-      metadata: {
-        placement: "navbar",
-      },
-    }).catch((error) => {
-      console.error("Não foi possível rastrear CTA de demonstração", error)
-    })
-  }
-
-  function goToContact(origin: string) {
-    handleDemoClick(origin)
-    navigate("/contato")
-  }
+  useEffect(() => {
+    setIsOpen(false)
+  }, [location.pathname, location.hash])
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-secondary/10 bg-[#05101f]/88 backdrop-blur-xl">
-      <div className="container mx-auto flex h-[4.25rem] items-center justify-between px-4 md:px-6">
-        <Link to="/" className="flex items-center gap-2">
-          <BrandMark inverse compact showSubtitle={false} className="text-surface" />
+    <nav aria-label="Navegação principal" className="sticky top-0 z-50 w-full border-b border-line/80 bg-white/90 backdrop-blur-xl">
+      <div className="container mx-auto flex h-[4.25rem] items-center justify-between gap-4 px-4 md:px-6">
+        <Link to="/" className="flex items-center gap-2 rounded-lg" onClick={() => handleNavigation("logo")}>
+          <BrandMark compact showSubtitle={false} />
         </Link>
-        <div className="hidden md:flex md:items-center md:gap-7">
-          <Link to="/" className="text-[15px] font-semibold text-surface/90 transition-colors hover:text-secondary" onClick={() => handleNavigation("inicio")}>Início</Link>
-          <Link to="/sobre" className="text-[15px] font-semibold text-surface/90 transition-colors hover:text-secondary" onClick={() => handleNavigation("sobre")}>Sobre</Link>
-          <Link to="/produtos" className="text-[15px] font-semibold text-surface/90 transition-colors hover:text-secondary" onClick={() => handleNavigation("produtos")}>Produtos</Link>
-          <Link to="/contato" className="text-[15px] font-semibold text-surface/90 transition-colors hover:text-secondary" onClick={() => handleNavigation("contato")}>Contato</Link>
-          <Button size="default" onClick={() => goToContact("desktop_navbar")}>Solicitar uma demonstração</Button>
+
+        <div className="hidden lg:flex lg:items-center lg:gap-1">
+          {navItems.map((item) => (
+            <Link
+              key={item.id}
+              to={item.to}
+              className="rounded-lg px-3 py-2 text-[0.9375rem] font-medium text-ink-soft transition-colors hover:bg-brand-soft hover:text-brand"
+              onClick={() => handleNavigation(item.id)}
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
+
+        <Link
+          to="/contato"
+          className={buttonVariants({ className: "hidden lg:inline-flex" })}
+          onClick={() => handleDemoClick("desktop_navbar")}
+        >
+          Agende uma demonstração
+        </Link>
+
         <button
           type="button"
-          className="rounded-lg border border-surface/10 p-2 md:hidden"
+          className="flex size-11 items-center justify-center rounded-lg border border-line text-ink lg:hidden"
           aria-expanded={isOpen}
           aria-controls="mobile-navigation"
           aria-label={isOpen ? "Fechar menu principal" : "Abrir menu principal"}
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpen((open) => !open)}
         >
-          {isOpen ? <X className="h-6 w-6 text-surface" /> : <Menu className="h-6 w-6 text-surface" />}
+          {isOpen ? <X className="size-6" aria-hidden="true" /> : <Menu className="size-6" aria-hidden="true" />}
         </button>
       </div>
-      {isOpen && (
-        <div id="mobile-navigation" className="container mx-auto flex flex-col gap-3 px-4 pb-5 md:hidden">
-          <Link to="/" className="rounded-xl border border-transparent px-3 py-2 text-[15px] font-semibold text-surface/90 transition-colors hover:border-surface/10 hover:bg-surface/5" onClick={() => { handleNavigation("inicio_mobile"); setIsOpen(false) }}>Início</Link>
-          <Link to="/sobre" className="rounded-xl border border-transparent px-3 py-2 text-[15px] font-semibold text-surface/90 transition-colors hover:border-surface/10 hover:bg-surface/5" onClick={() => { handleNavigation("sobre_mobile"); setIsOpen(false) }}>Sobre</Link>
-          <Link to="/produtos" className="rounded-xl border border-transparent px-3 py-2 text-[15px] font-semibold text-surface/90 transition-colors hover:border-surface/10 hover:bg-surface/5" onClick={() => { handleNavigation("produtos_mobile"); setIsOpen(false) }}>Produtos</Link>
-          <Link to="/contato" className="rounded-xl border border-transparent px-3 py-2 text-[15px] font-semibold text-surface/90 transition-colors hover:border-surface/10 hover:bg-surface/5" onClick={() => { handleNavigation("contato_mobile"); setIsOpen(false) }}>Contato</Link>
-          <Button className="mt-2 w-full" onClick={() => { goToContact("mobile_navbar"); setIsOpen(false) }}>Solicitar uma demonstração</Button>
+
+      {isOpen ? (
+        <div id="mobile-navigation" className="container mx-auto flex flex-col gap-1 border-t border-line px-4 pb-5 pt-3 lg:hidden">
+          {navItems.map((item) => (
+            <Link
+              key={item.id}
+              to={item.to}
+              className="flex min-h-11 items-center rounded-xl px-3 text-base font-medium text-ink transition-colors hover:bg-brand-soft hover:text-brand"
+              onClick={() => {
+                handleNavigation(`${item.id}_mobile`)
+                setIsOpen(false)
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <Link
+            to="/contato"
+            className={buttonVariants({ size: "lg", className: "mt-3 w-full" })}
+            onClick={() => {
+              handleDemoClick("mobile_navbar")
+              setIsOpen(false)
+            }}
+          >
+            Agende uma demonstração
+          </Link>
         </div>
-      )}
+      ) : null}
     </nav>
   )
 }

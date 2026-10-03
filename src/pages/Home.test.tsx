@@ -3,7 +3,7 @@ import { MemoryRouter } from "react-router-dom"
 import { Home } from "./Home"
 
 describe("Home", () => {
-  it("renders the Lypsyos-first hero copy and removes testimonials", () => {
+  it("renders the retail-focused hero copy and removes industrial references", () => {
     render(
       <MemoryRouter>
         <Home />
@@ -12,17 +12,18 @@ describe("Home", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /transformamos gargalos operacionais em fluxos mais claros, econômicos e escaláveis/i,
+        name: /gestão simples para a sua loja vender mais/i,
       }),
     ).toBeInTheDocument()
+    
+    // Check for solutions section
     expect(
-      screen.getByRole("heading", { name: /software próprio para orçamento, engenharia e produção/i }),
+      screen.getByRole("heading", { name: /três pilares para organizar sua loja/i }),
     ).toBeInTheDocument()
+    
+    // Ensure old industrial text is gone
     expect(
-      screen.getByRole("heading", { name: /por que indústrias do aço trabalham com a lypsyos/i }),
-    ).toBeInTheDocument()
-    expect(
-      screen.queryByRole("heading", { name: /o que dizem nossos clientes/i }),
+      screen.queryByRole("heading", { name: /software próprio para orçamento, engenharia e produção/i }),
     ).not.toBeInTheDocument()
   })
 })

@@ -1,82 +1,72 @@
-import { Calculator, Layers3, Ruler, type LucideIcon } from "lucide-react"
-import { dbxVisualSlides } from "@/content/dbxVisuals"
+import { ArrowLeftRight, Boxes, Megaphone, type LucideIcon } from "lucide-react"
 
-export type ProductStatus = "disponivel" | "em-desenvolvimento"
+export type SolutionMockup = "stock" | "cashflow" | "marketing"
+export type SolutionTone = "brand" | "growth"
 
 export interface Product {
   slug: string
   name: string
+  /** Linha de impacto curta exibida abaixo do nome. */
   tagline: string
   description: string
   category: string
-  status: ProductStatus
   icon: LucideIcon
-  logo?: string
+  tone: SolutionTone
+  mockup: SolutionMockup
   highlights: string[]
-  detail?: {
-    visualSlides?: typeof dbxVisualSlides
-    showDemoVideo?: boolean
-    showTechnicalDocs?: boolean
-  }
-}
-
-export const productStatusLabel: Record<ProductStatus, string> = {
-  disponivel: "Disponível",
-  "em-desenvolvimento": "Em desenvolvimento",
 }
 
 export const products: Product[] = [
   {
-    slug: "geoquote",
-    name: "GeoQuote",
-    tagline: "Orçamento de corte sem planilha",
+    slug: "controle-de-estoque",
+    name: "Controle de Estoque Inteligente",
+    tagline: "Pare de perder dinheiro na prateleira.",
     description:
-      "Ferramenta web para gerar e registrar orçamentos de corte. Substitui a planilha que vai e volta entre o comercial e a produção por um fluxo único: entra a peça, sai o preço, fica o registro. Já está em funcionamento na operação da Lypsyos.",
-    category: "Orçamento",
-    status: "disponivel",
-    icon: Calculator,
-    logo: "/logo-geoquote.svg",
+      "Saiba exatamente o que entra, o que sai e o que está parado. A Lypsyos acompanha seu estoque em tempo real e avisa a hora certa de repor — antes que o cliente encontre a prateleira vazia.",
+    category: "Estoque",
+    icon: Boxes,
+    tone: "brand",
+    mockup: "stock",
     highlights: [
-      "Fluxo único entre comercial e produção, sem planilha indo e voltando.",
-      "Entrada da peça já direciona o cálculo do preço de corte.",
-      "Registro do orçamento fica salvo para consulta e histórico.",
+      "Alertas automáticos de estoque mínimo e de validade",
+      "Sugestão de reposição com base no histórico de vendas",
+      "Relatório de produtos parados e de maior giro",
+      "Inventário rápido pelo celular, com leitor de código de barras",
     ],
   },
   {
-    slug: "editor-de-perfis",
-    name: "Editor de Perfis",
-    tagline: "Desenhos de perfis dobrados por dobradeira",
+    slug: "entrada-e-saida",
+    name: "Gestão de Entrada e Saída",
+    tagline: "Cada centavo no lugar certo.",
     description:
-      "Ferramenta web para desenvolver desenhos de perfis dobrados seguindo a limitação de cada dobradeira, formando um ecossistema para gerar desenhos técnicos, corte do blank e aproveitamento de chapa.",
-    category: "Engenharia",
-    status: "em-desenvolvimento",
-    icon: Ruler,
+      "Da sangria do caixa ao fechamento do mês, tenha controle preciso de tudo o que movimenta sua loja. Funciona para varejo, conveniência, distribuidora ou loja de bairro — você configura do seu jeito.",
+    category: "Fluxo de caixa",
+    icon: ArrowLeftRight,
+    tone: "growth",
+    mockup: "cashflow",
     highlights: [
-      "Respeita a limitação de cada dobradeira no desenho do perfil.",
-      "Gera desenho técnico, corte do blank e aproveitamento de chapa no mesmo ecossistema.",
-      "Pensado para reduzir interpretação manual entre engenharia e produção.",
+      "Registro de vendas, compras e despesas em poucos toques",
+      "Fechamento de caixa diário sem planilha",
+      "Contas a pagar e a receber com lembretes de vencimento",
+      "Visão de lucro real por período, produto ou categoria",
     ],
   },
   {
-    slug: "dbx-v4",
-    name: "DBX-V4",
-    tagline: "Preparação técnica, DXF e peças dobradas",
+    slug: "marketing-e-fidelizacao",
+    name: "Estratégias e Ferramentas de Marketing",
+    tagline: "Atraia novos clientes. Faça os antigos voltarem.",
     description:
-      "O DBX-V4 concentra a preparação técnica em um fluxo mais claro, reduz tarefas repetitivas e entrega saídas úteis para engenharia, preparo e produção, incluindo peças dobradas.",
-    category: "Produção",
-    status: "disponivel",
-    icon: Layers3,
+      "Transforme o histórico de vendas em campanhas que funcionam. Crie programas de fidelidade, envie ofertas certeiras e descubra quem são seus melhores clientes — sem precisar ser especialista em marketing.",
+    category: "Marketing",
+    icon: Megaphone,
+    tone: "brand",
+    mockup: "marketing",
     highlights: [
-      "Importação por cadastro manual, planilha, DXF e JSON em um único fluxo.",
-      "Geração de DXF, PDF técnico, relatórios e resumo em Excel com menos montagem manual.",
-      "Nesting, perdas, sobras e histórico do projeto com mais clareza para revisão e produção.",
-      "Peças dobradas com perfil final e blank desenvolvido para apoiar fabricação e conferência.",
+      "Programa de pontos e cashback para fidelizar clientes",
+      "Cupons e promoções segmentadas por perfil de compra",
+      "Campanhas para WhatsApp e redes sociais a partir dos seus dados",
+      "Relatórios de retorno: saiba qual ação realmente vendeu",
     ],
-    detail: {
-      visualSlides: dbxVisualSlides,
-      showDemoVideo: true,
-      showTechnicalDocs: true,
-    },
   },
 ]
 

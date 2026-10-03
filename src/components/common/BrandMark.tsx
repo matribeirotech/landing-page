@@ -17,18 +17,16 @@ export function BrandMark({
   titleClassName,
   logoClassName,
 }: BrandMarkProps) {
-  const textTone = inverse ? "text-surface" : "text-primary"
-  const subtitleTone = inverse ? "text-surface/65" : "text-primary/60"
-  const iconSizeClassName = compact ? "h-9 w-9 md:h-10 md:w-10" : "h-11 w-11 md:h-12 md:w-12"
-  const titleSizeClassName = compact ? "text-lg md:text-xl" : "text-lg md:text-xl"
-  const subtitleSizeClassName = compact ? "text-[10px] md:text-[11px]" : "text-[11px] md:text-xs"
+  const textTone = inverse ? "text-white" : "text-ink"
+  const subtitleTone = inverse ? "text-white/65" : "text-ink-soft"
+  const iconSizeClassName = compact ? "size-9 md:size-10" : "size-11 md:size-12"
 
   return (
-    <div className={cn("flex items-center gap-3.5", className)}>
+    <div className={cn("flex items-center gap-3", className)}>
       <div
         className={cn(
           "flex shrink-0 items-center justify-center",
-          inverse && "rounded-xl bg-surface p-1.5 shadow-[0_6px_16px_rgba(0,0,0,0.35)] ring-1 ring-white/10",
+          inverse && "rounded-xl bg-white p-1.5 shadow-[0_6px_16px_rgb(0_0_0/0.25)]",
         )}
       >
         <img
@@ -38,12 +36,12 @@ export function BrandMark({
         />
       </div>
       <div className="min-w-0">
-        <p className={cn("font-sans font-extrabold uppercase tracking-[0.14em]", textTone, titleSizeClassName, titleClassName)}>
+        <p className={cn("font-heading text-lg font-bold tracking-tight md:text-xl", textTone, titleClassName)}>
           Lypsyos
         </p>
         {showSubtitle ? (
-          <p className={cn("font-sans uppercase tracking-[0.26em]", subtitleTone, subtitleSizeClassName)}>
-            Automation Intelligence Engineering
+          <p className={cn("text-[0.6875rem] font-medium md:text-xs", subtitleTone)}>
+            Gestão e marketing para o comércio
           </p>
         ) : null}
       </div>

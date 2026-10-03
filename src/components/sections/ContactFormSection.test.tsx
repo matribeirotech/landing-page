@@ -26,11 +26,11 @@ describe("ContactFormSection", () => {
       </MemoryRouter>,
     )
 
-    await user.click(screen.getByRole("button", { name: /solicitar contato/i }))
+    await user.click(screen.getByRole("button", { name: /agendar demonstração/i }))
 
     expect(await screen.findByText(/nome é obrigatório/i)).toBeInTheDocument()
     expect(screen.getByText(/e-mail é obrigatório/i)).toBeInTheDocument()
-    expect(screen.getByText(/empresa é obrigatória/i)).toBeInTheDocument()
+    expect(screen.getByText(/nome da loja é obrigatório/i)).toBeInTheDocument()
     expect(screen.getByText(/mensagem é obrigatória/i)).toBeInTheDocument()
   })
 
@@ -45,11 +45,11 @@ describe("ContactFormSection", () => {
       </MemoryRouter>,
     )
 
-    await user.type(screen.getByLabelText(/nome/i), "Matheus")
-    await user.type(screen.getByLabelText(/e-mail/i), "matheus@lypsyos.com.br")
-    await user.type(screen.getByLabelText(/empresa/i), "Lypsyos")
-    await user.type(screen.getByLabelText(/mensagem/i), "Quero avaliar o DBX-V4 para um fluxo industrial com peças dobradas.")
-    await user.click(screen.getByRole("button", { name: /solicitar contato/i }))
+    await user.type(screen.getByRole("textbox", { name: /^nome$/i }), "Matheus")
+    await user.type(screen.getByRole("textbox", { name: /e-mail/i }), "matheus@lypsyos.com.br")
+    await user.type(screen.getByRole("textbox", { name: /nome da loja\/empresa/i }), "Lypsyos")
+    await user.type(screen.getByRole("textbox", { name: /como podemos te ajudar\?/i }), "Quero avaliar o sistema para minha loja.")
+    await user.click(screen.getByRole("button", { name: /agendar demonstração/i }))
 
     expect(await screen.findByText(/mensagem enviada com sucesso/i)).toBeInTheDocument()
     expect(analyticsService.submitContactForm).toHaveBeenCalledTimes(1)

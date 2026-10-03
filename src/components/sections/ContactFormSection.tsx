@@ -60,12 +60,11 @@ export function ContactFormSection() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-10 flex flex-col items-center justify-center space-y-3 text-center">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">
-              Vamos identificar o próximo ganho do seu processo
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-ink">
+              Agende uma demonstração gratuita
             </h2>
-            <p className="max-w-[860px] text-neutral-600 md:text-lg/relaxed">
-              Fale com a Lypsyos para avaliar o encaixe dos nossos produtos, discutir um fluxo industrial
-              específico ou estruturar uma automação sob medida.
+            <p className="max-w-[860px] text-ink-soft md:text-lg/relaxed">
+              Fale com a equipe Lypsyos para conhecer nossos sistemas de gestão e entender como podemos ajudar sua loja a vender mais e controlar o estoque de forma simples.
             </p>
           </div>
         </div>
@@ -76,19 +75,18 @@ export function ContactFormSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Card className="border-neutral/20 bg-background shadow-lg">
+            <Card className="border-line bg-white shadow-lg">
               <CardHeader>
-                <CardTitle className="text-2xl text-primary">Fale com a Lypsyos</CardTitle>
-                <CardDescription className="text-neutral-600">
-                  Compartilhe seu contexto, desafio ou objetivo operacional. Retornaremos com um
-                  direcionamento técnico-comercial claro e prático.
+                <CardTitle className="text-2xl text-ink">Fale com a Lypsyos</CardTitle>
+                <CardDescription className="text-ink-soft">
+                  Deixe seus dados e entraremos em contato rapidamente para agendar uma apresentação sem compromisso.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium leading-none text-primary">Nome</label>
+                      <label htmlFor="name" className="text-sm font-medium leading-none text-ink">Nome</label>
                       <Input
                         id="name"
                         placeholder="Seu nome"
@@ -100,7 +98,7 @@ export function ContactFormSection() {
                       {errors.name && <p id="name-error" className="text-sm text-red-500">{errors.name.message}</p>}
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium leading-none text-primary">E-mail</label>
+                      <label htmlFor="email" className="text-sm font-medium leading-none text-ink">E-mail</label>
                       <Input
                         id="email"
                         type="email"
@@ -117,11 +115,11 @@ export function ContactFormSection() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="company" className="text-sm font-medium leading-none text-primary">Empresa</label>
+                    <label htmlFor="company" className="text-sm font-medium leading-none text-ink">Nome da Loja/Empresa</label>
                     <Input
                       id="company"
-                      placeholder="Nome da empresa"
-                      {...register("company", { required: "Empresa é obrigatória" })}
+                      placeholder="Sua loja"
+                      {...register("company", { required: "Nome da loja é obrigatório" })}
                       aria-invalid={Boolean(errors.company)}
                       aria-describedby={errors.company ? "company-error" : undefined}
                       className={errors.company ? "border-red-500" : ""}
@@ -129,20 +127,20 @@ export function ContactFormSection() {
                     {errors.company && <p id="company-error" className="text-sm text-red-500">{errors.company.message}</p>}
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium leading-none text-primary">Mensagem</label>
+                    <label htmlFor="message" className="text-sm font-medium leading-none text-ink">Como podemos te ajudar?</label>
                     <textarea
                       id="message"
                       rows={4}
-                      placeholder="Descreva seu processo, o gargalo atual ou o tipo de automação que você busca."
+                      placeholder="Descreva o que você precisa: controle de estoque, fluxo de caixa, ou ferramentas de marketing."
                       {...register("message", { required: "Mensagem é obrigatória" })}
                       aria-invalid={Boolean(errors.message)}
                       aria-describedby={errors.message ? "message-error" : undefined}
-                      className={`flex w-full rounded-md border border-neutral/30 bg-surface px-3 py-2 text-sm ring-offset-background placeholder:text-neutral focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${errors.message ? "border-red-500" : ""}`}
+                      className={`flex w-full rounded-xl border border-line bg-canvas px-3 py-2 text-[0.9375rem] text-ink transition-colors placeholder:text-ink-soft/60 focus-visible:border-brand focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand disabled:cursor-not-allowed disabled:opacity-50 ${errors.message ? "border-red-500" : ""}`}
                     />
                     {errors.message && <p id="message-error" className="text-sm text-red-500">{errors.message.message}</p>}
                   </div>
-                  <Button type="submit" disabled={isSubmitting} className="w-full">
-                    {isSubmitting ? "Enviando..." : <><Send className="h-4 w-4" /> Solicitar contato</>}
+                  <Button type="submit" disabled={isSubmitting} className="w-full h-11 text-base font-semibold">
+                    {isSubmitting ? "Enviando..." : <><Send className="size-5" /> Agendar Demonstração</>}
                   </Button>
                   {submitMessage && (
                     <p

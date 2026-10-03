@@ -1,21 +1,23 @@
 import { HeroSection } from "@/components/sections/HeroSection"
-import { ProductsOverviewSection } from "@/components/sections/ProductsOverviewSection"
-import { WhyLypsyosSection } from "@/components/sections/WhyLypsyosSection"
-import { ContactFormSection } from "@/components/sections/ContactFormSection"
+import { ProblemSolutionSection } from "@/components/sections/ProblemSolutionSection"
+import { FeaturesSection } from "@/components/sections/FeaturesSection"
+import { AudienceSection } from "@/components/sections/AudienceSection"
+import { FinalCtaSection } from "@/components/sections/FinalCtaSection"
 import { useDocumentMetadata } from "@/utils/useDocumentMetadata"
 
 export function Home() {
   useDocumentMetadata(
-    "Lypsyos | Software para orçamento, engenharia e produção industrial",
-    "A Lypsyos desenvolve software próprio para indústrias do aço e da metalmecânica: GeoQuote, Editor de Perfis e DBX-V4.",
+    "Lypsyos — Gestão de Estoque, Caixa e Marketing para o Comércio",
+    "Sistemas simples para controlar estoque, fluxo de caixa e fidelizar clientes. Ideal para varejo, conveniências, distribuidoras e comércios locais. Agende uma demonstração.",
   )
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
+    <main className="flex flex-col">
       <HeroSection />
-      <ProductsOverviewSection />
-      <WhyLypsyosSection />
-      <ContactFormSection />
+      <ProblemSolutionSection />
+      <FeaturesSection />
+      <AudienceSection />
+      <FinalCtaSection />
     </main>
   )
 }
