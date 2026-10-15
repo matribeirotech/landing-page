@@ -61,10 +61,10 @@ export function ContactFormSection() {
         <div className="mb-10 flex flex-col items-center justify-center space-y-3 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-ink">
-              Agende uma demonstração gratuita
+              Comece seu teste grátis de 30 dias
             </h2>
             <p className="max-w-[860px] text-ink-soft md:text-lg/relaxed">
-              Fale com a equipe Lypsyos para conhecer nossos sistemas de gestão e entender como podemos ajudar sua loja a vender mais e controlar o estoque de forma simples.
+              Fale com a equipe Lypsyos para conhecer a plataforma e ativar seu robô no WhatsApp. Sem necessidade de cartão de crédito e com configuração guiada em minutos.
             </p>
           </div>
         </div>
@@ -79,7 +79,7 @@ export function ContactFormSection() {
               <CardHeader>
                 <CardTitle className="text-2xl text-ink">Fale com a Lypsyos</CardTitle>
                 <CardDescription className="text-ink-soft">
-                  Deixe seus dados e entraremos em contato rapidamente para agendar uma apresentação sem compromisso.
+                  Deixe seus dados e entraremos em contato rapidamente para ativar sua conta ou agendar uma demonstração sem compromisso.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -118,7 +118,7 @@ export function ContactFormSection() {
                     <label htmlFor="company" className="text-sm font-medium leading-none text-ink">Nome da Loja/Empresa</label>
                     <Input
                       id="company"
-                      placeholder="Sua loja"
+                      placeholder="Nome do seu espaço ou salão"
                       {...register("company", { required: "Nome da loja é obrigatório" })}
                       aria-invalid={Boolean(errors.company)}
                       aria-describedby={errors.company ? "company-error" : undefined}
@@ -131,7 +131,7 @@ export function ContactFormSection() {
                     <textarea
                       id="message"
                       rows={4}
-                      placeholder="Descreva o que você precisa: controle de estoque, fluxo de caixa, ou ferramentas de marketing."
+                      placeholder="Conte um pouco do seu espaço (ex: manicure, barbearia, salão, clínica) e o que você quer automatizar."
                       {...register("message", { required: "Mensagem é obrigatória" })}
                       aria-invalid={Boolean(errors.message)}
                       aria-describedby={errors.message ? "message-error" : undefined}
@@ -140,7 +140,7 @@ export function ContactFormSection() {
                     {errors.message && <p id="message-error" className="text-sm text-red-500">{errors.message.message}</p>}
                   </div>
                   <Button type="submit" disabled={isSubmitting} className="w-full h-11 text-base font-semibold">
-                    {isSubmitting ? "Enviando..." : <><Send className="size-5" /> Agendar Demonstração</>}
+                    {isSubmitting ? "Enviando..." : <><Send className="size-5" /> Agendar Demonstração ou Teste Grátis</>}
                   </Button>
                   {submitMessage && (
                     <p

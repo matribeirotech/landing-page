@@ -9,6 +9,8 @@ import { trackEvent } from "@/services/analytics"
 const navItems = [
   { label: "Início", to: "/", id: "inicio" },
   { label: "Soluções", to: `/#${homeSections.solutions}`, id: "solucoes" },
+  { label: "Comparativo", to: `/#${homeSections.comparison}`, id: "comparativo" },
+  { label: "Planos", to: `/#${homeSections.pricing}`, id: "planos" },
   { label: "Para quem é", to: `/#${homeSections.audience}`, id: "para_quem_e" },
   { label: "Sobre", to: "/sobre", id: "sobre" },
   { label: "Contato", to: "/contato", id: "contato" },

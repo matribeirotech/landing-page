@@ -16,10 +16,10 @@ export function Footer() {
             <BrandMark inverse showSubtitle={false} />
           </Link>
           <p className="max-w-[34ch] text-sm leading-7 text-white/72">
-            Sistemas de gestão e marketing para o comércio. Mais controle, mais clientes, mais vendas.
+            Automação de agendamentos, robô no WhatsApp 24/7 e CRM inteligente para salões, barbearias, manicures e estética.
           </p>
-          <Link to="/contato" className={buttonVariants({ variant: "inverse", className: "w-fit" })}>
-            Agende uma demonstração <ArrowRight className="size-4" aria-hidden="true" />
+          <Link to="/contato" className={buttonVariants({ variant: "inverse", className: "w-fit font-bold" })}>
+            Começar 30 Dias Grátis <ArrowRight className="size-4" aria-hidden="true" />
           </Link>
         </div>
 
@@ -35,7 +35,9 @@ export function Footer() {
         <nav aria-labelledby="footer-company" className="flex flex-col gap-3">
           <h2 id="footer-company" className="font-heading text-base font-semibold text-white">Empresa</h2>
           <Link to="/sobre" className={linkClassName}>Sobre a Lypsyos</Link>
-          <Link to={`/#${homeSections.audience}`} className={linkClassName}>Para quem é</Link>
+          <Link to={`/#${homeSections.comparison}`} className={linkClassName}>Comparativo ROI</Link>
+          <Link to={`/#${homeSections.pricing}`} className={linkClassName}>Planos e Preços</Link>
+          <Link to={`/#${homeSections.audience}`} className={linkClassName}>Segmentos Atendidos</Link>
           <Link to="/produtos" className={linkClassName}>Todas as soluções</Link>
         </nav>
 

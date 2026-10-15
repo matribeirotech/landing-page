@@ -1,4 +1,15 @@
-import { ArrowDown, ArrowRight, Blocks, HeartHandshake, PackageCheck, PackageX, Puzzle, TrendingDown, Wallet, Megaphone } from "lucide-react"
+import {
+  ArrowDown,
+  ArrowRight,
+  Bot,
+  CalendarX2,
+  CalendarCheck2,
+  ClockAlert,
+  Flame,
+  MessageSquareWarning,
+  Sparkles,
+  Zap,
+} from "lucide-react"
 import { motion } from "motion/react"
 import { SectionHeading } from "@/components/ui/SectionHeading"
 import { homeSections } from "@/content/site"
@@ -6,50 +17,50 @@ import { homeSections } from "@/content/site"
 const pairs = [
   {
     pain: {
-      title: "Furos no estoque",
-      text: "Produto acaba sem aviso, mercadoria vence na prateleira e ninguém sabe ao certo o que tem no depósito.",
-      icon: PackageX,
+      title: "Horas perdidas no WhatsApp",
+      text: "Você interrompe o atendimento a cada 10 minutos para responder 'vou ver meu horário e te aviso', perdendo clientes que não querem esperar.",
+      icon: MessageSquareWarning,
     },
     solution: {
-      title: "Estoque em tempo real",
-      text: "Cada venda atualiza o saldo na hora, e o sistema avisa antes de faltar ou vencer.",
-      icon: PackageCheck,
+      title: "Robô Atendente 24/7",
+      text: "O robô responde em 2 segundos, consulta horários livres e fecha agendamentos sozinho — de madrugada ou no meio do seu atendimento.",
+      icon: Bot,
     },
   },
   {
     pain: {
-      title: "Caixa sem previsibilidade",
-      text: "Você vende bem, mas no fim do mês não sabe para onde foi o dinheiro.",
-      icon: TrendingDown,
+      title: "Caderno, papel e mensagens soltas",
+      text: "Anotações rasuradas, horários perdidos e nenhuma previsibilidade de quanto você realmente vai faturar no fim do mês.",
+      icon: CalendarX2,
     },
     solution: {
-      title: "Fluxo de caixa claro",
-      text: "Entradas, saídas e contas a pagar em uma tela só, com a previsão das próximas semanas.",
-      icon: Wallet,
+      title: "Central de Gestão & CRM 3-em-1",
+      text: "Visualize seu dia em Cartões, Lista ou Tabela. Faturamento do dia e da semana calculados automaticamente na palma da sua mão.",
+      icon: CalendarCheck2,
     },
   },
   {
     pain: {
-      title: "Marketing no escuro",
-      text: "Promoção feita no improviso, cliente que compra uma vez e nunca mais volta.",
-      icon: Megaphone,
+      title: "Conflito de horários (Overbooking)",
+      text: "Marcar duas clientes no mesmo horário por distração na correria do dia a dia, gerando constrangimento e atrasos.",
+      icon: Flame,
     },
     solution: {
-      title: "Marketing que traz cliente de volta",
-      text: "Campanhas, cupons e programas de fidelidade baseados no que seu cliente realmente compra.",
-      icon: HeartHandshake,
+      title: "Zero risco de marcação dupla",
+      text: "O robô consulta a agenda em milissegundos. Horários já ocupados somem das opções, garantindo 100% de precisão.",
+      icon: Zap,
     },
   },
   {
     pain: {
-      title: "Sistemas complicados e caros",
-      text: "Ferramentas cheias de botões que ninguém na equipe consegue usar.",
-      icon: Puzzle,
+      title: "Clientes que esquecem e faltam",
+      text: "Cliente que não aparece, cadeira vazia de surpresa e você perdendo dinheiro sem tempo hábil para encaixar outra pessoa.",
+      icon: ClockAlert,
     },
     solution: {
-      title: "Simples e modular",
-      text: "Comece pelo que você precisa hoje e ative novos módulos quando a loja crescer.",
-      icon: Blocks,
+      title: "Lembretes & Google Agenda",
+      text: "Resumo matinal diário no celular, alertas sonoros sincronizados com Google Calendar e disparo de confirmação no WhatsApp com 1 clique.",
+      icon: Sparkles,
     },
   },
 ]
@@ -67,16 +78,16 @@ export function ProblemSolutionSection() {
           eyebrow="Por que a Lypsyos"
           title={
             <>
-              Sua loja não precisa de mais trabalho. Precisa de <span className="text-brand">mais controle.</span>
+              Sua agenda não precisa de mais papel. Precisa de <span className="text-brand">automação inteligente.</span>
             </>
           }
-          description="Todo comerciante conhece essa rotina: anotar no caderno, conferir na planilha e torcer para o caixa fechar. A gente sabe — e criou um jeito mais leve de cuidar do seu negócio."
+          description="Profissionais de beleza perdem até 4 horas por dia apenas respondendo mensagens sobre horários. Veja a diferença entre a rotina manual e a rotina com o Lypsyos."
         />
 
         <div className="mt-10 hidden grid-cols-[1fr_auto_1fr] items-center gap-x-6 px-1 text-sm font-semibold uppercase tracking-[0.08em] md:grid">
-          <p className="text-ink-soft">Sem a Lypsyos</p>
+          <p className="text-ink-soft">Rotina Manual (Caderno / WhatsApp Comum)</p>
           <span className="w-10" />
-          <p className="text-growth-text">Com a Lypsyos</p>
+          <p className="text-growth-text">Com a Plataforma Lypsyos</p>
         </div>
 
         <ul className="mt-6 flex flex-col gap-5 md:gap-4">
@@ -122,8 +133,8 @@ export function ProblemSolutionSection() {
         </ul>
 
         <p className="mx-auto mt-12 max-w-2xl text-center font-heading text-xl font-semibold leading-snug text-ink md:text-2xl">
-          Tecnologia rápida, telas simples e suporte de verdade.{" "}
-          <span className="text-brand">É assim que a Lypsyos trabalha.</span>
+          Atendimento automático, agenda cheia e você com tempo livre para descansar.{" "}
+          <span className="text-brand">É isso que o Lypsyos entrega todos os dias.</span>
         </p>
       </div>
     </section>

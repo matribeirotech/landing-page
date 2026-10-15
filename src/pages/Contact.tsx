@@ -6,8 +6,8 @@ import { useDocumentMetadata } from "@/utils/useDocumentMetadata"
 
 export function Contact() {
   useDocumentMetadata(
-    "Contato | Lypsyos",
-    "Entre em contato com a Lypsyos para agendar uma demonstração dos nossos sistemas para o varejo.",
+    "Contato & Teste Grátis | Lypsyos",
+    "Entre em contato com a Lypsyos para começar seu teste grátis de 30 dias ou agendar uma demonstração do robô de agendamentos no WhatsApp.",
   )
 
   return (
@@ -24,8 +24,7 @@ export function Contact() {
               Fale com a <span className="text-brand">Lypsyos</span>
             </h1>
             <p className="mx-auto max-w-[860px] text-ink-soft md:text-lg/relaxed">
-              Vamos entender o momento da sua loja e apresentar a solução ideal para você controlar seu estoque, 
-              otimizar seu caixa e vender mais.
+              Vamos entender a rotina do seu espaço e ativar seu robô no WhatsApp para preencher sua agenda 24 horas por dia.
             </p>
           </motion.div>
         </div>
@@ -33,18 +32,18 @@ export function Contact() {
         <div className="mb-10 grid gap-5 md:grid-cols-3">
           {[
             {
-              title: "Diagnóstico da loja",
-              description: "Entendemos seus principais desafios diários com estoque, vendas ou caixa.",
+              title: "Ativação em 2 minutos",
+              description: "Conecte seu WhatsApp por QR Code e comece a atender sem atrito.",
               icon: Workflow,
             },
             {
-              title: "Demonstração ao vivo",
-              description: "Apresentamos o sistema funcionando na prática, simulando a rotina do seu negócio.",
+              title: "Demonstração guiada",
+              description: "Mostramos o robô e o painel funcionando na prática para o seu nicho.",
               icon: Presentation,
             },
             {
-              title: "Proposta sob medida",
-              description: "Montamos um plano com os módulos que você realmente precisa, sem complicação.",
+              title: "30 dias grátis",
+              description: "Teste completo sem compromisso e sem precisar de cartão de crédito.",
               icon: Cog,
             },
           ].map((info, index) => (

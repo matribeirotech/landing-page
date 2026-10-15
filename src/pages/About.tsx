@@ -6,8 +6,8 @@ import { useDocumentMetadata } from "@/utils/useDocumentMetadata"
 
 export function About() {
   useDocumentMetadata(
-    "Sobre a Lypsyos | Sistemas para o Varejo",
-    "Conheça a proposta da Lypsyos para facilitar a gestão do seu comércio.",
+    "Sobre a Lypsyos | Plataforma de Agendamentos & WhatsApp",
+    "Conheça a proposta da Lypsyos: automação de agendamentos, robô no WhatsApp 24/7 e CRM para profissionais de beleza e estética.",
   )
 
   return (
@@ -24,8 +24,7 @@ export function About() {
               Sobre a <span className="text-brand">Lypsyos</span>
             </h1>
             <p className="mx-auto max-w-[860px] text-ink-soft md:text-lg/relaxed">
-              A Lypsyos atua no encontro entre tecnologia e realidade do varejo para transformar
-              processos complexos e trabalhosos em rotinas simples, ágeis e organizadas.
+              Desenvolvemos a plataforma definitiva de automação de agendamentos, robô no WhatsApp 24/7 e CRM inteligente para profissionais de beleza, estética e bem-estar.
             </p>
           </motion.div>
         </div>
@@ -42,12 +41,10 @@ export function About() {
               Nossa missão
             </h2>
             <p className="text-ink-soft md:text-base leading-7">
-              A Lypsyos nasceu para reduzir atritos entre o balcão de vendas, o estoque e o financeiro do seu comércio. 
-              Nosso trabalho é transformar tarefas demoradas ou confusas em fluxos rápidos que deixam o dono da loja focar no que importa: crescer e atender bem.
+              A Lypsyos nasceu para eliminar o atrito de responder mensagens manuais no WhatsApp, conferir horários na folha de papel ou perder clientes durante o horário de atendimento.
             </p>
             <p className="text-ink-soft md:text-base leading-7">
-              Isso acontece através do nosso sistema modular de gestão, desenhado especialmente para a realidade 
-              do comércio local, conveniências e lojas de bairro.
+              Operamos como um <strong>gerente virtual 24 horas por dia</strong>, garantindo agenda cheia, faturamento previsível e profissionalismo de alto padrão para manicures, nail designers, barbearias, salões de beleza, clínicas de estética e spas.
             </p>
           </motion.div>
           <motion.div
@@ -62,14 +59,13 @@ export function About() {
               <div className="rounded-2xl border border-line bg-white px-4 py-3.5">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand">Como pensamos</p>
                 <p className="mt-2 text-sm text-ink-soft">
-                  Primeiro entendemos a rotina e os maiores furos do seu negócio. Depois definimos a melhor combinação 
-                  de módulos para resolver isso rápido.
+                  Criamos uma experiência rápida e fluida: a cliente agenda em menos de 1 minuto pelo WhatsApp, sem precisar baixar aplicativos ou criar logins complexos.
                 </p>
               </div>
               <div className="rounded-2xl border border-line bg-white px-4 py-3.5">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand">Como entregamos</p>
                 <p className="mt-2 text-sm text-ink-soft">
-                  Evoluímos a operação por etapas, com implantação fácil e sem interromper suas vendas no dia a dia.
+                  Ativação em 2 minutos via QR Code do WhatsApp, aplicativo móvel instalável (PWA) e acompanhamento próximo da nossa equipe.
                 </p>
               </div>
             </div>
@@ -79,18 +75,18 @@ export function About() {
         <div className="grid gap-5 md:grid-cols-3">
           {[
             {
-              title: "Tecnologia acessível",
-              description: "Criamos soluções que nascem de problemas reais de lojistas, e não de sistemas complicados e burocráticos.",
+              title: "Automação Humanizada",
+              description: "Robô inteligente no WhatsApp com URA rápida que assume o nome e a identidade visual do seu espaço.",
               icon: Lightbulb,
             },
             {
-              title: "Foco na rotina",
-              description: "Entendemos a realidade de quem abre a loja todo dia para propor ferramentas práticas.",
+              title: "Simplicidade Mobile-First",
+              description: "Painel de controle visual 3-em-1 (Cartões, Lista, Tabela), disparo com 1 clique (wa.me) e resumo matinal diário.",
               icon: Settings2,
             },
             {
-              title: "Visão de negócio",
-              description: "Nosso objetivo é melhorar seus resultados como um todo: do estoque controlado até a fidelização de clientes.",
+              title: "Segurança de Nível Bancário",
+              description: "Isolamento multitenant no Supabase com Row-Level Security (RLS) para blindar totalmente seus dados e faturamento.",
               icon: Factory,
             },
           ].map((value, index) => (

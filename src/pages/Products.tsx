@@ -11,8 +11,8 @@ export function Products() {
   const navigate = useNavigate()
 
   useDocumentMetadata(
-    "Soluções | Lypsyos",
-    "Conheça os módulos da Lypsyos: Controle de Estoque, Fluxo de Caixa e Ferramentas de Marketing para o seu comércio.",
+    "Módulos & Soluções | Lypsyos",
+    "Conheça os módulos do ecossistema Lypsyos: Robô WhatsApp 24/7, Painel CRM, Aplicativo Instalável (PWA), Notificações Push e Google Calendar.",
   )
 
   function goToProduct(slug: string) {
@@ -37,13 +37,13 @@ export function Products() {
             transition={{ duration: 0.6 }}
             className="space-y-3"
           >
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-brand">Soluções modulares</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-brand">Ecossistema de Soluções</p>
             <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl text-ink">
-              Tudo para sua loja <span className="text-growth-text">crescer e lucrar</span>
+              Tudo para seu espaço <span className="text-growth-text">lotar a agenda e lucrar</span>
             </h1>
             <p className="mx-auto max-w-[700px] text-ink-soft md:text-lg">
-              Conheça as ferramentas da Lypsyos desenvolvidas para simplificar o seu estoque,
-              dar previsibilidade ao seu caixa e trazer mais clientes.
+              Conheça os módulos do Lypsyos desenvolvidos para atender clientes 24/7 no WhatsApp,
+              eliminar o caderno e dar previsibilidade ao seu faturamento.
             </p>
           </motion.div>
         </div>

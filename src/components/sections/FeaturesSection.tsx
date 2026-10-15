@@ -25,13 +25,13 @@ export function FeaturesSection() {
       <div className="container mx-auto px-4 md:px-6">
         <SectionHeading
           titleId="features-title"
-          eyebrow="Soluções"
+          eyebrow="Ecossistema Completo"
           title={
             <>
-              Três pilares para organizar sua loja e <span className="text-growth-text">acelerar suas vendas</span>
+              Tudo o que seu espaço precisa para <span className="text-growth-text">lotar a agenda e lucrar mais</span>
             </>
           }
-          description="Use um módulo ou combine os três. Tudo conversa entre si — e com você, onde estiver."
+          description="Robô inteligente no WhatsApp, painel CRM visual, aplicativo instalável e alertas diários. Mais que uma agenda: o seu gerente virtual 24 horas por dia."
         />
 
         <div className="mt-14 flex flex-col gap-20 md:mt-20 md:gap-28">
@@ -59,13 +59,22 @@ export function FeaturesSection() {
                     <product.icon className="size-7" aria-hidden="true" />
                   </span>
                   <div className="space-y-2">
-                    <h3 id={`feature-${product.slug}`} className="text-[1.375rem] font-semibold leading-snug md:text-[1.75rem]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+                      {product.category}
+                    </p>
+                    <h3 id={`feature-${product.slug}`} className="text-[1.375rem] font-bold leading-snug md:text-[1.75rem] text-ink">
                       {product.name}
                     </h3>
-                    <p className="font-heading text-lg font-semibold text-brand">{product.tagline}</p>
+                    <p className="font-heading text-lg font-semibold text-growth-text">{product.tagline}</p>
                   </div>
                   <p className="text-base leading-relaxed text-ink-soft md:text-lg">{product.description}</p>
-                  <ul className="grid gap-3">
+                  
+                  {/* Citação de Benefício */}
+                  <blockquote className="rounded-xl border-l-4 border-brand bg-canvas p-3.5 text-sm font-medium text-ink italic">
+                    &ldquo;{product.benefit}&rdquo;
+                  </blockquote>
+
+                  <ul className="grid gap-2.5">
                     {product.highlights.map((item) => (
                       <li key={item} className="flex items-start gap-3 text-[0.9375rem] text-ink md:text-base">
                         <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-growth" aria-hidden="true" />
@@ -73,12 +82,13 @@ export function FeaturesSection() {
                       </li>
                     ))}
                   </ul>
+
                   <Link
                     to={`/produtos/${product.slug}`}
-                    className={buttonVariants({ variant: "link", className: "w-fit px-0" })}
+                    className={buttonVariants({ variant: "link", className: "w-fit px-0 font-semibold text-brand" })}
                     onClick={() => trackSolutionClick(`saiba_mais_${product.slug}`)}
                   >
-                    Saiba mais sobre {product.category.toLowerCase()}
+                    Ver detalhes completos do módulo
                     <ArrowRight className="size-4" aria-hidden="true" />
                   </Link>
                 </motion.div>
@@ -106,14 +116,21 @@ export function FeaturesSection() {
           })}
         </div>
 
-        <div className="mt-20 flex justify-center">
+        <div className="mt-20 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             to="/contato"
-            className={buttonVariants({ size: "lg" })}
-            onClick={() => trackSolutionClick("ver_modulos_funcionando")}
+            className={buttonVariants({ size: "lg", className: "shadow-lg shadow-brand/20" })}
+            onClick={() => trackSolutionClick("comecar_teste_gratis_features")}
           >
-            Quero ver os módulos funcionando
+            Começar Teste Grátis de 30 Dias
             <ArrowRight className="size-5" aria-hidden="true" />
+          </Link>
+          <Link
+            to="/produtos"
+            className={buttonVariants({ size: "lg", variant: "outline" })}
+            onClick={() => trackSolutionClick("todas_as_solucoes")}
+          >
+            Ver matriz de todos os produtos
           </Link>
         </div>
       </div>

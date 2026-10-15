@@ -14,16 +14,16 @@ export function ProductDetail() {
   const product = getProductBySlug(slug)
 
   useDocumentMetadata(
-    product ? `${product.name} | Lypsyos` : "Soluções | Lypsyos",
+    product ? `${product.name} | Lypsyos` : "Módulo | Lypsyos",
     product?.description ??
-      "Conheça as soluções da Lypsyos para gestão, caixa e marketing no varejo.",
+      "Conheça as soluções da Lypsyos para agendamentos automáticos, WhatsApp e CRM de beleza e estética.",
   )
 
   if (!product) {
     return <Navigate to="/produtos" replace />
   }
 
-  const primaryCtaLabel = "Solicitar uma demonstração"
+  const primaryCtaLabel = "Começar Teste Grátis de 30 Dias"
   const secondaryCtaLabel = "Falar com a equipe"
   const Icon = product.icon
 
@@ -70,6 +70,11 @@ export function ProductDetail() {
                 <p className="max-w-[620px] text-[15px] leading-7 text-ink-soft md:text-lg">
                   {product.description}
                 </p>
+
+                {/* Destaque do benefício */}
+                <div className="rounded-2xl border-l-4 border-brand bg-canvas p-4 text-sm font-medium text-ink italic">
+                  &ldquo;{product.benefit}&rdquo;
+                </div>
               </div>
 
               <ul className="grid gap-2.5">
@@ -123,10 +128,10 @@ export function ProductDetail() {
           <div className="rounded-[28px] border border-line bg-canvas px-6 py-10 text-center shadow-sm md:px-10 md:py-14">
             <p className={cn("text-sm font-semibold uppercase tracking-[0.28em]", product.tone === "growth" ? "text-growth-text" : "text-brand")}>Próximo passo</p>
             <h2 className="mx-auto mt-3 max-w-[36ch] text-2xl font-bold tracking-tight text-ink sm:text-3xl">
-              Vamos conversar sobre {product.category.toLowerCase()} na sua loja?
+              Vamos ativar o {product.name} no seu espaço?
             </h2>
             <p className="mx-auto mt-3 max-w-[620px] text-sm leading-7 text-ink-soft md:text-base">
-              Conte um pouco da sua rotina atual e avaliamos juntos onde a Lypsyos pode gerar mais ganho.
+              Comece agora seu teste grátis de 30 dias sem compromisso. Nossa equipe ajuda você a configurar tudo em 2 minutos.
             </p>
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button size="lg" onClick={() => goToContact(`cta_final_${product.slug}`)}>

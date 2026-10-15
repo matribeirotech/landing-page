@@ -1,11 +1,21 @@
 import type { ComponentType } from "react"
 import type { SolutionMockup } from "@/content/products"
-import { CashFlowMockup, MarketingMockup, StockMockup } from "@/components/mockups/DeviceMockups"
+import {
+  WhatsAppBotMockup,
+  DashboardCrmMockup,
+  PwaMobileMockup,
+  PushAndCalendarMockup,
+  CatalogCustomMockup,
+  SecurityGuardMockup,
+} from "@/components/mockups/DeviceMockups"
 
 const mockups = {
-  stock: StockMockup,
-  cashflow: CashFlowMockup,
-  marketing: MarketingMockup,
+  "whatsapp-bot": WhatsAppBotMockup,
+  "dashboard-crm": DashboardCrmMockup,
+  "pwa-mobile": PwaMobileMockup,
+  "push-calendar": PushAndCalendarMockup,
+  "catalog-custom": CatalogCustomMockup,
+  "security-guard": SecurityGuardMockup,
 } satisfies Record<SolutionMockup, ComponentType<{ className?: string }>>
 
 export function SolutionMockupView({ type, className }: { type: SolutionMockup; className?: string }) {
