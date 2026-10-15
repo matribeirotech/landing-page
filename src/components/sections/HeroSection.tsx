@@ -45,11 +45,11 @@ export function HeroSection() {
         >
           <p className="inline-flex w-fit items-center gap-2 rounded-full bg-brand-soft px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-brand md:text-[0.8125rem]">
             <span className="size-2 rounded-full bg-growth animate-pulse" aria-hidden="true" />
-            Robô WhatsApp 24/7 &bull; CRM &bull; App Instalável
+            Zenda by Lypsyos &bull; Robô WhatsApp 24/7 &bull; CRM &bull; App Instalável
           </p>
 
           <h1 className="text-[2.25rem] font-bold leading-[1.12] tracking-tight text-ink sm:text-5xl lg:text-[3.5rem] lg:leading-[1.08]">
-            Enquanto você atende uma cliente, o Lypsyos{" "}
+            Enquanto você atende uma cliente, o Zenda{" "}
             <span className="relative whitespace-nowrap text-growth-text">
               agenda as próximas cinco.
               <svg
@@ -70,9 +70,7 @@ export function HeroSection() {
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-ink-soft md:text-lg">
-            O fim do <em>&ldquo;vou ver meu horário e te respondo&rdquo;</em>. Tenha um{" "}
-            <strong className="font-semibold text-ink">robô atendente no WhatsApp</strong> que verifica
-            disponibilidade em tempo real, preenche sua agenda 24/7 e sincroniza tudo com seu CRM e celular.
+            O fim do <em>&ldquo;vou ver meu horário e te respondo&rdquo;</em>. O <strong>Zenda</strong> é o sistema de agendamento com robô no WhatsApp que verifica disponibilidade em tempo real, preenche sua agenda 24/7 e sincroniza tudo com seu CRM e celular.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row">

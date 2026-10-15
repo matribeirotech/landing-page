@@ -1,30 +1,41 @@
-import { HeroSection } from "@/components/sections/HeroSection"
-import { ProblemSolutionSection } from "@/components/sections/ProblemSolutionSection"
-import { FeaturesSection } from "@/components/sections/FeaturesSection"
-import { ComparisonSection } from "@/components/sections/ComparisonSection"
-import { PricingSection } from "@/components/sections/PricingSection"
-import { AudienceSection } from "@/components/sections/AudienceSection"
-import { TechStackSection } from "@/components/sections/TechStackSection"
+import { LypsyosHeroSection } from "@/components/sections/LypsyosHeroSection"
+import { ZendaSpotlightSection } from "@/components/sections/ZendaSpotlightSection"
+import { LypsyosSolutionsSection } from "@/components/sections/LypsyosSolutionsSection"
+import { LypsyosValuesSection } from "@/components/sections/LypsyosValuesSection"
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection"
 import { useDocumentMetadata } from "@/utils/useDocumentMetadata"
 
 export function Home() {
-  useDocumentMetadata(
-    "Lypsyos — Automação de Agendamentos e Robô no WhatsApp para Beleza e Estética",
-    "Transforme seu WhatsApp em uma máquina de agendamentos 24/7. CRM inteligente, aplicativo móvel e agendamento sem conflitos para salões, barbearias, manicures e clínicas. Teste grátis.",
-  )
+  useDocumentMetadata({
+    title: "Lypsyos — Tecnologia, Sistemas Inteligentes e Automação de Negócios",
+    description:
+      "A Lypsyos desenvolve plataformas digitais, sistemas de gestão e automações inteligentes. Conheça o Zenda: nosso CRM de agendamentos com robô no WhatsApp 24/7.",
+    keywords:
+      "lypsyos, zenda, crm de agendamento, crm para o whatsapp, sistema de agendamento, automação whatsapp, software para salão, sistema para barbearia, manicure",
+    canonicalPath: "/",
+    ogType: "website",
+    schemaJson: {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Lypsyos",
+      url: "https://lypsyos.com.br",
+      logo: "https://lypsyos.com.br/favicon.ico",
+      description:
+        "Plataformas digitais, sistemas de gestão inteligentes e automações para negócios modernos.",
+      brand: {
+        "@type": "Brand",
+        name: "Zenda",
+      },
+    },
+  })
 
   return (
     <main className="flex flex-col">
-      <HeroSection />
-      <ProblemSolutionSection />
-      <FeaturesSection />
-      <ComparisonSection />
-      <PricingSection />
-      <AudienceSection />
-      <TechStackSection />
+      <LypsyosHeroSection />
+      <ZendaSpotlightSection />
+      <LypsyosSolutionsSection />
+      <LypsyosValuesSection />
       <FinalCtaSection />
     </main>
   )
 }
-

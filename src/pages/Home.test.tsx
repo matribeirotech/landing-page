@@ -12,25 +12,24 @@ describe("Home", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /enquanto você atende uma cliente, o lypsyos agenda as próximas cinco/i,
+        name: /aceleramos seu negócio com sistemas modernos e automação inteligente/i,
       }),
     ).toBeInTheDocument()
-    
-    // Check for solutions section
+
+    // Check for Zenda spotlight section
     expect(
-      screen.getByRole("heading", { name: /tudo o que seu espaço precisa para lotar a agenda/i }),
+      screen.getByRole("heading", { name: /conheça o zenda/i }),
     ).toBeInTheDocument()
 
-    // Check for comparison section
     expect(
-      screen.getByRole("heading", { name: /por que a lypsyos é diferente de tudo o que você já viu/i }),
+      screen.getByRole("link", { name: /conhecer o produto zenda/i }),
     ).toBeInTheDocument()
 
-    // Check for pricing section
+    // Check for solutions/engineering section
     expect(
-      screen.getByRole("heading", { name: /investimento acessível com 30 dias grátis para testar/i }),
+      screen.getByRole("heading", { name: /engenharia de software focada em resultados reais/i }),
     ).toBeInTheDocument()
-    
+
     // Ensure old industrial text is gone
     expect(
       screen.queryByRole("heading", { name: /software próprio para orçamento, engenharia e produção/i }),

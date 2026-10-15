@@ -25,6 +25,9 @@ export function Footer() {
 
         <nav aria-labelledby="footer-solutions" className="flex flex-col gap-3">
           <h2 id="footer-solutions" className="font-heading text-base font-semibold text-white">Soluções</h2>
+          <Link to="/zenda" className={`${linkClassName} font-semibold text-growth`}>
+            Zenda — Robô & CRM WhatsApp
+          </Link>
           {products.map((product) => (
             <Link key={product.slug} to={`/produtos/${product.slug}`} className={linkClassName}>
               {product.name}
@@ -33,12 +36,13 @@ export function Footer() {
         </nav>
 
         <nav aria-labelledby="footer-company" className="flex flex-col gap-3">
-          <h2 id="footer-company" className="font-heading text-base font-semibold text-white">Empresa</h2>
+          <h2 id="footer-company" className="font-heading text-base font-semibold text-white">Navegação</h2>
+          <Link to="/" className={linkClassName}>Início (Lypsyos)</Link>
+          <Link to="/zenda" className={linkClassName}>Produto Zenda</Link>
+          <Link to="/comparativo" className={linkClassName}>Comparativo ROI</Link>
+          <Link to="/planos" className={linkClassName}>Planos e Preços</Link>
+          <Link to="/para-quem-e" className={linkClassName}>Segmentos Atendidos</Link>
           <Link to="/sobre" className={linkClassName}>Sobre a Lypsyos</Link>
-          <Link to={`/#${homeSections.comparison}`} className={linkClassName}>Comparativo ROI</Link>
-          <Link to={`/#${homeSections.pricing}`} className={linkClassName}>Planos e Preços</Link>
-          <Link to={`/#${homeSections.audience}`} className={linkClassName}>Segmentos Atendidos</Link>
-          <Link to="/produtos" className={linkClassName}>Todas as soluções</Link>
         </nav>
 
         <div className="flex flex-col gap-3">

@@ -29,6 +29,26 @@ const Contact = lazy(async () => {
   return { default: module.Contact }
 })
 
+const ZendaProduct = lazy(async () => {
+  const module = await import("./pages/ZendaProduct")
+  return { default: module.ZendaProduct }
+})
+
+const Comparison = lazy(async () => {
+  const module = await import("./pages/Comparison")
+  return { default: module.Comparison }
+})
+
+const Pricing = lazy(async () => {
+  const module = await import("./pages/Pricing")
+  return { default: module.Pricing }
+})
+
+const Audience = lazy(async () => {
+  const module = await import("./pages/Audience")
+  return { default: module.Audience }
+})
+
 function RouteFallback() {
   return (
     <div className="flex min-h-[40vh] items-center justify-center px-6 text-center text-sm text-neutral-600">
@@ -47,6 +67,38 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<RouteFallback />}>
             <Home />
+          </Suspense>
+        ),
+      },
+      {
+        path: "zenda",
+        element: (
+          <Suspense fallback={<RouteFallback />}>
+            <ZendaProduct />
+          </Suspense>
+        ),
+      },
+      {
+        path: "comparativo",
+        element: (
+          <Suspense fallback={<RouteFallback />}>
+            <Comparison />
+          </Suspense>
+        ),
+      },
+      {
+        path: "planos",
+        element: (
+          <Suspense fallback={<RouteFallback />}>
+            <Pricing />
+          </Suspense>
+        ),
+      },
+      {
+        path: "para-quem-e",
+        element: (
+          <Suspense fallback={<RouteFallback />}>
+            <Audience />
           </Suspense>
         ),
       },
@@ -84,7 +136,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+])
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
