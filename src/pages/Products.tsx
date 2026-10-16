@@ -2,6 +2,7 @@ import { motion } from "motion/react"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
+import { LypsyosIconBadge } from "@/components/ui/LypsyosIconBadge"
 import { products } from "@/content/products"
 import { trackEvent } from "@/services/analytics"
 import { useDocumentMetadata } from "@/utils/useDocumentMetadata"
@@ -28,7 +29,7 @@ export function Products() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col py-16 md:py-20 bg-white">
+    <main className="flex min-h-screen flex-col overflow-hidden py-16 md:py-20 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-12 flex flex-col items-center justify-center space-y-4 text-center">
           <motion.div
@@ -38,7 +39,7 @@ export function Products() {
             className="space-y-3"
           >
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-brand">Ecossistema de Soluções</p>
-            <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl text-ink">
+            <h1 className="text-3xl font-extrabold tracking-tighter sm:text-5xl text-ink">
               Tudo para seu espaço <span className="text-growth-text">lotar a agenda e lucrar</span>
             </h1>
             <p className="mx-auto max-w-[700px] text-ink-soft md:text-lg">
@@ -56,13 +57,18 @@ export function Products() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="flex"
+              className="flex min-w-0"
             >
-              <Card className="flex h-full w-full flex-col overflow-hidden border-line bg-canvas shadow-md transition-shadow hover:shadow-xl">
+              <Card className="group flex h-full w-full flex-col overflow-hidden border-line bg-canvas shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-xl">
                 <div className="flex items-center justify-between gap-3 border-b border-line bg-white px-6 py-5">
-                  <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-brand/20 bg-brand-soft text-brand">
-                    <product.icon className="h-6 w-6" />
-                  </div>
+                  <LypsyosIconBadge
+                    icon={product.icon}
+                    tone={product.tone === "growth" ? "growth" : "brand"}
+                    size="lg"
+                  />
+                  <span className="rounded-full bg-brand-soft/80 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-brand">
+                    Módulo Lypsyos
+                  </span>
                 </div>
                 <CardHeader>
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand">{product.category}</p>

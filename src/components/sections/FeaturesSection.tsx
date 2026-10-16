@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react"
 import { motion } from "motion/react"
 import { SectionHeading } from "@/components/ui/SectionHeading"
 import { buttonVariants } from "@/components/ui/Button"
+import { LypsyosIconBadge } from "@/components/ui/LypsyosIconBadge"
 import { SolutionMockupView } from "@/components/mockups/SolutionMockupView"
 import { products } from "@/content/products"
 import { homeSections } from "@/content/site"
@@ -21,7 +22,7 @@ function trackSolutionClick(label: string) {
 
 export function FeaturesSection() {
   return (
-    <section id={homeSections.solutions} aria-labelledby="features-title" className="w-full bg-white py-16 md:py-24">
+    <section id={homeSections.solutions} aria-labelledby="features-title" className="w-full overflow-hidden bg-white py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
         <SectionHeading
           titleId="features-title"
@@ -48,16 +49,13 @@ export function FeaturesSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.5 }}
-                  className={cn("flex flex-col gap-5", reversed && "lg:order-2")}
+                  className={cn("min-w-0 flex flex-col gap-5", reversed && "lg:order-2")}
                 >
-                  <span
-                    className={cn(
-                      "flex size-14 items-center justify-center rounded-2xl",
-                      product.tone === "growth" ? "bg-growth-soft text-growth-text" : "bg-brand-soft text-brand",
-                    )}
-                  >
-                    <product.icon className="size-7" aria-hidden="true" />
-                  </span>
+                  <LypsyosIconBadge
+                    icon={product.icon}
+                    tone={product.tone === "growth" ? "growth" : "brand"}
+                    size="xl"
+                  />
                   <div className="space-y-2">
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand">
                       {product.category}

@@ -12,6 +12,7 @@ import {
 } from "lucide-react"
 import { motion } from "motion/react"
 import { SectionHeading } from "@/components/ui/SectionHeading"
+import { LypsyosIconBadge } from "@/components/ui/LypsyosIconBadge"
 import { homeSections } from "@/content/site"
 
 const pairs = [
@@ -70,7 +71,7 @@ export function ProblemSolutionSection() {
     <section
       id={homeSections.why}
       aria-labelledby="problem-solution-title"
-      className="w-full bg-canvas py-16 md:py-24"
+      className="w-full overflow-hidden bg-canvas py-16 md:py-24"
     >
       <div className="container mx-auto px-4 md:px-6">
         <SectionHeading
@@ -100,11 +101,9 @@ export function ProblemSolutionSection() {
               transition={{ duration: 0.45, delay: index * 0.06 }}
               className="grid items-stretch gap-3 md:grid-cols-[1fr_auto_1fr] md:gap-6"
             >
-              <div className="flex gap-4 rounded-card border border-line bg-white p-5 md:p-6">
-                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-danger-soft text-danger">
-                  <pair.pain.icon className="size-5.5" aria-hidden="true" />
-                </span>
-                <div>
+              <div className="group flex gap-4 rounded-card border border-line bg-white p-5 md:p-6">
+                <LypsyosIconBadge icon={pair.pain.icon} tone="danger" size="md" />
+                <div className="min-w-0">
                   <p className="text-xs font-semibold uppercase tracking-[0.08em] text-ink-muted md:hidden">Sem a Lypsyos</p>
                   <h3 className="text-lg font-semibold text-ink">{pair.pain.title}</h3>
                   <p className="mt-1 text-[0.9375rem] leading-relaxed text-ink-soft">{pair.pain.text}</p>
@@ -118,11 +117,9 @@ export function ProblemSolutionSection() {
                 </span>
               </span>
 
-              <div className="flex gap-4 rounded-card border border-growth/25 bg-growth-soft p-5 md:p-6">
-                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-white text-growth-text shadow-sm">
-                  <pair.solution.icon className="size-5.5" aria-hidden="true" />
-                </span>
-                <div>
+              <div className="group flex gap-4 rounded-card border border-growth/25 bg-growth-soft p-5 md:p-6">
+                <LypsyosIconBadge icon={pair.solution.icon} tone="growth" size="md" />
+                <div className="min-w-0">
                   <p className="text-xs font-semibold uppercase tracking-[0.08em] text-growth-text md:hidden">Com a Lypsyos</p>
                   <h3 className="text-lg font-semibold text-ink">{pair.solution.title}</h3>
                   <p className="mt-1 text-[0.9375rem] leading-relaxed text-ink-soft">{pair.solution.text}</p>

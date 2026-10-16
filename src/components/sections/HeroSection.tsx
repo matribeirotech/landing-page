@@ -2,8 +2,9 @@ import { Link } from "react-router-dom"
 import { ArrowRight, CheckCircle2, MessageCircle, Sparkles, Scissors, Heart, Eye } from "lucide-react"
 import { motion } from "motion/react"
 import { buttonVariants } from "@/components/ui/Button"
+import { LypsyosIconBadge } from "@/components/ui/LypsyosIconBadge"
 import { HeroDevices } from "@/components/mockups/DeviceMockups"
-import { homeSections, WHATSAPP_URL } from "@/content/site"
+import { WHATSAPP_URL } from "@/content/site"
 import { trackEvent } from "@/services/analytics"
 
 const reassurances = [
@@ -13,10 +14,10 @@ const reassurances = [
 ]
 
 const segments = [
-  { label: "Manicures & Nails", icon: Sparkles },
-  { label: "Barbearias", icon: Scissors },
-  { label: "Salões de Beleza", icon: Heart },
-  { label: "Clínicas de Estética", icon: Eye },
+  { label: "Manicures & Nails", icon: Sparkles, tone: "growth" as const },
+  { label: "Barbearias", icon: Scissors, tone: "brand" as const },
+  { label: "Salões de Beleza", icon: Heart, tone: "cyan" as const },
+  { label: "Clínicas de Estética", icon: Eye, tone: "brand" as const },
 ]
 
 function trackHeroCta(label: string) {
@@ -36,21 +37,23 @@ export function HeroSection() {
       <div aria-hidden="true" className="pointer-events-none absolute -right-32 -top-32 -z-10 size-[34rem] rounded-full bg-brand/10 blur-3xl" />
       <div aria-hidden="true" className="pointer-events-none absolute -bottom-40 left-1/4 -z-10 size-[30rem] rounded-full bg-growth/12 blur-3xl" />
 
-      <div className="container mx-auto grid items-center gap-12 px-4 md:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
+      <div className="container mx-auto grid items-center gap-10 px-4 md:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex min-w-0 flex-col gap-6"
+          className="flex min-w-0 flex-col gap-5 sm:gap-6"
         >
-          <p className="inline-flex w-fit items-center gap-2 rounded-full bg-brand-soft px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-brand md:text-[0.8125rem]">
-            <span className="size-2 rounded-full bg-growth animate-pulse" aria-hidden="true" />
-            Zenda by Lypsyos &bull; Robô WhatsApp 24/7 &bull; CRM &bull; App Instalável
+          <p className="inline-flex max-w-full w-fit items-center gap-2 rounded-full bg-brand-soft px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.06em] text-brand md:text-[0.8125rem]">
+            <span className="size-2 shrink-0 rounded-full bg-growth animate-pulse" aria-hidden="true" />
+            <span className="truncate sm:whitespace-normal">
+              Zenda by Lypsyos &bull; Robô WhatsApp 24/7 &bull; CRM
+            </span>
           </p>
 
-          <h1 className="text-[2.25rem] font-bold leading-[1.12] tracking-tight text-ink sm:text-5xl lg:text-[3.5rem] lg:leading-[1.08]">
+          <h1 className="text-[1.95rem] font-bold leading-[1.14] tracking-tight text-ink sm:text-5xl lg:text-[3.5rem] lg:leading-[1.08] break-words">
             Enquanto você atende uma cliente, o Zenda{" "}
-            <span className="relative whitespace-nowrap text-growth-text">
+            <span className="relative inline-block text-growth-text">
               agenda as próximas cinco.
               <svg
                 aria-hidden="true"
@@ -80,7 +83,7 @@ export function HeroSection() {
               onClick={() => trackHeroCta("hero_comecar_teste_gratis")}
             >
               Começar Teste Grátis de 30 Dias
-              <ArrowRight className="size-5" aria-hidden="true" />
+              <ArrowRight className="size-5 shrink-0" aria-hidden="true" />
             </Link>
             <a
               href={WHATSAPP_URL}
@@ -89,7 +92,7 @@ export function HeroSection() {
               className={buttonVariants({ size: "lg", variant: "outline", className: "gap-2" })}
               onClick={() => trackHeroCta("hero_demo_whatsapp")}
             >
-              <MessageCircle className="size-5 text-[#25D366]" aria-hidden="true" />
+              <MessageCircle className="size-5 shrink-0 text-[#25D366]" aria-hidden="true" />
               Ver Demonstração no WhatsApp
             </a>
           </div>
@@ -102,7 +105,7 @@ export function HeroSection() {
             {reassurances.map((item) => (
               <li key={item} className="flex items-center gap-2">
                 <CheckCircle2 className="size-4.5 shrink-0 text-growth" aria-hidden="true" />
-                {item}
+                <span>{item}</span>
               </li>
             ))}
           </ul>
@@ -120,15 +123,15 @@ export function HeroSection() {
 
       {/* Faixa de confiança multi-nicho */}
       <div className="container mx-auto mt-14 px-4 md:mt-18 md:px-6">
-        <div className="flex flex-col items-center gap-5 rounded-card border border-line bg-canvas px-6 py-5 text-center md:flex-row md:justify-between md:text-left">
+        <div className="flex flex-col items-center gap-5 rounded-card border border-line bg-canvas px-5 py-5 text-center md:flex-row md:justify-between md:text-left">
           <p className="max-w-md text-sm font-medium text-ink-soft md:text-base">
             Desenvolvido sob medida para profissionais de beleza, estética e bem-estar:
           </p>
-          <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+          <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             {segments.map((segment) => (
-              <li key={segment.label} className="flex items-center gap-2 text-sm font-semibold text-ink">
-                <segment.icon className="size-4.5 text-brand" aria-hidden="true" />
-                {segment.label}
+              <li key={segment.label} className="flex items-center gap-2.5 text-sm font-semibold text-ink">
+                <LypsyosIconBadge icon={segment.icon} tone={segment.tone} size="sm" />
+                <span>{segment.label}</span>
               </li>
             ))}
           </ul>
@@ -137,4 +140,3 @@ export function HeroSection() {
     </section>
   )
 }
-

@@ -1,7 +1,8 @@
 import { motion } from "motion/react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
-import { Factory, Lightbulb, Settings2 } from "lucide-react"
+import { Lightbulb, Settings2, ShieldCheck } from "lucide-react"
 import { BrandMark } from "@/components/common/BrandMark"
+import { LypsyosIconBadge, type LypsyosIconTone } from "@/components/ui/LypsyosIconBadge"
 import { useDocumentMetadata } from "@/utils/useDocumentMetadata"
 
 export function About() {
@@ -11,7 +12,7 @@ export function About() {
   )
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between py-16 md:py-20 bg-white">
+    <main className="flex min-h-screen flex-col items-center justify-between overflow-hidden py-16 md:py-20 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-10 flex flex-col items-center justify-center space-y-3 text-center">
           <motion.div
@@ -20,7 +21,7 @@ export function About() {
             transition={{ duration: 0.6 }}
             className="space-y-2"
           >
-            <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl xl:text-6xl/none text-ink">
+            <h1 className="text-3xl font-extrabold tracking-tighter sm:text-5xl xl:text-6xl/none text-ink">
               Sobre a <span className="text-brand">Lypsyos</span>
             </h1>
             <p className="mx-auto max-w-[860px] text-ink-soft md:text-lg/relaxed">
@@ -31,11 +32,11 @@ export function About() {
 
         <div className="mb-16 grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="space-y-5"
+            className="min-w-0 space-y-5"
           >
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-ink">
               Nossa missão
@@ -48,11 +49,11 @@ export function About() {
             </p>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="rounded-[26px] border border-line bg-canvas p-6 shadow-xl"
+            className="min-w-0 rounded-[26px] border border-line bg-canvas p-6 shadow-xl"
           >
             <BrandMark showSubtitle={false} className="text-ink" />
             <div className="mt-6 space-y-3.5">
@@ -73,23 +74,31 @@ export function About() {
         </div>
 
         <div className="grid gap-5 md:grid-cols-3">
-          {[
-            {
-              title: "Automação Humanizada",
-              description: "Robô inteligente no WhatsApp com URA rápida que assume o nome e a identidade visual do seu espaço.",
-              icon: Lightbulb,
-            },
-            {
-              title: "Simplicidade Mobile-First",
-              description: "Painel de controle visual 3-em-1 (Cartões, Lista, Tabela), disparo com 1 clique (wa.me) e resumo matinal diário.",
-              icon: Settings2,
-            },
-            {
-              title: "Segurança de Nível Bancário",
-              description: "Isolamento multitenant no Supabase com Row-Level Security (RLS) para blindar totalmente seus dados e faturamento.",
-              icon: Factory,
-            },
-          ].map((value, index) => (
+          {(
+            [
+              {
+                title: "Automação Humanizada",
+                description:
+                  "Robô inteligente no WhatsApp com URA rápida que assume o nome e a identidade visual do seu espaço.",
+                icon: Lightbulb,
+                tone: "brand" as LypsyosIconTone,
+              },
+              {
+                title: "Simplicidade Mobile-First",
+                description:
+                  "Painel de controle visual 3-em-1 (Cartões, Lista, Tabela), disparo com 1 clique (wa.me) e resumo matinal diário.",
+                icon: Settings2,
+                tone: "cyan" as LypsyosIconTone,
+              },
+              {
+                title: "Segurança de Nível Bancário",
+                description:
+                  "Isolamento multitenant no Supabase com Row-Level Security (RLS) para blindar totalmente seus dados e faturamento.",
+                icon: ShieldCheck,
+                tone: "growth" as LypsyosIconTone,
+              },
+            ] as const
+          ).map((value, index) => (
             <motion.div
               key={value.title}
               initial={{ opacity: 0, y: 20 }}
@@ -97,10 +106,10 @@ export function About() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full border-line bg-canvas shadow-sm text-center">
+              <Card className="group h-full border-line bg-canvas shadow-sm text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:bg-white hover:shadow-lift">
                 <CardHeader className="items-center">
-                  <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-brand-soft text-brand">
-                    <value.icon className="h-7 w-7" />
+                  <div className="mb-3">
+                    <LypsyosIconBadge icon={value.icon} tone={value.tone} size="xl" />
                   </div>
                   <CardTitle className="text-xl text-ink">{value.title}</CardTitle>
                 </CardHeader>

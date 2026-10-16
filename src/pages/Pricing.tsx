@@ -1,5 +1,6 @@
 import { PricingSection } from "@/components/sections/PricingSection"
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection"
+import { LypsyosIconBadge } from "@/components/ui/LypsyosIconBadge"
 import { useDocumentMetadata } from "@/utils/useDocumentMetadata"
 import { ChevronDown, HelpCircle } from "lucide-react"
 import { motion } from "motion/react"
@@ -85,9 +86,9 @@ export function Pricing() {
       <section className="py-16 md:py-24 bg-canvas border-t border-line">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">
           <div className="text-center mb-12 space-y-2">
-            <span className="flex size-10 items-center justify-center rounded-full bg-brand-soft text-brand mx-auto mb-3">
-              <HelpCircle className="size-5" />
-            </span>
+            <div className="mb-3 flex justify-center">
+              <LypsyosIconBadge icon={HelpCircle} tone="brand" size="md" />
+            </div>
             <h2 className="font-heading text-2xl font-bold text-ink sm:text-3xl">
               Perguntas Frequentes sobre o Zenda
             </h2>

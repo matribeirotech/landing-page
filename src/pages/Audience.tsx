@@ -1,13 +1,22 @@
 import { AudienceSection } from "@/components/sections/AudienceSection"
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection"
+import { LypsyosIconBadge, type LypsyosIconTone } from "@/components/ui/LypsyosIconBadge"
 import { useDocumentMetadata } from "@/utils/useDocumentMetadata"
-import { CheckCircle2, Sparkles } from "lucide-react"
+import { CheckCircle2, Eye, Heart, Scissors, Sparkles } from "lucide-react"
 import { motion } from "motion/react"
 
-const nicheBenefits = [
+const nicheBenefits: {
+  niche: string
+  tagline: string
+  icon: typeof Sparkles
+  tone: LypsyosIconTone
+  points: string[]
+}[] = [
   {
     niche: "Nail Designers & Manicures",
     tagline: "Chega de perder tempo digitando horários durante o atendimento de mesa.",
+    icon: Sparkles,
+    tone: "growth",
     points: [
       "Agendamento automático de Alongamento em Gel, Banho de Gel e Spa dos Pés",
       "Cobrança imediata de sinal de 50% via chave PIX para garantir o horário",
@@ -17,6 +26,8 @@ const nicheBenefits = [
   {
     niche: "Barbearias Modernas",
     tagline: "Agendamento em segundos para o público masculino que valoriza praticidade.",
+    icon: Scissors,
+    tone: "brand",
     points: [
       "Menu rápido A, B, C no WhatsApp: corte degradê, barba ou combo completo",
       "Visão da agenda por profissional da barbearia",
@@ -26,6 +37,8 @@ const nicheBenefits = [
   {
     niche: "Salões de Beleza & Cabeleireiros",
     tagline: "Organização precisa para dias intensos com escovas, mechas e químicas.",
+    icon: Heart,
+    tone: "cyan",
     points: [
       "Configuração de intervalos de tempo para pausa de produtos químicos",
       "Visualização rápida do dia com resumo de faturamento matinal",
@@ -35,6 +48,8 @@ const nicheBenefits = [
   {
     niche: "Clínicas de Estética & Spas",
     tagline: "Controle sofisticado para procedimentos faciais, corporais e massoterapia.",
+    icon: Eye,
+    tone: "brand",
     points: [
       "Gestão de salas e macas de atendimento sem conflito de horários",
       "Privacidade bancária de dados médicos e estéticos via Supabase RLS",
@@ -55,7 +70,7 @@ export function Audience() {
   })
 
   return (
-    <main className="flex flex-col bg-white">
+    <main className="flex flex-col overflow-hidden bg-white">
       {/* Hero da página Para Quem É */}
       <section className="relative overflow-hidden bg-white py-14 md:py-20 border-b border-line">
         <div aria-hidden="true" className="pointer-events-none absolute -right-32 -top-32 -z-10 size-[32rem] rounded-full bg-brand/10 blur-3xl" />
@@ -102,11 +117,14 @@ export function Audience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: index * 0.08 }}
-                className="rounded-2xl border border-line bg-canvas p-6 sm:p-7 shadow-soft space-y-4"
+                className="group rounded-2xl border border-line bg-canvas p-6 sm:p-7 shadow-soft space-y-4 transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:bg-white hover:shadow-lift"
               >
-                <div>
-                  <h3 className="font-heading text-xl font-bold text-ink">{item.niche}</h3>
-                  <p className="text-sm font-medium text-growth-text mt-1">{item.tagline}</p>
+                <div className="flex items-start gap-4">
+                  <LypsyosIconBadge icon={item.icon} tone={item.tone} size="md" />
+                  <div className="min-w-0">
+                    <h3 className="font-heading text-xl font-bold text-ink">{item.niche}</h3>
+                    <p className="text-sm font-medium text-growth-text mt-1">{item.tagline}</p>
+                  </div>
                 </div>
                 <ul className="space-y-2.5 pt-1">
                   {item.points.map((pt) => (
@@ -126,4 +144,3 @@ export function Audience() {
     </main>
   )
 }
-
