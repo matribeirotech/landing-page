@@ -1,53 +1,52 @@
-import { Suspense, StrictMode, lazy } from "react"
+import { Suspense, StrictMode, lazy, useEffect } from "react"
 import { createRoot } from "react-dom/client"
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { createBrowserRouter, RouterProvider, useRouteError } from "react-router-dom"
 import App from "./App"
 import "./styles/globals.css"
 
-const Home = lazy(async () => {
-  const module = await import("./pages/Home")
-  return { default: module.Home }
-})
+// Trata automaticamente erros de atualização de versão do Vite em produção
+if (typeof window !== "undefined") {
+  window.addEventListener("vite:preloadError", (event) => {
+    event.preventDefault()
+    window.location.reload()
+  })
+}
 
-const About = lazy(async () => {
-  const module = await import("./pages/About")
-  return { default: module.About }
-})
+function lazyWithRetry<T extends Record<string, any>>(
+  importer: () => Promise<T>,
+  exportName: keyof T = "default" as keyof T,
+) {
+  return lazy(async () => {
+    const isRetried =
+      typeof window !== "undefined" &&
+      window.sessionStorage.getItem("lypsyos_chunk_retry") === "true"
 
-const Products = lazy(async () => {
-  const module = await import("./pages/Products")
-  return { default: module.Products }
-})
+    try {
+      const module = await importer()
+      if (typeof window !== "undefined") {
+        window.sessionStorage.removeItem("lypsyos_chunk_retry")
+      }
+      return { default: module[exportName] }
+    } catch (error) {
+      if (!isRetried && typeof window !== "undefined") {
+        window.sessionStorage.setItem("lypsyos_chunk_retry", "true")
+        window.location.reload()
+        return new Promise(() => {}) // recarrega a página com os novos hashes
+      }
+      throw error
+    }
+  })
+}
 
-const ProductDetail = lazy(async () => {
-  const module = await import("./pages/ProductDetail")
-  return { default: module.ProductDetail }
-})
-
-const Contact = lazy(async () => {
-  const module = await import("./pages/Contact")
-  return { default: module.Contact }
-})
-
-const ZendaProduct = lazy(async () => {
-  const module = await import("./pages/ZendaProduct")
-  return { default: module.ZendaProduct }
-})
-
-const Comparison = lazy(async () => {
-  const module = await import("./pages/Comparison")
-  return { default: module.Comparison }
-})
-
-const Pricing = lazy(async () => {
-  const module = await import("./pages/Pricing")
-  return { default: module.Pricing }
-})
-
-const Audience = lazy(async () => {
-  const module = await import("./pages/Audience")
-  return { default: module.Audience }
-})
+const Home = lazyWithRetry(() => import("./pages/Home"), "Home")
+const About = lazyWithRetry(() => import("./pages/About"), "About")
+const Products = lazyWithRetry(() => import("./pages/Products"), "Products")
+const ProductDetail = lazyWithRetry(() => import("./pages/ProductDetail"), "ProductDetail")
+const Contact = lazyWithRetry(() => import("./pages/Contact"), "Contact")
+const ZendaProduct = lazyWithRetry(() => import("./pages/ZendaProduct"), "ZendaProduct")
+const Comparison = lazyWithRetry(() => import("./pages/Comparison"), "Comparison")
+const Pricing = lazyWithRetry(() => import("./pages/Pricing"), "Pricing")
+const Audience = lazyWithRetry(() => import("./pages/Audience"), "Audience")
 
 function RouteFallback() {
   return (
@@ -57,10 +56,60 @@ function RouteFallback() {
   )
 }
 
+function RouteErrorBoundary() {
+  const error = useRouteError()
+  const errorMessage =
+    error instanceof Error ? error.message : "Ocorreu um erro ao carregar a página."
+
+  const isDynamicImportError =
+    /failed to fetch dynamically imported module/i.test(errorMessage) ||
+    /importing a module script failed/i.test(errorMessage) ||
+    /error loading dynamically imported module/i.test(errorMessage)
+
+  useEffect(() => {
+    if (isDynamicImportError && typeof window !== "undefined") {
+      const isRetried = window.sessionStorage.getItem("lypsyos_chunk_retry") === "true"
+      if (!isRetried) {
+        window.sessionStorage.setItem("lypsyos_chunk_retry", "true")
+        window.location.reload()
+      }
+    }
+  }, [isDynamicImportError])
+
+  return (
+    <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
+      <div className="size-12 rounded-2xl bg-brand-soft text-brand flex items-center justify-center font-bold text-xl mb-4 shadow-sm">
+        L
+      </div>
+      <h2 className="font-heading text-2xl font-bold text-ink sm:text-3xl">
+        {isDynamicImportError ? "Atualizando a experiência Lypsyos..." : "Não foi possível carregar a página"}
+      </h2>
+      <p className="mt-2 max-w-md text-sm text-ink-soft">
+        {isDynamicImportError
+          ? "Uma nova versão da plataforma foi disponibilizada. Clique no botão abaixo para carregar os recursos atualizados."
+          : "Ocorreu uma instabilidade momentânea na conexão. Clique abaixo para tentar novamente."}
+      </p>
+      <button
+        type="button"
+        onClick={() => {
+          if (typeof window !== "undefined") {
+            window.sessionStorage.removeItem("lypsyos_chunk_retry")
+            window.location.reload()
+          }
+        }}
+        className="mt-5 inline-flex items-center justify-center rounded-btn bg-brand px-6 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-brand-hover transition-colors"
+      >
+        Recarregar Página
+      </button>
+    </div>
+  )
+}
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <RouteErrorBoundary />,
     children: [
       {
         index: true,
