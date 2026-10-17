@@ -9,6 +9,7 @@ export interface ButtonProps
   variant?: ButtonVariant
   size?: ButtonSize
   asChild?: boolean
+  className?: string
 }
 
 /**
@@ -39,7 +40,7 @@ export function buttonVariants({
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "default", size = "default", asChild = false, ...props }, ref) => {
+  ({ className, variant = "default", size = "default", asChild = false, ...props }: ButtonProps, ref) => {
     const Comp = asChild ? "span" : "button"
     return (
       <Comp

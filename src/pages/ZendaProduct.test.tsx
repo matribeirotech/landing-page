@@ -31,6 +31,18 @@ describe("ZendaProduct", () => {
       }),
     ).toBeInTheDocument()
 
+    // Check live simulation section
+    expect(
+      screen.getByText(/simulação em tempo real: do whatsapp ao crm/i),
+    ).toBeInTheDocument()
+
+    // Check real interface showcase section
+    expect(
+      screen.getByRole("heading", {
+        name: /sem maquetes genéricas/i,
+      }),
+    ).toBeInTheDocument()
+
     // Check free trial CTA
     expect(
       screen.getAllByRole("link", { name: /teste grátis/i }).length,
