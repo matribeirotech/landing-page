@@ -334,3 +334,4 @@ Para os cards de faturamento, métricas e listagem de agendamentos no Zenda:
 - [ ] Adicionar o asset [`/logo-oficial.png`](/logo-oficial.png) na pasta `public/` do projeto Zenda.
 - [ ] Atualizar o componente de botões com suporte ao layout mobile seguro.
 - [ ] Substituir os ícones comuns da interface pelo `LypsyosIconBadge` com os tons adequados (`growth` para WhatsApp/faturamento, `brand` para CRM/segurança, `cyan` para PWA/móvel).
+
