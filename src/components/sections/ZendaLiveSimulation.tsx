@@ -237,7 +237,7 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
                   transition={{ duration: 0.3 }}
                   className="self-end max-w-[85%] rounded-2xl rounded-tr-sm bg-[#005c4b] p-3 text-white shadow"
                 >
-                  <p className="text-emerald-100/70 text-[10px] font-semibold mb-0.5">Camila Silva</p>
+                  <p className="text-emerald-100/70 text-[10px] font-semibold mb-0.5">Rafael Costa</p>
                   <p>Oi! Gostaria de marcar um horário para amanhã, vocês têm vaga?</p>
                   <span className="mt-1 flex items-center justify-end gap-1 text-[10px] text-white/60">
                     14:12 <CheckCheck className="size-3 text-cyan-400" />
@@ -258,7 +258,7 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
                         <Bot className="size-3" /> ROBÔ ZENDA 24/7
                       </p>
                       <p>
-                        Olá Camila! 🌟 Que bom ter você aqui. Temos os seguintes horários livres amanhã:
+                        Olá Rafael! 🌟 Que bom ter você aqui. Temos os seguintes horários livres amanhã:
                       </p>
                       <div className="my-2 space-y-1 rounded-lg bg-black/30 p-2 text-xs font-mono text-emerald-300">
                         <p>1️⃣ 10:00 — Corte & Barba</p>
@@ -307,7 +307,7 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
                         <CheckCheck className="size-4" /> AGENDAMENTO CONFIRMADO!
                       </div>
                       <p className="mt-1 text-xs text-white/90">
-                        🎉 Prontinho, Camila! Seu horário para <strong>Amanhã às 14:30</strong> foi confirmado com sucesso.
+                        🎉 Prontinho, Rafael! Seu horário para <strong>Amanhã às 14:30</strong> foi confirmado com sucesso.
                       </p>
                       <div className="mt-2 rounded bg-growth/15 p-2 text-[11px] text-growth-text">
                         🔔 Enviaremos um lembrete 2h antes. Te esperamos!
@@ -452,7 +452,7 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <p className="font-bold text-ink">Camila Silva</p>
+                      <p className="font-bold text-ink">Rafael Costa</p>
                       {activeStep >= 3 && (
                         <span className="rounded-full bg-growth px-2 py-0.2 text-[9px] font-bold text-white uppercase tracking-wider animate-bounce">
                           NOVO AGENDAMENTO
@@ -487,7 +487,7 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
                     <div className="min-w-0 flex-1">
                       <p className="font-bold text-brand">Notificação enviada para o seu celular</p>
                       <p className="text-[11px] text-ink-soft">
-                        &ldquo;Resumo Zenda: Camila Silva agendou para amanhã às 14:30. Faturamento subiu para R$ 480.&rdquo;
+                        &ldquo;Resumo Zenda: Rafael Costa agendou para amanhã às 14:30. Faturamento subiu para R$ 480.&rdquo;
                       </p>
                     </div>
                   </motion.div>
