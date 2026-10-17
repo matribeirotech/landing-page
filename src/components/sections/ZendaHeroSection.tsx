@@ -21,8 +21,8 @@ import { WHATSAPP_URL } from "@/content/site"
 import { trackEvent } from "@/services/analytics"
 import { cn } from "@/utils/cn"
 
-// Imagem real do painel Zenda
-import zendaDashboardImg from "@/assets/images/zenda/zenda-dashboard-real.png"
+// Imagem real limpa do painel Zenda (capturada via F12)
+import zendaDashboardImg from "@/assets/images/zenda/interface-zenda-dashboard.png"
 
 const reassurances = [
   "30 dias de teste grátis sem compromisso",

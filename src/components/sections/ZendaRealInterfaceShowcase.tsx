@@ -21,9 +21,9 @@ import {
 } from "lucide-react"
 import { cn } from "@/utils/cn"
 
-// Imagens reais da interface
-import zendaDashboardImg from "@/assets/images/zenda/zenda-dashboard-real.png"
-import zendaMarketingImg from "@/assets/images/zenda/zenda-marketing-campaigns-real.png"
+// Imagens reais limpas da interface (capturadas via F12)
+import zendaDashboardImg from "@/assets/images/zenda/interface-zenda-dashboard.png"
+import zendaMarketingImg from "@/assets/images/zenda/interface-zenda-marketing.png"
 
 interface Hotspot {
   id: string
