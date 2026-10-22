@@ -3,7 +3,7 @@ import { MemoryRouter } from "react-router-dom"
 import { Home } from "./Home"
 
 describe("Home", () => {
-  it("renders the appointment scheduling copy and removes outdated references", () => {
+  it("renders the Zenda-focused appointment scheduling copy without technical jargon", () => {
     render(
       <MemoryRouter>
         <Home />
@@ -12,27 +12,27 @@ describe("Home", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /aceleramos seu negócio com sistemas modernos e automação inteligente/i,
+        name: /o seu salão não pode parar porque você está respondendo o whatsapp/i,
       }),
     ).toBeInTheDocument()
 
-    // Check for Zenda spotlight section
     expect(
-      screen.getByRole("heading", { name: /conheça o zenda/i }),
-    ).toBeInTheDocument()
+      screen.getAllByText(/enquanto você atende uma cliente, o zenda agenda as próximas cinco/i).length,
+    ).toBeGreaterThan(0)
 
     expect(
-      screen.getByRole("link", { name: /conhecer o produto zenda/i }),
-    ).toBeInTheDocument()
+      screen.getAllByText(/faturamento previsto hoje: r\$ 540,00/i).length,
+    ).toBeGreaterThan(0)
 
-    // Check for solutions/engineering section
     expect(
-      screen.getByRole("heading", { name: /engenharia de software focada em resultados reais/i }),
-    ).toBeInTheDocument()
+      screen.getAllByText(
+        /instalação direta no iphone ou android com 1 clique, sem taxas nem burocracia de app store/i,
+      ).length,
+    ).toBeGreaterThan(0)
 
-    // Ensure old industrial text is gone
-    expect(
-      screen.queryByRole("heading", { name: /software próprio para orçamento, engenharia e produção/i }),
-    ).not.toBeInTheDocument()
+    // Ensure technical jargon is removed
+    expect(screen.queryByText(/supabase rls/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/lypsyos neural core/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/websocket/i)).not.toBeInTheDocument()
   })
 })

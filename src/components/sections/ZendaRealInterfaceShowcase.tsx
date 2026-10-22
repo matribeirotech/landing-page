@@ -2,22 +2,10 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import {
   BarChart3,
-  Bot,
-  CalendarCheck2,
   CheckCircle2,
-  ChevronRight,
-  ExternalLink,
-  Info,
-  Maximize2,
   Megaphone,
-  MessageSquare,
   MousePointerClick,
-  Send,
-  ShieldCheck,
-  Smartphone,
   Sparkles,
-  TrendingUp,
-  Zap,
 } from "lucide-react"
 import { cn } from "@/utils/cn"
 
@@ -27,8 +15,8 @@ import zendaMarketingImg from "@/assets/images/zenda/interface-zenda-marketing.p
 
 interface Hotspot {
   id: string
-  x: number // percentual horizontal
-  y: number // percentual vertical
+  x: number
+  y: number
   title: string
   description: string
   badge: string
@@ -51,121 +39,121 @@ interface ShowcaseTab {
 const tabsData: ShowcaseTab[] = [
   {
     id: "dashboard",
-    label: "Painel CRM & Gestão",
-    badge: "Visão Real da Plataforma",
+    label: "Sua Agenda & Caixa",
+    badge: "Tela Real",
     icon: BarChart3,
-    title: "Central de Comando Zenda",
-    headline: "Controle financeiro, horários e atendimento em uma única tela moderna",
+    title: "Painel Simples e Direto",
+    headline: "Saiba quem você vai atender e quanto vai ganhar no dia com um olhar",
     description:
-      "Acompanhe o faturamento previsto do dia, confirme agendamentos pendentes com 1 clique e veja o robô do WhatsApp preencher os espaços vagos em tempo real.",
+      "Esqueça planilhas complicadas. No Zenda você vê quanto dinheiro vai entrar hoje, quem já confirmou presença e acompanha o robô preenchendo seus horários vagos sozinho.",
     image: zendaDashboardImg,
-    imageAlt: "Captura de tela real do Painel Dashboard do Zenda CRM com indicadores de faturamento e agendamentos",
+    imageAlt: "Tela real da agenda do Zenda mostrando o faturamento previsto e horários do dia",
     keyBenefits: [
-      "Faturamento previsto atualizado automaticamente a cada marcação",
-      "Navegação rápida por dias com filtros de Confirmados e Pendentes",
-      "Indicador de status do Robô 24/7 com resposta média de 3 segundos",
-      "Atalho de instalação direta do aplicativo no celular (PWA)",
+      "Faturamento previsto hoje calculado sozinho a cada cliente marcada",
+      "Botões rápidos para ver a agenda de Hoje, Amanhã e da semana inteira",
+      "Mensagens enviadas no mesmo segundo pelo robô no WhatsApp",
+      "Instalação direta no iPhone ou Android com 1 clique, sem taxas nem burocracia de App Store",
     ],
     hotspots: [
       {
         id: "bot-status",
         x: 8,
         y: 12,
-        title: "Robô 24/7 Ativo",
-        badge: "Automação",
-        description: "Conexão direta com seu WhatsApp comercial via QR Code criptografado. Atende dia e noite.",
+        title: "Robô 24h Ligado",
+        badge: "WhatsApp",
+        description: "Conecta direto no seu WhatsApp em 2 minutos. Ele responde suas clientes dia e noite sem você precisar tocar no celular.",
       },
       {
         id: "install-app",
         x: 8,
         y: 20,
-        title: "Instalar App Móvel",
-        badge: "PWA Nativo",
-        description: "Adicione o ícone do Zenda na tela inicial do seu celular com 1 clique, sem passar por lojas.",
+        title: "Aplicativo em 1 Clique",
+        badge: "No Celular",
+        description: "Instalação direta no iPhone ou Android com 1 clique, sem taxas nem burocracia de App Store.",
       },
       {
         id: "faturamento",
         x: 27,
         y: 49,
-        title: "Faturamento Previsto",
-        badge: "Finanças",
-        description: "Receita confirmada em tempo real na agenda. Saiba quanto vai faturar antes de abrir o salão.",
+        title: "Faturamento Previsto Hoje",
+        badge: "Seu Dinheiro",
+        description: "Soma automaticamente o valor de todos os serviços agendados para você saber quanto vai ganhar no dia.",
       },
       {
         id: "resumo-caixa",
         x: 58,
         y: 49,
-        title: "Resumo do Caixa & Entradas",
-        badge: "Controle",
-        description: "Separação clara entre o que já entrou hoje e valores a receber pendentes.",
+        title: "Resumo do Caixa",
+        badge: "Controle Fácil",
+        description: "Mostra separado o que já foi pago hoje e o que você ainda vai receber das próximas clientes.",
       },
       {
         id: "platform-widget",
         x: 85,
         y: 49,
-        title: "Zenda Platform 24/7",
-        badge: "Performance",
-        description: "Robô ativo operando com latência ultrarrápida de 3 segundos nas respostas do WhatsApp.",
+        title: "Respostas no Mesmo Segundo",
+        badge: "Rapidez",
+        description: "O robô responde na hora para a cliente não desistir nem procurar outro salão.",
       },
       {
         id: "agenda-nav",
         x: 32,
         y: 83,
-        title: "Navegação Rápida da Agenda",
-        badge: "Produtividade",
-        description: "Alterne entre Hoje, Amanhã e os próximos dias com um clique. Filtros de status integrados.",
+        title: "Dias da Semana",
+        badge: "Praticidade",
+        description: "Toque em Hoje, Amanhã ou qualquer dia da semana para ver seus horários em segundos.",
       },
     ],
   },
   {
     id: "marketing",
-    label: "Campanhas & Disparos WhatsApp",
-    badge: "Motor de Faturamento",
+    label: "Chamar Clientes Sumidas",
+    badge: "Lotar Agenda",
     icon: Megaphone,
-    title: "Reativação de Clientes Inativas",
-    headline: "Lote sua agenda nos dias fracos enviando mensagens personalizadas com 1 clique",
+    title: "Recupere Clientes Antigas",
+    headline: "Agenda fraca na terça ou quarta? Chame clientes sumidas com 1 clique",
     description:
-      "O Zenda identifica automaticamente clientes que não agendam há mais de 30 dias. Dispare ofertas no WhatsApp oficial sem risco de banimento e com preview em tempo real.",
+      "O Zenda separa automaticamente quem não aparece há mais de 30 dias e envia um convite simpático no WhatsApp chamando pelo nome de cada cliente.",
     image: zendaMarketingImg,
-    imageAlt: "Captura de tela real do módulo de Marketing e Campanhas no WhatsApp do Zenda CRM",
+    imageAlt: "Tela real do Zenda para enviar mensagens no WhatsApp e recuperar clientes sumidas",
     keyBenefits: [
-      "Segmentação com 1 clique: Clientes ativas vs. Clientes sem vir há >30 dias",
-      "Variáveis automáticas: cada cliente recebe a mensagem com o nome próprio dela",
-      "Preview realista em formato de smartphone antes de fazer o disparo",
-      "Chamada de ação direta com URA: 'Digite 1 para agendar agora'",
+      "Encontra sozinho clientes que não agendam há mais de 30 dias",
+      "Chama cada cliente pelo próprio nome automaticamente",
+      "Mostra na tela exatamente como a mensagem vai chegar no celular dela",
+      "A cliente só responde '1' e o robô já marca o horário para você",
     ],
     hotspots: [
       {
         id: "segmentacao",
         x: 38,
         y: 45,
-        title: "Público-Alvo Inteligente",
-        badge: "Segmentação",
-        description: "Filtro 'Recuperar Clientes' isola quem não comparece há mais de 30 dias para campanhas de retorno.",
+        title: "Escolher Quem Recebe",
+        badge: "1 Toque",
+        description: "Toque em 'Recuperar Clientes' para chamar apenas quem sumiu há mais de 30 dias.",
       },
       {
         id: "variaveis",
         x: 44,
         y: 68,
-        title: "Tags Dinâmicas {nome_cliente}",
-        badge: "Personalização",
-        description: "O robô substitui as tags pelo nome cadastrado da cliente, tornando o atendimento 100% humanizado.",
+        title: "Mensagem com o Nome Dela",
+        badge: "Atencioso",
+        description: "O Zenda troca automaticamente pelo nome de cada cliente para parecer que você escreveu uma por uma.",
       },
       {
         id: "disparo-btn",
         x: 44,
         y: 96,
-        title: "Disparo no WhatsApp Oficial",
-        badge: "Conversão",
-        description: "Envio em fila com intervalos naturais para manter alta entregabilidade e resposta imediata.",
+        title: "Enviar para o WhatsApp",
+        badge: "Prático",
+        description: "Com 1 clique o Zenda envia os convites com cuidado e preenche seus horários vagos.",
       },
       {
         id: "mobile-preview",
         x: 84,
         y: 65,
-        title: "Simulação Realista no Celular",
-        badge: "Preview",
-        description: "Veja exatamente como a mensagem oficial será exibida na tela do celular da sua cliente.",
+        title: "Veja Como Vai Ficar",
+        badge: "No Celular",
+        description: "Confira no celular ao lado como sua mensagem fica bonita antes de enviar.",
       },
     ],
   },
@@ -178,25 +166,25 @@ export function ZendaRealInterfaceShowcase({ className }: { className?: string }
   const currentTab = tabsData.find((tab) => tab.id === activeTab) || tabsData[0]
 
   return (
-    <section className={cn("w-full overflow-hidden bg-canvas py-16 md:py-24", className)}>
+    <section className={cn("w-full overflow-hidden bg-canvas py-14 md:py-22", className)}>
       <div className="container mx-auto px-4 md:px-6">
         {/* Cabeçalho da Seção */}
         <div className="mx-auto max-w-3xl text-center">
           <p className="inline-flex items-center gap-2 rounded-full bg-brand-soft px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand">
             <Sparkles className="size-3.5" />
-            INTERFACE REAL DO PRODUTO ZENDA
+            FÁCIL DE USAR NO DIA A DIA
           </p>
           <h2 className="mt-3 font-heading text-2xl font-bold tracking-tight text-ink sm:text-4xl">
-            Sem maquetes genéricas.{" "}
+            Sem complicação.{" "}
             <span className="text-growth-text">Essa é a tela real que você vai usar.</span>
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-ink-soft sm:text-base">
-            Desenvolvido para ser intuitivo até para quem não domina tecnologia. Explore os pontos interativos abaixo para conhecer os detalhes do sistema.
+            Feito para ser simples e rápido: você bate o olho e já sabe seus horários e quanto vai receber no dia.
           </p>
         </div>
 
         {/* Seletor de Abas da Interface */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           {tabsData.map((tab) => {
             const isSelected = activeTab === tab.id
             const Icon = tab.icon
@@ -210,7 +198,7 @@ export function ZendaRealInterfaceShowcase({ className }: { className?: string }
                   setActiveHotspot(null)
                 }}
                 className={cn(
-                  "inline-flex items-center gap-2.5 rounded-2xl px-5 py-3 text-sm font-bold transition-all sm:text-base",
+                  "inline-flex min-h-12 items-center gap-2.5 rounded-2xl px-5 py-3 text-sm font-bold transition-all sm:text-base",
                   isSelected
                     ? "bg-night text-white shadow-xl shadow-night/20 ring-2 ring-brand/40"
                     : "border border-line bg-white text-ink-soft hover:bg-white hover:text-ink hover:shadow-sm"
@@ -233,21 +221,21 @@ export function ZendaRealInterfaceShowcase({ className }: { className?: string }
 
         {/* Moldura da Interface com Hotspots Interativos */}
         <div className="mt-8 rounded-3xl border border-line bg-white p-3 shadow-2xl sm:p-5">
-          {/* Top bar estilo navegador moderno */}
+          {/* Top bar */}
           <div className="mb-3 flex items-center justify-between rounded-xl bg-night px-4 py-3 text-xs text-white">
             <div className="flex items-center gap-2">
               <span className="size-3 rounded-full bg-red-500/80" />
               <span className="size-3 rounded-full bg-amber-500/80" />
               <span className="size-3 rounded-full bg-emerald-500/80" />
-              <span className="ml-2 font-mono text-[11px] text-white/50">
-                app.lypsyos.com/{currentTab.id === "dashboard" ? "crm" : "marketing"}
+              <span className="ml-2 font-semibold text-[11px] text-white/75">
+                Zenda &bull; {currentTab.id === "dashboard" ? "Agenda e Caixa" : "Chamar Clientes no WhatsApp"}
               </span>
             </div>
 
             <div className="flex items-center gap-2">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-growth/20 px-2.5 py-0.5 font-semibold text-growth text-[11px]">
                 <span className="size-1.5 rounded-full bg-growth animate-pulse" />
-                El Estabelecimento • Zenda Pro Ativo
+                Robô 24h Ativo
               </span>
             </div>
           </div>
@@ -283,12 +271,10 @@ export function ZendaRealInterfaceShowcase({ className }: { className?: string }
                       )}
                       aria-label={`Ver detalhe: ${hotspot.title}`}
                     >
-                      {/* Efeito de radar pulsante */}
                       <span className="absolute -inset-1 rounded-full bg-growth/40 animate-ping pointer-events-none" />
                       <MousePointerClick className="size-3.5 group-hover:rotate-12 transition-transform" />
                     </button>
 
-                    {/* Tooltip do Hotspot ao clicar ou ativar */}
                     <AnimatePresence>
                       {isSelected && (
                         <motion.div
@@ -326,10 +312,9 @@ export function ZendaRealInterfaceShowcase({ className }: { className?: string }
             </div>
           </div>
 
-          {/* Instrução de Hotspots */}
           <div className="mt-3 flex items-center justify-center gap-2 text-xs text-ink-muted">
             <MousePointerClick className="size-3.5 text-brand" />
-            <span>Toque nos ícones piscantes na imagem para entender cada função da tela.</span>
+            <span>Toque nos círculos piscantes na imagem para ver como cada parte te ajuda.</span>
           </div>
 
           {/* Destaques e Benefícios da Tela Ativa */}
@@ -362,4 +347,3 @@ export function ZendaRealInterfaceShowcase({ className }: { className?: string }
     </section>
   )
 }
-

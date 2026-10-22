@@ -5,17 +5,10 @@ import {
   CalendarCheck2,
   Check,
   CheckCheck,
-  ChevronRight,
-  Clock,
-  DollarSign,
-  Flame,
   MessageCircle,
   Play,
   RotateCcw,
-  Sparkles,
   Smartphone,
-  TrendingUp,
-  User,
   Zap,
 } from "lucide-react"
 import { cn } from "@/utils/cn"
@@ -30,26 +23,26 @@ interface Step {
 const steps: Step[] = [
   {
     id: 1,
-    title: "1. Cliente envia mensagem",
-    subtitle: "A qualquer hora do dia ou da madrugada",
+    title: "1. Cliente manda mensagem",
+    subtitle: "A qualquer hora do dia ou da noite",
     icon: MessageCircle,
   },
   {
     id: 2,
-    title: "2. Robô Zenda responde em 1.8s",
-    subtitle: "Verifica vagas livres em tempo real",
+    title: "2. Robô responde no mesmo segundo",
+    subtitle: "Mostra apenas os horários livres",
     icon: Bot,
   },
   {
     id: 3,
-    title: "3. Confirmação instantânea",
-    subtitle: "Cliente escolhe o horário pelo menu",
+    title: "3. Cliente escolhe o horário",
+    subtitle: "Basta digitar o número da opção",
     icon: CheckCheck,
   },
   {
     id: 4,
-    title: "4. Sincronização com o CRM",
-    subtitle: "Agenda preenchida e faturamento atualizado",
+    title: "4. Agenda e Caixa atualizados",
+    subtitle: "Salvo na sua agenda e aviso no celular",
     icon: CalendarCheck2,
   },
 ]
@@ -59,7 +52,6 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
   const [isPlaying, setIsPlaying] = useState<boolean>(true)
   const timerRef = useRef<number | null>(null)
 
-  // Avanço automático das etapas
   useEffect(() => {
     if (!isPlaying) {
       if (timerRef.current) clearInterval(timerRef.current)
@@ -88,20 +80,20 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
   return (
     <div className={cn("w-full overflow-hidden rounded-3xl border border-line/70 bg-gradient-to-b from-white via-canvas to-surface shadow-2xl", className)}>
       {/* Header do Simulador */}
-      <div className="flex flex-col gap-4 border-b border-line/70 bg-night px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+      <div className="flex flex-col gap-4 border-b border-line/70 bg-night px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <div className="flex items-center gap-3">
-          <div className="flex size-10 items-center justify-center rounded-xl bg-growth/20 text-growth ring-1 ring-growth/40">
+          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-growth/20 text-growth ring-1 ring-growth/40">
             <Zap className="size-5 animate-pulse" aria-hidden="true" />
           </div>
           <div>
             <div className="flex items-center gap-2">
               <span className="inline-block size-2 rounded-full bg-growth animate-ping" />
               <p className="font-heading text-base font-bold text-white sm:text-lg">
-                Simulação em Tempo Real: Do WhatsApp ao CRM
+                Veja na Prática: Do WhatsApp direto para a Sua Agenda
               </p>
             </div>
-            <p className="text-xs text-white/60 sm:text-sm">
-              Veja exatamente como o Zenda fecha agendamentos sozinho enquanto você trabalha.
+            <p className="text-xs text-white/70 sm:text-sm">
+              O Zenda marca o cliente sozinho enquanto você está de mãos ocupadas atendendo.
             </p>
           </div>
         </div>
@@ -111,8 +103,8 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
           <button
             type="button"
             onClick={() => setIsPlaying(!isPlaying)}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/10"
-            aria-label={isPlaying ? "Pausar simulação" : "Reproduzir simulação"}
+            className="inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/10"
+            aria-label={isPlaying ? "Pausar demonstração" : "Reproduzir demonstração"}
           >
             {isPlaying ? (
               <>
@@ -129,8 +121,8 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
           <button
             type="button"
             onClick={handleReset}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white"
-            aria-label="Reiniciar simulação"
+            className="inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+            aria-label="Reiniciar demonstração"
           >
             <RotateCcw className="size-3" />
             Reiniciar
@@ -143,7 +135,6 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
         {steps.map((step) => {
           const isActive = activeStep === step.id
           const isPassed = activeStep > step.id
-          const Icon = step.icon
 
           return (
             <button
@@ -178,7 +169,6 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
                 {step.subtitle}
               </p>
 
-              {/* Linha indicadora de tempo da etapa ativa */}
               {isActive && isPlaying && (
                 <motion.div
                   initial={{ width: "0%" }}
@@ -192,19 +182,17 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
         })}
       </div>
 
-      {/* Palco da Animação: Celular (WhatsApp) + Conexão + Painel CRM */}
+      {/* Palco da Animação: Celular (WhatsApp) + Conexão + Painel da Agenda */}
       <div className="grid gap-6 p-4 sm:p-6 lg:grid-cols-12 lg:items-center lg:gap-8">
-        {/* Lado Esquerdo: Simulador do WhatsApp no Celular (5 colunas) */}
+        {/* Lado Esquerdo: Simulador do WhatsApp no Celular */}
         <div className="lg:col-span-5">
           <div className="relative mx-auto max-w-[340px] rounded-[2.5rem] border-[6px] border-night bg-[#efeae2] p-2.5 shadow-2xl ring-1 ring-black/10">
-            {/* Notch e alto-falante */}
             <div className="absolute left-1/2 top-3 h-4 w-28 -translate-x-1/2 rounded-full bg-night/90 flex items-center justify-center gap-2">
               <span className="size-2 rounded-full bg-[#1e293b]" />
               <span className="h-1 w-8 rounded-full bg-[#334155]" />
             </div>
 
-            {/* Tela do Celular */}
-            <div className="flex min-h-[460px] flex-col overflow-hidden rounded-[2rem] bg-[#0c1317]">
+            <div className="flex min-h-[450px] flex-col overflow-hidden rounded-[2rem] bg-[#0c1317]">
               {/* Top bar WhatsApp */}
               <div className="flex items-center gap-3 bg-[#1f2c34] px-4 pb-3 pt-6 text-white">
                 <div className="relative">
@@ -216,14 +204,14 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-1.5">
                     <p className="truncate font-heading text-sm font-bold text-white">
-                      Zenda • El Estabelecimento
+                      El Estabelecimento
                     </p>
-                    <span className="rounded bg-growth/20 px-1 py-0.5 text-[9px] font-semibold text-growth">
-                      OFICIAL
+                    <span className="rounded bg-growth/20 px-1.5 py-0.5 text-[9px] font-semibold text-growth">
+                      24H
                     </span>
                   </div>
                   <p className="text-[11px] text-emerald-400">
-                    {activeStep >= 2 ? "Robô Online 24h • Resposta em 1.8s" : "Online"}
+                    {activeStep >= 2 ? "Robô respondendo no mesmo segundo" : "Online"}
                   </p>
                 </div>
               </div>
@@ -244,7 +232,7 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
                   </span>
                 </motion.div>
 
-                {/* Mensagem 2: Robô respondendo com URA */}
+                {/* Mensagem 2: Robô respondendo */}
                 <AnimatePresence>
                   {activeStep >= 2 && (
                     <motion.div
@@ -255,18 +243,18 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
                       className="self-start max-w-[88%] rounded-2xl rounded-tl-sm bg-[#202c33] p-3 text-white shadow"
                     >
                       <p className="text-growth font-bold text-[10px] flex items-center gap-1 mb-1">
-                        <Bot className="size-3" /> ROBÔ ZENDA 24/7
+                        <Bot className="size-3" /> ROBÔ ATENDENTE 24H
                       </p>
                       <p>
-                        Olá Rafael! 🌟 Que bom ter você aqui. Temos os seguintes horários livres amanhã:
+                        Olá Rafael! 🌟 Que bom ter você aqui. Temos estes horários livres amanhã:
                       </p>
                       <div className="my-2 space-y-1 rounded-lg bg-black/30 p-2 text-xs font-mono text-emerald-300">
-                        <p>1️⃣ 10:00 — Corte & Barba</p>
+                        <p>1️⃣ 10:00 — Corte &amp; Barba</p>
                         <p>2️⃣ 14:30 — Barba Terapia</p>
                         <p>3️⃣ 16:30 — Completo Premium</p>
                       </div>
                       <p className="text-[12px] text-white/80">
-                        Digite o número do horário desejado para confirmar:
+                        Digite apenas o número para escolher:
                       </p>
                       <span className="mt-1 flex items-center justify-end text-[10px] text-white/50">
                         14:12
@@ -304,13 +292,13 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
                       className="self-start max-w-[88%] rounded-2xl rounded-tl-sm bg-[#202c33] p-3 text-white ring-1 ring-growth/40 shadow-lg"
                     >
                       <div className="flex items-center gap-1.5 text-growth font-bold text-xs">
-                        <CheckCheck className="size-4" /> AGENDAMENTO CONFIRMADO!
+                        <CheckCheck className="size-4" /> HORÁRIO CONFIRMADO!
                       </div>
                       <p className="mt-1 text-xs text-white/90">
-                        🎉 Prontinho, Rafael! Seu horário para <strong>Amanhã às 14:30</strong> foi confirmado com sucesso.
+                        🎉 Prontinho, Rafael! Seu horário para <strong>Amanhã às 14:30</strong> já está marcado.
                       </p>
                       <div className="mt-2 rounded bg-growth/15 p-2 text-[11px] text-growth-text">
-                        🔔 Enviaremos um lembrete 2h antes. Te esperamos!
+                        🔔 Vamos te mandar um lembrete 2h antes para você não esquecer!
                       </div>
                       <span className="mt-1 flex items-center justify-end text-[10px] text-white/50">
                         14:13
@@ -323,7 +311,7 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
           </div>
         </div>
 
-        {/* Efeito de Conexão Central (Luz & Fluxo de Dados) */}
+        {/* Efeito de Conexão Central */}
         <div className="hidden lg:col-span-1 lg:flex flex-col items-center justify-center">
           <div className="relative flex flex-col items-center">
             <motion.div
@@ -337,16 +325,15 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
               <Zap className="size-6 text-growth animate-pulse" />
             </motion.div>
             <div className="my-2 h-16 w-0.5 bg-gradient-to-b from-brand via-growth to-transparent" />
-            <span className="rounded-full bg-growth-soft px-2 py-1 text-[10px] font-bold text-growth-text uppercase tracking-widest">
-              Sync 3s
+            <span className="rounded-full bg-growth-soft px-2 py-1 text-[10px] font-bold text-growth-text uppercase tracking-wider">
+              Na hora
             </span>
           </div>
         </div>
 
-        {/* Lado Direito: O CRM Zenda atualizando em Tempo Real (6 colunas) */}
+        {/* Lado Direito: Sua Agenda atualizando sozinha */}
         <div className="lg:col-span-6">
           <div className="rounded-2xl border border-line bg-white p-5 shadow-xl sm:p-6">
-            {/* Barra de Status do CRM */}
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line pb-4">
               <div className="flex items-center gap-2.5">
                 <div className="flex size-9 items-center justify-center rounded-xl bg-brand text-white font-bold text-sm shadow">
@@ -354,14 +341,14 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
                 </div>
                 <div>
                   <h4 className="font-heading text-sm font-bold text-ink sm:text-base">
-                    Zenda CRM • El Estabelecimento
+                    Sua Agenda Zenda &bull; El Estabelecimento
                   </h4>
-                  <p className="text-xs text-ink-soft">Visão em Tempo Real • Barba & Cabelo</p>
+                  <p className="text-xs text-ink-soft">Atualizada sozinha no seu celular</p>
                 </div>
               </div>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-growth-soft px-3 py-1 text-xs font-semibold text-growth-text ring-1 ring-growth/30">
                 <span className="size-2 rounded-full bg-growth animate-pulse" />
-                Robô 24/7 Conectado
+                Robô 24h Ligado
               </span>
             </div>
 
@@ -377,16 +364,16 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
                     transition={{ type: "spring", stiffness: 300 }}
                     className="font-heading text-xl font-bold sm:text-2xl"
                   >
-                    {activeStep >= 3 ? "R$ 480,00" : "R$ 390,00"}
+                    {activeStep >= 3 ? "R$ 540,00" : "R$ 450,00"}
                   </motion.p>
                 </div>
                 <p className="text-[10px] font-semibold text-growth-text">
-                  {activeStep >= 3 ? "+ R$ 90,00 confirmado" : "5 agendamentos hoje"}
+                  {activeStep >= 3 ? "+ R$ 90,00 na conta" : "5 clientes hoje"}
                 </p>
               </div>
 
               <div className="rounded-xl border border-line bg-canvas p-3">
-                <p className="text-xs text-ink-soft">Agendamentos</p>
+                <p className="text-xs text-ink-soft">Clientes do Dia</p>
                 <motion.p
                   key={activeStep >= 3 ? "count-updated" : "count-initial"}
                   initial={{ scale: 0.8 }}
@@ -396,16 +383,16 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
                   {activeStep >= 3 ? "6 marcados" : "5 marcados"}
                 </motion.p>
                 <p className="text-[10px] font-medium text-brand">
-                  {activeStep >= 3 ? "100% automatizado" : "Aguardando bot"}
+                  {activeStep >= 3 ? "Marcado sozinho" : "Aguardando"}
                 </p>
               </div>
 
               <div className="col-span-2 rounded-xl border border-growth/30 bg-growth-soft/40 p-3 sm:col-span-1">
                 <p className="text-xs font-semibold text-growth-text">Tempo de Resposta</p>
                 <p className="font-heading text-xl font-bold text-growth-text sm:text-2xl">
-                  1.8 segundos
+                  No mesmo segundo
                 </p>
-                <p className="text-[10px] text-ink-soft">Sem digitação manual</p>
+                <p className="text-[10px] text-ink-soft">Você não precisou parar</p>
               </div>
             </div>
 
@@ -413,9 +400,9 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
             <div className="mt-5 space-y-2.5">
               <div className="flex items-center justify-between">
                 <p className="text-xs font-bold uppercase tracking-wider text-ink-soft">
-                  Agenda de Amanhã (Sincronizada)
+                  Horários de Amanhã
                 </p>
-                <span className="text-xs font-semibold text-brand">3 vagas restantes</span>
+                <span className="text-xs font-semibold text-brand">Sem risco de choque de horário</span>
               </div>
 
               {/* Item existente */}
@@ -454,24 +441,24 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
                     <div className="flex items-center gap-2">
                       <p className="font-bold text-ink">Rafael Costa</p>
                       {activeStep >= 3 && (
-                        <span className="rounded-full bg-growth px-2 py-0.2 text-[9px] font-bold text-white uppercase tracking-wider animate-bounce">
-                          NOVO AGENDAMENTO
+                        <span className="rounded-full bg-growth px-2 py-0.5 text-[9px] font-bold text-white uppercase tracking-wider animate-bounce">
+                          NOVO HORÁRIO
                         </span>
                       )}
                     </div>
-                    <p className="text-[11px] text-ink-soft">Barba Terapia • R$ 90,00</p>
+                    <p className="text-[11px] text-ink-soft">Barba Terapia &bull; R$ 90,00</p>
                   </div>
                 </div>
 
                 <div className="text-right">
                   <span className="rounded bg-growth/20 px-2 py-1 text-[10px] font-bold text-growth-text">
-                    Fechado pelo Robô
+                    Marcado pelo Robô
                   </span>
-                  <p className="mt-0.5 text-[10px] text-ink-muted">via WhatsApp 24/7</p>
+                  <p className="mt-0.5 text-[10px] text-ink-muted">pelo WhatsApp</p>
                 </div>
               </motion.div>
 
-              {/* Notificação Proativa de Push */}
+              {/* Aviso no Celular */}
               <AnimatePresence>
                 {activeStep >= 4 && (
                   <motion.div
@@ -485,9 +472,9 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
                       <Smartphone className="size-4" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="font-bold text-brand">Notificação enviada para o seu celular</p>
+                      <p className="font-bold text-brand">Aviso na tela do seu celular</p>
                       <p className="text-[11px] text-ink-soft">
-                        &ldquo;Resumo Zenda: Rafael Costa agendou para amanhã às 14:30. Faturamento subiu para R$ 480.&rdquo;
+                        &ldquo;Rafael Costa acabou de marcar para amanhã às 14:30. Faturamento previsto hoje: R$ 540,00.&rdquo;
                       </p>
                     </div>
                   </motion.div>
@@ -501,15 +488,14 @@ export function ZendaLiveSimulation({ className }: { className?: string }) {
       {/* Footer com Chamada */}
       <div className="flex flex-col items-center justify-between gap-3 border-t border-line bg-canvas/80 px-6 py-4 text-center sm:flex-row sm:text-left sm:px-8">
         <p className="text-xs text-ink-soft sm:text-sm">
-          💡 <strong>Quer ver no seu próprio número?</strong> Inicie seu teste de 30 dias grátis em menos de 2 minutos.
+          💡 <strong>Quer testar no seu próprio celular?</strong> Comece seus 30 dias grátis em menos de 2 minutos.
         </p>
         <div className="flex items-center gap-2">
           <span className="text-xs font-semibold text-growth-text flex items-center gap-1">
-            <CheckCheck className="size-4 text-growth" /> 100% sem comissão
+            <CheckCheck className="size-4 text-growth" /> O lucro é 100% seu (sem comissões)
           </span>
         </div>
       </div>
     </div>
   )
 }
-

@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom"
-import { ArrowRight, CheckCircle2 } from "lucide-react"
+import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react"
 import { motion } from "motion/react"
 import { SectionHeading } from "@/components/ui/SectionHeading"
 import { buttonVariants } from "@/components/ui/Button"
 import { LypsyosIconBadge } from "@/components/ui/LypsyosIconBadge"
-import { SolutionMockupView } from "@/components/mockups/SolutionMockupView"
 import { products } from "@/content/products"
-import { homeSections } from "@/content/site"
+import { homeSections, WHATSAPP_URL } from "@/content/site"
 import { trackEvent } from "@/services/analytics"
-import { cn } from "@/utils/cn"
 
 function trackSolutionClick(label: string) {
   void trackEvent({
@@ -22,113 +20,96 @@ function trackSolutionClick(label: string) {
 
 export function FeaturesSection() {
   return (
-    <section id={homeSections.solutions} aria-labelledby="features-title" className="w-full overflow-hidden bg-white py-16 md:py-24">
+    <section
+      id={homeSections.solutions}
+      aria-labelledby="features-title"
+      className="w-full overflow-hidden bg-white py-14 md:py-22"
+    >
       <div className="container mx-auto px-4 md:px-6">
         <SectionHeading
           titleId="features-title"
-          eyebrow="Ecossistema Completo"
+          eyebrow="Tudo o Que Você Recebe no Zenda"
           title={
             <>
               Tudo o que seu espaço precisa para <span className="text-growth-text">lotar a agenda e lucrar mais</span>
             </>
           }
-          description="Robô inteligente no WhatsApp, painel CRM visual, aplicativo instalável e alertas diários. Mais que uma agenda: o seu gerente virtual 24 horas por dia."
+          description="Robô que responde no mesmo segundo no WhatsApp, agenda simples de mexer, aplicativo em 1 clique no celular e segurança total dos seus dados."
         />
 
-        <div className="mt-14 flex flex-col gap-20 md:mt-20 md:gap-28">
-          {products.map((product, index) => {
-            const reversed = index % 2 === 1
-            return (
-              <article
-                key={product.slug}
-                aria-labelledby={`feature-${product.slug}`}
-                className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.5 }}
-                  className={cn("min-w-0 flex flex-col gap-5", reversed && "lg:order-2")}
-                >
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {products.map((product, index) => (
+            <motion.article
+              key={product.slug}
+              aria-labelledby={`feature-${product.slug}`}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.45, delay: index * 0.06 }}
+              className="flex flex-col justify-between rounded-2xl border border-line bg-canvas/60 p-6 shadow-soft transition-all hover:border-brand/30 hover:bg-white hover:shadow-lift"
+            >
+              <div className="space-y-4">
+                <div className="flex items-center justify-between gap-3">
                   <LypsyosIconBadge
                     icon={product.icon}
                     tone={product.tone === "growth" ? "growth" : "brand"}
-                    size="xl"
+                    size="lg"
                   />
-                  <div className="space-y-2">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand">
-                      {product.category}
-                    </p>
-                    <h3 id={`feature-${product.slug}`} className="text-[1.375rem] font-bold leading-snug md:text-[1.75rem] text-ink">
-                      {product.name}
-                    </h3>
-                    <p className="font-heading text-lg font-semibold text-growth-text">{product.tagline}</p>
-                  </div>
-                  <p className="text-base leading-relaxed text-ink-soft md:text-lg">{product.description}</p>
-                  
-                  {/* Citação de Benefício */}
-                  <blockquote className="rounded-xl border-l-4 border-brand bg-canvas p-3.5 text-sm font-medium text-ink italic">
-                    &ldquo;{product.benefit}&rdquo;
-                  </blockquote>
+                  <span className="rounded-full bg-brand-soft px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-brand">
+                    {product.category}
+                  </span>
+                </div>
 
-                  <ul className="grid gap-2.5">
-                    {product.highlights.map((item) => (
-                      <li key={item} className="flex items-start gap-3 text-[0.9375rem] text-ink md:text-base">
-                        <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-growth" aria-hidden="true" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                <div className="space-y-1.5">
+                  <h3 id={`feature-${product.slug}`} className="font-heading text-xl font-bold text-ink leading-snug">
+                    {product.name}
+                  </h3>
+                  <p className="text-sm font-semibold text-growth-text leading-snug">
+                    {product.tagline}
+                  </p>
+                </div>
 
-                  <Link
-                    to={`/produtos/${product.slug}`}
-                    className={buttonVariants({ variant: "link", className: "w-fit px-0 font-semibold text-brand" })}
-                    onClick={() => trackSolutionClick(`saiba_mais_${product.slug}`)}
-                  >
-                    Ver detalhes completos do módulo
-                    <ArrowRight className="size-4" aria-hidden="true" />
-                  </Link>
-                </motion.div>
+                <p className="text-sm leading-relaxed text-ink-soft">
+                  {product.description}
+                </p>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  className={cn("relative", reversed && "lg:order-1")}
-                >
-                  <div
-                    aria-hidden="true"
-                    className={cn(
-                      "absolute inset-x-6 inset-y-10 -z-0 rounded-[2rem] blur-2xl",
-                      product.tone === "growth" ? "bg-growth/15" : "bg-brand/12",
-                    )}
-                  />
-                  <div className="relative">
-                    <SolutionMockupView type={product.mockup} />
-                  </div>
-                </motion.div>
-              </article>
-            )
-          })}
+                <ul className="space-y-2 border-t border-line pt-4">
+                  {product.highlights.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-xs sm:text-sm text-ink leading-snug">
+                      <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-growth" aria-hidden="true" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.article>
+          ))}
         </div>
 
-        <div className="mt-20 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-center gap-3.5 sm:flex-row">
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noreferrer"
+            className={buttonVariants({
+              size: "lg",
+              className: "min-h-14 w-full sm:w-auto bg-[#25D366] hover:bg-[#1ebe5b] text-white font-bold shadow-lg shadow-[#25D366]/25 gap-2",
+            })}
+            onClick={() => trackSolutionClick("whatsapp_features")}
+          >
+            <MessageCircle className="size-5 fill-white text-white" aria-hidden="true" />
+            Quero Ver Funcionando no WhatsApp
+          </a>
           <Link
             to="/contato"
-            className={buttonVariants({ size: "lg", className: "shadow-lg shadow-brand/20" })}
+            className={buttonVariants({
+              size: "lg",
+              className: "min-h-14 w-full sm:w-auto shadow-lg shadow-brand/20 font-bold",
+            })}
             onClick={() => trackSolutionClick("comecar_teste_gratis_features")}
           >
             Começar Teste Grátis de 30 Dias
             <ArrowRight className="size-5" aria-hidden="true" />
-          </Link>
-          <Link
-            to="/produtos"
-            className={buttonVariants({ size: "lg", variant: "outline" })}
-            onClick={() => trackSolutionClick("todas_as_solucoes")}
-          >
-            Ver matriz de todos os produtos
           </Link>
         </div>
       </div>

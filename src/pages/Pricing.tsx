@@ -8,24 +8,24 @@ import { useState } from "react"
 
 const faqs = [
   {
-    q: "Preciso informar cartão de crédito para começar o teste?",
-    a: "Não! Você cria sua conta e usa todas as funcionalidades do Zenda por 30 dias gratuitamente, sem precisar cadastrar cartão de crédito ou ter qualquer compromisso financeiro.",
+    q: "Preciso colocar cartão de crédito para testar os 30 dias?",
+    a: "Não! Você cria sua conta e usa tudo no Zenda por 30 dias grátis, sem precisar colocar cartão de crédito e sem qualquer compromisso.",
   },
   {
-    q: "Como conecto meu número do WhatsApp ao Zenda?",
-    a: "O processo leva menos de 2 minutos. Você abre as configurações no painel do Zenda e escaneia um QR Code criptografado direto com o WhatsApp do seu celular. Pronto: seu robô já estará ativo.",
+    q: "Como eu ligo o robô no meu WhatsApp?",
+    a: "Leva menos de 2 minutos. Você abre o Zenda, lê o código na tela com o seu WhatsApp e pronto: o robô já começa a responder suas clientes no mesmo segundo.",
   },
   {
-    q: "O robô vai incomodar meus contatos pessoais (amigos e família)?",
-    a: "Não. O Zenda possui uma trava inteligente de privacidade. Números já salvos na sua agenda pessoal continuam conversando com você normalmente. O robô só atende clientes novos ou quando alguém digita explicitamente a palavra /agendar.",
+    q: "O robô vai responder minha família e amigos pessoais?",
+    a: "Não! Números que já estão salvos na sua agenda pessoal continuam conversando com você normalmente. O robô só atende clientes buscando marcar horário.",
   },
   {
-    q: "Funciona tanto em iPhone (iOS) quanto em celulares Android?",
-    a: "Sim! O Zenda é um Progressive Web App (PWA) de última geração. Você instala direto pelo navegador (Safari no iPhone ou Chrome no Android) com 1 toque, sem gastar memória do celular.",
+    q: "Funciona tanto em iPhone quanto em Android?",
+    a: "Sim! Instalação direta no iPhone ou Android com 1 clique, sem taxas nem burocracia de App Store, e sem ocupar a memória do seu celular.",
   },
   {
-    q: "Posso cancelar a assinatura quando eu quiser?",
-    a: "Sim, sem nenhuma multa, fidelidade ou pegadinha. Você tem total liberdade para cancelar a assinatura a qualquer momento com apenas 1 clique.",
+    q: "Se eu quiser cancelar depois, tem multa?",
+    a: "Nenhuma! Não existe fidelidade nem multa. Você pode cancelar quando quiser com apenas 1 clique.",
   },
 ]
 
@@ -33,11 +33,11 @@ export function Pricing() {
   const [openFaq, setOpenFaq] = useState<number | null>(0)
 
   useDocumentMetadata({
-    title: "Planos e Preços — CRM e Agendamento no WhatsApp | Zenda Lypsyos",
+    title: "Planos e Preços — Zenda Robô de Agendamento no WhatsApp",
     description:
-      "Assinatura acessível com 30 dias de teste grátis sem compromisso. Robô atendente no WhatsApp ilimitado, CRM visual e aplicativo instalável.",
+      "Teste grátis por 30 dias sem cartão de crédito. Robô de agendamento no WhatsApp 24h, agenda no celular e controle de caixa.",
     keywords:
-      "preço sistema de agendamento, plano crm whatsapp, assinatura zenda, teste gratis agendamento salão barbearia",
+      "preço sistema de agendamento, plano robo whatsapp, assinatura zenda, teste gratis agendamento salão barbearia manicure",
     canonicalPath: "/planos",
     ogType: "website",
     schemaJson: {
@@ -56,8 +56,7 @@ export function Pricing() {
 
   return (
     <main className="flex flex-col bg-white">
-      {/* Hero da página de Planos */}
-      <section className="relative overflow-hidden bg-white py-14 md:py-20 border-b border-line">
+      <section className="relative overflow-hidden bg-white py-12 md:py-16 border-b border-line">
         <div aria-hidden="true" className="pointer-events-none absolute -right-32 -top-32 -z-10 size-[32rem] rounded-full bg-brand/10 blur-3xl" />
         <div className="container mx-auto px-4 md:px-6 text-center max-w-3xl">
           <motion.div
@@ -67,33 +66,31 @@ export function Pricing() {
             className="space-y-4"
           >
             <p className="text-xs font-semibold uppercase tracking-wider text-brand">
-              Assinatura Sem Pegadinhas
+              Simples e Sem Fidelidade
             </p>
             <h1 className="text-3xl font-extrabold tracking-tight text-ink sm:text-5xl">
               Planos claros, justos e com <span className="text-growth-text">30 dias grátis</span>
             </h1>
             <p className="text-base text-ink-soft sm:text-lg leading-relaxed">
-              Experimente a automação completa do Zenda sem pagar nada agora. Comece hoje e recupere horas de descanso na sua rotina.
+              Teste o Zenda completo no seu salão ou barbearia sem pagar nada agora.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Seção do Card de Preços */}
       <PricingSection />
 
-      {/* Seção FAQ */}
-      <section className="py-16 md:py-24 bg-canvas border-t border-line">
+      <section className="py-14 md:py-22 bg-canvas border-t border-line">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">
-          <div className="text-center mb-12 space-y-2">
+          <div className="text-center mb-10 space-y-2">
             <div className="mb-3 flex justify-center">
               <LypsyosIconBadge icon={HelpCircle} tone="brand" size="md" />
             </div>
             <h2 className="font-heading text-2xl font-bold text-ink sm:text-3xl">
-              Perguntas Frequentes sobre o Zenda
+              Dúvidas Comuns sobre o Zenda
             </h2>
             <p className="text-sm text-ink-soft">
-              Tudo o que você precisa saber antes de iniciar seu teste de 30 dias.
+              Respostas diretas para você começar seu teste grátis com tranquilidade.
             </p>
           </div>
 
@@ -134,4 +131,3 @@ export function Pricing() {
     </main>
   )
 }
-

@@ -1,57 +1,73 @@
 import { ContactFormSection } from "@/components/sections/ContactFormSection"
 import { motion } from "motion/react"
-import { Cog, Presentation, Workflow } from "lucide-react"
+import { MessageCircle, Presentation, Sparkles, Zap } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/Card"
+import { buttonVariants } from "@/components/ui/Button"
+import { WHATSAPP_URL } from "@/content/site"
 import { useDocumentMetadata } from "@/utils/useDocumentMetadata"
 
 export function Contact() {
   useDocumentMetadata(
-    "Contato & Teste Grátis | Lypsyos",
-    "Entre em contato com a Lypsyos para começar seu teste grátis de 30 dias ou agendar uma demonstração do robô de agendamentos no WhatsApp.",
+    "Teste Grátis de 30 Dias & Contato | Zenda",
+    "Comece seu teste grátis de 30 dias do Zenda ou chame nossa equipe no WhatsApp para ativar seu robô de agendamentos em 2 minutos.",
   )
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between py-16 md:py-20 bg-white">
+    <main className="flex min-h-screen flex-col items-center justify-between py-12 md:py-18 bg-white">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="mb-10 flex flex-col items-center justify-center space-y-3 text-center">
+        <div className="mb-8 flex flex-col items-center justify-center space-y-4 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-2"
+            transition={{ duration: 0.5 }}
+            className="space-y-3"
           >
-            <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl xl:text-6xl/none text-ink">
-              Fale com a <span className="text-brand">Lypsyos</span>
+            <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl text-ink">
+              Ative seus <span className="text-brand">30 Dias Grátis no Zenda</span>
             </h1>
-            <p className="mx-auto max-w-[860px] text-ink-soft md:text-lg/relaxed">
-              Vamos entender a rotina do seu espaço e ativar seu robô no WhatsApp para preencher sua agenda 24 horas por dia.
+            <p className="mx-auto max-w-[680px] text-ink-soft text-base md:text-lg leading-relaxed">
+              Quer atendimento imediato? Chame agora mesmo no WhatsApp ou preencha seus dados abaixo para liberarmos seu acesso.
             </p>
+            <div className="pt-2">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className={buttonVariants({
+                  size: "lg",
+                  className: "min-h-14 w-full sm:w-auto bg-[#25D366] hover:bg-[#1ebe5b] text-white font-bold shadow-xl shadow-[#25D366]/25 px-8 gap-2.5",
+                })}
+              >
+                <MessageCircle className="size-5 fill-white text-white" aria-hidden="true" />
+                Chamar no WhatsApp Agora (Mais Rápido)
+              </a>
+            </div>
           </motion.div>
         </div>
 
-        <div className="mb-10 grid gap-5 md:grid-cols-3">
+        <div className="mb-10 grid gap-4 md:grid-cols-3">
           {[
             {
-              title: "Ativação em 2 minutos",
-              description: "Conecte seu WhatsApp por QR Code e comece a atender sem atrito.",
-              icon: Workflow,
+              title: "Pronto em 2 minutos",
+              description: "Ligue no seu WhatsApp sem complicação e comece a usar na hora.",
+              icon: Zap,
             },
             {
-              title: "Demonstração guiada",
-              description: "Mostramos o robô e o painel funcionando na prática para o seu nicho.",
+              title: "Ajuda pelo WhatsApp",
+              description: "A gente te acompanha passo a passo para deixar tudo configurado para o seu salão.",
               icon: Presentation,
             },
             {
               title: "30 dias grátis",
-              description: "Teste completo sem compromisso e sem precisar de cartão de crédito.",
-              icon: Cog,
+              description: "Teste tudo sem pagar nada agora e sem precisar de cartão de crédito.",
+              icon: Sparkles,
             },
           ].map((info, index) => (
             <motion.div
               key={info.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.45, delay: index * 0.08 }}
               viewport={{ once: true }}
             >
               <Card className="h-full border-line bg-canvas shadow-sm text-center">
@@ -59,8 +75,8 @@ export function Contact() {
                   <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-brand-soft text-brand">
                     <info.icon className="h-6 w-6" />
                   </div>
-                  <h3 className="text-lg font-semibold text-ink mb-2">{info.title}</h3>
-                  <p className="text-ink-soft whitespace-pre-line">{info.description}</p>
+                  <h3 className="text-lg font-semibold text-ink mb-1.5">{info.title}</h3>
+                  <p className="text-sm text-ink-soft whitespace-pre-line">{info.description}</p>
                 </CardContent>
               </Card>
             </motion.div>

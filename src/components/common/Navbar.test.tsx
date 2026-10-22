@@ -3,7 +3,7 @@ import { MemoryRouter } from "react-router-dom"
 import { Navbar } from "./Navbar"
 
 describe("Navbar", () => {
-  it("renders the Lypsyos brand and main conversion CTA", () => {
+  it("renders the Lypsyos brand, simplified navigation and conversion CTAs", () => {
     render(
       <MemoryRouter>
         <Navbar />
@@ -11,12 +11,9 @@ describe("Navbar", () => {
     )
 
     expect(screen.getByAltText("Lypsyos")).toBeInTheDocument()
-    expect(screen.getByRole("link", { name: /agende uma demonstração/i })).toBeInTheDocument()
-    expect(screen.getByRole("link", { name: /zenda/i })).toBeInTheDocument()
-    expect(screen.getByRole("link", { name: /comparativo/i })).toBeInTheDocument()
+    expect(screen.getByRole("link", { name: /como funciona/i })).toBeInTheDocument()
     expect(screen.getByRole("link", { name: /planos/i })).toBeInTheDocument()
-    expect(screen.getByRole("link", { name: /para quem é/i })).toBeInTheDocument()
-    expect(screen.getByRole("link", { name: /sobre/i })).toBeInTheDocument()
     expect(screen.getByRole("link", { name: /contato/i })).toBeInTheDocument()
+    expect(screen.getAllByRole("link", { name: /teste grátis/i }).length).toBeGreaterThan(0)
   })
 })

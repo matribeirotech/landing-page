@@ -13,9 +13,14 @@ describe("ZendaProduct", () => {
     // Check main Zenda headline
     expect(
       screen.getByRole("heading", {
-        name: /enquanto você atende uma cliente, o zenda agenda as próximas cinco/i,
+        name: /o seu salão não pode parar porque você está respondendo o whatsapp/i,
       }),
     ).toBeInTheDocument()
+
+    // Check core slogan
+    expect(
+      screen.getAllByText(/enquanto você atende uma cliente, o zenda agenda as próximas cinco/i).length,
+    ).toBeGreaterThan(0)
 
     // Check problem/solution section
     expect(
@@ -33,19 +38,26 @@ describe("ZendaProduct", () => {
 
     // Check live simulation section
     expect(
-      screen.getByText(/simulação em tempo real: do whatsapp ao crm/i),
+      screen.getByText(/veja na prática: do whatsapp direto para a sua agenda/i),
     ).toBeInTheDocument()
 
     // Check real interface showcase section
     expect(
       screen.getByRole("heading", {
-        name: /sem maquetes genéricas/i,
+        name: /sem complicação\. essa é a tela real que você vai usar\./i,
+      }),
+    ).toBeInTheDocument()
+
+    // Check testimonials & 2-minute setup section
+    expect(
+      screen.getByRole("heading", {
+        name: /pronto para usar em 2 minutos no seu celular/i,
       }),
     ).toBeInTheDocument()
 
     // Check free trial CTA
     expect(
-      screen.getAllByRole("link", { name: /teste grátis/i }).length,
+      screen.getAllByRole("link", { name: /30 dias grátis/i }).length,
     ).toBeGreaterThan(0)
   })
 })
